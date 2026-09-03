@@ -11,6 +11,7 @@ import {
   ChevronRight,
   Filter,
   ListChecks,
+  Network,
   RefreshCw,
   Search,
   ZoomIn,
@@ -22,11 +23,14 @@ import type {
   WorkspaceTaskView,
   WorkspaceViewData,
 } from "@/lib/workspace-data";
+import { DependencyFocus } from "../dependency-focus";
+import { GanttLegend } from "../gantt-legend";
 import { StatusPill } from "../status-pill";
 import { TaskDrawer } from "../task-drawer";
 import {
   daysBetween,
   formatCompactDate,
+  getDirectTaskRelations,
   phaseLabels,
   priorityOrder,
   shiftDate,
@@ -81,8 +85,10 @@ export function RoadmapView({
   const [phaseFilter, setPhaseFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [zoom, setZoom] = useState(1);
+  const [showAllConnections, setShowAllConnections] = useState(false);
   const [selectedTask, setSelectedTask] =
     useState<WorkspaceTaskView | null>(null);
+  const [focusTaskId, setFocusTaskId] = useState<string | null>(null);
   const dragStart = useRef<{
     x: number;
     startDate: string;
@@ -95,11 +101,15 @@ export function RoadmapView({
     new Date().toISOString().slice(0, 10);
   const horizonDays = 365;
   const timelineWidth = Math.round(1_420 * zoom);
-  const completedIds = useMemo(
+  const satisfiedIds = useMemo(
     () =>
       new Set(
         data.tasks
-          .filter((task) => task.status === "complete")
+          .filter(
+            (task) =>
+              task.status === "complete" ||
+              task.status === "not-applicable",
+          )
           .map((task) => task.masterTaskId),
       ),
     [data.tasks],
@@ -107,6 +117,12 @@ export function RoadmapView({
   const presentTaskIds = useMemo(
     () => new Set(data.tasks.map((task) => task.masterTaskId)),
     [data.tasks],
+  );
+  const focusTask =
+    data.tasks.find((task) => task.id === focusTaskId) ?? null;
+  const focusRelations = useMemo(
+    () => getDirectTaskRelations(data.tasks, focusTaskId),
+    [data.tasks, focusTaskId],
   );
 
   const filtered = useMemo(
@@ -131,6 +147,12 @@ export function RoadmapView({
             .toLowerCase()
             .includes(query.toLowerCase()),
         )
+        .filter(
+          (task) =>
+            !focusTaskId ||
+            mode === "cadence" ||
+            focusRelations.relatedTaskIds.has(task.id),
+        )
         .sort((left, right) => {
           const date = left.startDate.localeCompare(right.startDate);
           return date !== 0
@@ -139,6 +161,8 @@ export function RoadmapView({
         }),
     [
       data.tasks,
+      focusRelations,
+      focusTaskId,
       mode,
       phaseFilter,
       query,
@@ -150,8 +174,42 @@ export function RoadmapView({
   function isDependencyBlocked(task: WorkspaceTaskView): boolean {
     return task.dependencies.some(
       (dependencyId) =>
-        presentTaskIds.has(dependencyId) && !completedIds.has(dependencyId),
+        presentTaskIds.has(dependencyId) && !satisfiedIds.has(dependencyId),
     );
+  }
+
+  function focusOnTask(task: WorkspaceTaskView) {
+    if (task.phase === "recurring") {
+      setSelectedTask(task);
+      return;
+    }
+    setQuery("");
+    setWorkstreamFilter("all");
+    setPhaseFilter("all");
+    setStatusFilter("all");
+    if (mode === "cadence") setMode("timeline");
+    setFocusTaskId(task.id);
+  }
+
+  function openTaskDetails(task: WorkspaceTaskView) {
+    focusOnTask(task);
+    setSelectedTask(task);
+  }
+
+  function clearFocus() {
+    setFocusTaskId(null);
+  }
+
+  function relationTone(task: WorkspaceTaskView) {
+    if (!focusTask) return "none";
+    if (task.id === focusTask.id) return "focus";
+    if (focusRelations.prerequisites.some((item) => item.id === task.id)) {
+      return "prerequisite";
+    }
+    if (focusRelations.dependents.some((item) => item.id === task.id)) {
+      return "dependent";
+    }
+    return "none";
   }
 
   function startDrag(event: DragEvent, task: WorkspaceTaskView) {
@@ -198,7 +256,10 @@ export function RoadmapView({
             {roadmapModes.map(({ value, label, icon: Icon }) => (
               <button
                 key={value}
-                onClick={() => setMode(value)}
+                onClick={() => {
+                  setMode(value);
+                  if (value === "cadence") clearFocus();
+                }}
                 className={`flex items-center gap-2 rounded-md px-3 py-2 font-semibold ${
                   mode === value
                     ? "bg-white text-[var(--ink)] shadow-sm"
@@ -219,14 +280,20 @@ export function RoadmapView({
               className="field h-10 min-h-10 pl-9"
               placeholder="Search roadmap"
               value={query}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={(event) => {
+                clearFocus();
+                setQuery(event.target.value);
+              }}
             />
           </label>
           <div className="flex flex-wrap gap-2">
             <select
               className="field h-10 min-h-10 w-auto text-xs"
               value={workstreamFilter}
-              onChange={(event) => setWorkstreamFilter(event.target.value)}
+              onChange={(event) => {
+                clearFocus();
+                setWorkstreamFilter(event.target.value);
+              }}
               aria-label="Filter by workstream"
             >
               <option value="all">All workstreams</option>
@@ -239,7 +306,10 @@ export function RoadmapView({
             <select
               className="field h-10 min-h-10 w-auto text-xs"
               value={phaseFilter}
-              onChange={(event) => setPhaseFilter(event.target.value)}
+              onChange={(event) => {
+                clearFocus();
+                setPhaseFilter(event.target.value);
+              }}
               aria-label="Filter by phase"
             >
               <option value="all">All phases</option>
@@ -252,7 +322,10 @@ export function RoadmapView({
             <select
               className="field h-10 min-h-10 w-auto text-xs"
               value={statusFilter}
-              onChange={(event) => setStatusFilter(event.target.value)}
+              onChange={(event) => {
+                clearFocus();
+                setStatusFilter(event.target.value);
+              }}
               aria-label="Filter by status"
             >
               <option value="all">All statuses</option>
@@ -266,13 +339,42 @@ export function RoadmapView({
         </div>
       </Card>
 
+      <GanttLegend workstreams={workstreams} />
+
+      {focusTask && mode !== "cadence" ? (
+        <DependencyFocus
+          task={focusTask}
+          relations={focusRelations}
+          workstreams={workstreams}
+          onFocus={focusOnTask}
+          onOpen={openTaskDetails}
+          onClear={clearFocus}
+        />
+      ) : null}
+
       <div className="flex items-center gap-3 text-xs text-[var(--ink-muted)]">
         <Filter size={13} />
         <span>
-          {filtered.length} tasks · dates and completion persist locally
+          {focusTask
+            ? `${filtered.length} tasks in the direct dependency neighborhood`
+            : `${filtered.length} tasks`}
+          {" · "}dates and completion persist locally
         </span>
         {mode === "timeline" ? (
           <div className="ml-auto flex items-center gap-1">
+            {!focusTask ? (
+              <button
+                onClick={() => setShowAllConnections((value) => !value)}
+                className={`mr-1 flex items-center gap-1.5 rounded-lg border px-2.5 py-2 text-[10px] font-semibold ${
+                  showAllConnections
+                    ? "border-[var(--purple)] bg-[var(--purple-soft)] text-[var(--purple)]"
+                    : "border-[var(--border)] bg-white text-[var(--ink-muted)]"
+                }`}
+              >
+                <Network size={13} />
+                {showAllConnections ? "Hide all arrows" : "Show all arrows"}
+              </button>
+            ) : null}
             <button
               onClick={() => setZoom((value) => Math.max(0.7, value - 0.15))}
               className="rounded-lg border border-[var(--border)] bg-white p-2"
@@ -321,7 +423,8 @@ export function RoadmapView({
               </div>
 
               <svg
-                className="pointer-events-none absolute z-0"
+                data-testid="gantt-dependency-lines"
+                className="pointer-events-none absolute z-[15]"
                 style={{
                   left: labelWidth,
                   top: 56,
@@ -331,8 +434,29 @@ export function RoadmapView({
                 viewBox={`0 0 ${timelineWidth} ${filtered.length * rowHeight}`}
                 aria-hidden="true"
               >
-                {filtered.flatMap((task, rowIndex) =>
-                  task.dependencies.map((dependencyId) => {
+                <defs>
+                  {[
+                    ["gantt-arrow", "#94a3b8"],
+                    ["gantt-arrow-prerequisite", "#2563eb"],
+                    ["gantt-arrow-dependent", "#f97316"],
+                  ].map(([id, color]) => (
+                    <marker
+                      key={id}
+                      id={id}
+                      viewBox="0 0 10 10"
+                      refX="9"
+                      refY="5"
+                      markerWidth="6"
+                      markerHeight="6"
+                      orient="auto-start-reverse"
+                    >
+                      <path d="M 0 0 L 10 5 L 0 10 z" fill={color} />
+                    </marker>
+                  ))}
+                </defs>
+                {focusTask || showAllConnections
+                  ? filtered.flatMap((task, rowIndex) =>
+                      task.dependencies.map((dependencyId) => {
                     const dependencyIndex = filtered.findIndex(
                       (candidate) =>
                         candidate.masterTaskId === dependencyId,
@@ -355,17 +479,31 @@ export function RoadmapView({
                     const y1 = dependencyIndex * rowHeight + rowHeight / 2;
                     const y2 = rowIndex * rowHeight + rowHeight / 2;
                     const middle = Math.max(x1 + 8, (x1 + x2) / 2);
+                    const intoFocus = task.id === focusTaskId;
+                    const outOfFocus = dependency.id === focusTaskId;
+                    const stroke = intoFocus
+                      ? "#2563eb"
+                      : outOfFocus
+                        ? "#f97316"
+                        : "#94a3b8";
+                    const marker = intoFocus
+                      ? "gantt-arrow-prerequisite"
+                      : outOfFocus
+                        ? "gantt-arrow-dependent"
+                        : "gantt-arrow";
                     return (
                       <polyline
                         key={`${task.id}-${dependencyId}`}
                         points={`${x1},${y1} ${middle},${y1} ${middle},${y2} ${x2},${y2}`}
                         fill="none"
-                        stroke="#cbd5e1"
-                        strokeWidth="1"
+                        stroke={stroke}
+                        strokeWidth={intoFocus || outOfFocus ? "2" : "1.25"}
+                        markerEnd={`url(#${marker})`}
                       />
                     );
-                  }),
-                )}
+                      }),
+                    )
+                  : null}
               </svg>
 
               {filtered.map((task) => {
@@ -384,10 +522,35 @@ export function RoadmapView({
                     timelineWidth,
                 );
                 const dependencyBlocked = isDependencyBlocked(task);
+                const tone = relationTone(task);
+                const relationLabel =
+                  tone === "focus"
+                    ? "selected"
+                    : tone === "prerequisite"
+                      ? "needs first"
+                      : tone === "dependent"
+                        ? "unblocks next"
+                        : "";
+                const outlineColor =
+                  tone === "focus"
+                    ? "#172033"
+                    : tone === "prerequisite"
+                      ? "#2563eb"
+                      : tone === "dependent"
+                        ? "#f97316"
+                        : "transparent";
                 return (
                   <div
                     key={task.id}
-                    className="relative z-10 grid border-b border-slate-100 bg-white/75 hover:bg-slate-50/80"
+                    className={`relative z-10 grid border-b border-slate-100 hover:bg-slate-50/80 ${
+                      tone === "focus"
+                        ? "bg-slate-100"
+                        : tone === "prerequisite"
+                          ? "bg-blue-50/40"
+                          : tone === "dependent"
+                            ? "bg-orange-50/40"
+                            : "bg-white/75"
+                    }`}
                     style={{
                       gridTemplateColumns: `${labelWidth}px ${timelineWidth}px`,
                       height: rowHeight,
@@ -414,19 +577,30 @@ export function RoadmapView({
                       </button>
                       <button
                         className="min-w-0 flex-1 text-left"
-                        onClick={() => setSelectedTask(task)}
+                        onClick={() => focusOnTask(task)}
+                        onDoubleClick={() => openTaskDetails(task)}
+                        aria-pressed={tone === "focus"}
+                        title="Click to focus dependencies. Double-click for full details."
                       >
                         <span className="block truncate text-xs font-semibold">
                           {task.title}
                         </span>
                         <span className="mt-0.5 block truncate text-[10px] text-[var(--ink-muted)]">
                           {task.ownerRole}
+                          {relationLabel ? ` · ${relationLabel}` : ""}
                           {dependencyBlocked && task.status !== "complete"
                             ? " · waiting on dependency"
                             : ""}
                         </span>
                       </button>
-                      <ChevronRight size={13} className="text-slate-300" />
+                      <button
+                        onClick={() => openTaskDetails(task)}
+                        className="rounded p-1 text-slate-400 hover:bg-white hover:text-[var(--ink)]"
+                        aria-label={`Open full details for ${task.title}`}
+                        title="Open full task details"
+                      >
+                        <ChevronRight size={13} />
+                      </button>
                     </div>
                     <div className="relative border-l border-[var(--border)]">
                       {months.map((month) => (
@@ -440,26 +614,33 @@ export function RoadmapView({
                         draggable
                         onDragStart={(event) => startDrag(event, task)}
                         onDragEnd={(event) => endDrag(event, task)}
-                        onClick={() => setSelectedTask(task)}
+                        onClick={() => focusOnTask(task)}
+                        onDoubleClick={() => openTaskDetails(task)}
+                        aria-pressed={tone === "focus"}
                         className={`absolute top-2.5 h-7 overflow-hidden rounded-md text-left text-[9px] font-bold text-slate-900 shadow-sm transition hover:brightness-95 ${
-                          dependencyBlocked && task.status !== "complete"
-                            ? "border border-dashed border-red-400"
+                          (task.status === "blocked" || dependencyBlocked) &&
+                          task.status !== "complete"
+                            ? "border-2 border-dashed border-red-600"
                             : ""
                         }`}
                         style={{
                           left,
                           width,
+                          zIndex: tone === "focus" ? 3 : tone === "none" ? 1 : 2,
+                          outline:
+                            tone === "none"
+                              ? undefined
+                              : `${tone === "focus" ? 3 : 2}px solid ${outlineColor}`,
+                          outlineOffset: 1,
                           backgroundColor:
                             task.status === "complete"
                               ? "#79D9B9"
-                              : task.status === "blocked" || dependencyBlocked
-                                ? "#FFD6DE"
-                                : stream?.color ?? "#7B68EE",
+                              : stream?.color ?? "#7B68EE",
                         }}
-                        title={`${task.title}: ${formatCompactDate(task.startDate)} - ${formatCompactDate(task.endDate)}. Drag to reschedule.`}
+                        title={`${task.title}: ${formatCompactDate(task.startDate)} - ${formatCompactDate(task.endDate)}. Click to focus, double-click for details, or drag to reschedule.`}
                       >
                         <span
-                          className="block h-full bg-white/25"
+                          className="block h-full bg-slate-950/20"
                           style={{ width: `${task.percentComplete}%` }}
                         />
                       </button>
@@ -479,6 +660,7 @@ export function RoadmapView({
               <thead className="bg-slate-50 text-[10px] uppercase tracking-wide text-[var(--ink-muted)]">
                 <tr>
                   <th className="px-4 py-3">Task</th>
+                  <th className="px-4 py-3">Relationship</th>
                   <th className="px-4 py-3">Phase</th>
                   <th className="px-4 py-3">Owner</th>
                   <th className="px-4 py-3">Dates</th>
@@ -487,12 +669,23 @@ export function RoadmapView({
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--border)]">
-                {filtered.map((task) => (
-                  <tr
-                    key={task.id}
-                    className="cursor-pointer hover:bg-slate-50"
-                    onClick={() => setSelectedTask(task)}
-                  >
+                {filtered.map((task) => {
+                  const tone = relationTone(task);
+                  return (
+                    <tr
+                      key={task.id}
+                      className={`cursor-pointer hover:bg-slate-50 ${
+                        tone === "focus"
+                          ? "bg-slate-100"
+                          : tone === "prerequisite"
+                            ? "bg-blue-50/40"
+                            : tone === "dependent"
+                              ? "bg-orange-50/40"
+                              : ""
+                      }`}
+                      onClick={() => focusOnTask(task)}
+                      onDoubleClick={() => openTaskDetails(task)}
+                    >
                     <td className="max-w-md px-4 py-3">
                       <div className="flex items-start gap-3">
                         <button
@@ -522,7 +715,34 @@ export function RoadmapView({
                             {task.recommendationReason}
                           </p>
                         </div>
+                        <button
+                          onClick={(event) => {
+                            event.stopPropagation();
+                            openTaskDetails(task);
+                          }}
+                          className="ml-auto rounded p-1 text-slate-400 hover:bg-white hover:text-[var(--ink)]"
+                          aria-label={`Open full details for ${task.title}`}
+                        >
+                          <ChevronRight size={14} />
+                        </button>
                       </div>
+                    </td>
+                    <td className="px-4 py-3">
+                      {tone === "focus" ? (
+                        <span className="rounded-full bg-slate-900 px-2.5 py-1 text-[9px] font-bold uppercase text-white">
+                          Selected
+                        </span>
+                      ) : tone === "prerequisite" ? (
+                        <span className="rounded-full bg-blue-100 px-2.5 py-1 text-[9px] font-bold uppercase text-blue-800">
+                          Needs first
+                        </span>
+                      ) : tone === "dependent" ? (
+                        <span className="rounded-full bg-orange-100 px-2.5 py-1 text-[9px] font-bold uppercase text-orange-800">
+                          Unblocks next
+                        </span>
+                      ) : (
+                        <span className="text-[10px] text-slate-400">-</span>
+                      )}
                     </td>
                     <td className="px-4 py-3 text-xs">
                       {phaseLabels[task.phase]}
@@ -549,7 +769,8 @@ export function RoadmapView({
                       </div>
                     </td>
                   </tr>
-                ))}
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -583,7 +804,7 @@ export function RoadmapView({
                   {cadenceTasks.map((task) => (
                     <button
                       key={task.id}
-                      onClick={() => setSelectedTask(task)}
+                      onClick={() => openTaskDetails(task)}
                       className="flex w-full items-center gap-3 px-4 py-3 text-left hover:bg-slate-50"
                     >
                       <span
@@ -635,9 +856,11 @@ export function RoadmapView({
           role={data.workspace.role as Role}
           currentUserId={currentUserId}
           members={data.members}
+          allTasks={data.tasks}
           saving={savingTaskIds.has(selectedTask.id)}
           onClose={() => setSelectedTask(null)}
           onSave={onSaveTask}
+          onSelectRelated={openTaskDetails}
         />
       ) : null}
     </div>

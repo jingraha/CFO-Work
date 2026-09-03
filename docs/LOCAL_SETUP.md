@@ -34,6 +34,12 @@ npm run models:test
 npm run models:test:excel
 ```
 
+Run the focused browser regression while the local app is available:
+
+```powershell
+npm run test:e2e
+```
+
 ## Local users
 
 The demo account is:
