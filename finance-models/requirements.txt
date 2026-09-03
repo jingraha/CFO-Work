@@ -1,0 +1,6 @@
+# Runtime dependency for workbook generation
+XlsxWriter>=3.2
+
+# Test/validation-only dependencies (not required to generate workbooks)
+openpyxl>=3.1
+pytest>=8.0

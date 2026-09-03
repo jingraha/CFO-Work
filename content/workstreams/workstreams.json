@@ -1,0 +1,92 @@
+[
+  {
+    "id": "leadership",
+    "name": "Finance Leadership and Operating Model",
+    "shortName": "Leadership",
+    "description": "How the CFO learns the business, sets priorities, structures the finance team, and runs the operating rhythm with the CEO, the board, and functional leaders.",
+    "outcome": "A clear finance charter, a sequenced 12-month plan, a staffed team with defined ownership, and a predictable meeting and reporting calendar the whole company can rely on.",
+    "color": "#7B68EE",
+    "icon": "compass"
+  },
+  {
+    "id": "controllership",
+    "name": "Accounting and Controllership",
+    "shortName": "Controllership",
+    "description": "The books: monthly close, chart of accounts, reconciliations, consolidation, revenue recognition, technical accounting positions, fixed assets, and audit readiness.",
+    "outcome": "Financial statements that close on a published calendar, reconcile to supporting detail, follow written policy, and survive an external audit without surprises.",
+    "color": "#49CCF9",
+    "icon": "book-open-check"
+  },
+  {
+    "id": "strategic-finance",
+    "name": "Strategic Finance and Planning",
+    "shortName": "Strategic Finance",
+    "description": "The forward view: three-statement model, annual operating plan, rolling forecast, scenarios, KPI definitions, budget versus actual analysis, board analytics, and deal evaluation.",
+    "outcome": "One trusted model and one KPI dictionary that drive planning, resourcing decisions, board reporting, and capital allocation across the company.",
+    "color": "#79D9B9",
+    "icon": "line-chart"
+  },
+  {
+    "id": "commercial-finance",
+    "name": "Commercial and Revenue Finance",
+    "shortName": "Commercial Finance",
+    "description": "Finance embedded in go-to-market: pricing and packaging, bookings and pipeline analytics, deal desk, commissions, quote-to-cash, collections strategy, capacity planning, and unit economics.",
+    "outcome": "Deals that are priced and approved with known margin, a clean path from quote to cash, and unit economics the leadership team and board actually believe.",
+    "color": "#FD71AF",
+    "icon": "handshake"
+  },
+  {
+    "id": "finance-operations",
+    "name": "Finance Operations, Systems, and Data",
+    "shortName": "Finance Ops",
+    "description": "The plumbing: ERP and subledgers, integrations to billing, payroll, expense, procurement and equity systems, master data, access, automation, and finance reporting infrastructure.",
+    "outcome": "A documented system architecture where data flows automatically between systems, reconciles by design, and produces reporting without spreadsheet rework.",
+    "color": "#FFB08E",
+    "icon": "settings-2"
+  },
+  {
+    "id": "treasury-capital",
+    "name": "Treasury, Capital, and Investor Relations",
+    "shortName": "Treasury and Capital",
+    "description": "Cash and capital: daily cash visibility, the 13-week forecast, banking redundancy, investment policy, debt and covenants, currency exposure, fundraising, and investor reporting.",
+    "outcome": "Cash is visible daily, protected across more than one institution, invested under written policy, and runway decisions are made with a forecast the board trusts.",
+    "color": "#2F81F7",
+    "icon": "landmark"
+  },
+  {
+    "id": "tax",
+    "name": "Tax",
+    "shortName": "Tax",
+    "description": "Federal, state, and local income tax, sales and use tax nexus, research credits, payroll tax coordination, international tax, transfer pricing, and provision readiness.",
+    "outcome": "Every filing obligation is known, calendared, and met on time, with credits captured and exposure quantified before it becomes a diligence finding.",
+    "color": "#E3B341",
+    "icon": "receipt"
+  },
+  {
+    "id": "risk-controls",
+    "name": "Risk, Controls, and Internal Audit",
+    "shortName": "Risk and Controls",
+    "description": "Risk register, segregation of duties, delegated authority, fraud and payment controls, access reviews, third-party risk, lightweight SOX readiness, control testing, and whistleblower process.",
+    "outcome": "The company knows its top risks, who owns them, which controls mitigate them, and can show evidence that those controls are tested and working.",
+    "color": "#DA3633",
+    "icon": "shield-check"
+  },
+  {
+    "id": "people-equity",
+    "name": "People, Payroll, and Equity",
+    "shortName": "People and Equity",
+    "description": "Workforce planning, compensation structure, payroll governance and accuracy, cap table integrity, equity grants, option pool sizing, 409A valuations, dilution, and international employment cost.",
+    "outcome": "Headcount plans tie to the model, payroll runs under control, and the cap table reconciles to board approvals so equity decisions are made with real dilution math.",
+    "color": "#56D364",
+    "icon": "users"
+  },
+  {
+    "id": "governance-legal",
+    "name": "Governance, Legal, Entity, and Insurance",
+    "shortName": "Governance",
+    "description": "Board approvals and calendar, corporate records and entity standing, franchise tax filings, the contracts interface with legal, directors and officers coverage, cyber and other insurance, and international entity readiness.",
+    "outcome": "Corporate records are complete and current, board approvals are documented before action, and insurance coverage matches the company's actual risk profile.",
+    "color": "#A371F7",
+    "icon": "gavel"
+  }
+]

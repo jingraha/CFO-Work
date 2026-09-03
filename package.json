@@ -1,0 +1,35 @@
+{
+  "name": "startup-cfo-os",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A portable operating system for Series B/C startup CFOs.",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "content"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @cfo/web",
+    "build": "npm run build --workspace @cfo/web",
+    "lint": "npm run lint --workspace @cfo/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "content:validate": "node content/scripts/validate-content.mjs",
+    "db:seed": "npm run db:seed --workspace @cfo/web",
+    "models:generate": "python finance-models/generate.py",
+    "models:test": "python -m pytest finance-models/tests -q",
+    "models:test:excel": "powershell -NoProfile -ExecutionPolicy Bypass -File finance-models/tests/validate_with_excel.ps1",
+    "check": "npm run content:validate && npm run lint && npm run typecheck && npm run test && npm run models:generate && npm run models:test && npm run build"
+  },
+  "engines": {
+    "node": ">=20",
+    "npm": ">=10"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "typescript": "^5.9.2",
+    "vitest": "^4.1.11"
+  }
+}
