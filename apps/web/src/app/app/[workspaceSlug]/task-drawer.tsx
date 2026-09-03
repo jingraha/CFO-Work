@@ -9,11 +9,16 @@ import type {
 import { can } from "@cfo/domain";
 import { Button } from "@cfo/ui";
 import {
+  ArrowRight,
   CalendarDays,
   Check,
+  CheckCircle2,
+  ChevronRight,
+  CircleAlert,
   ExternalLink,
   Link2,
   Minus,
+  Network,
   Plus,
   Save,
   Trash2,
@@ -24,7 +29,14 @@ import type {
   WorkspaceTaskView,
   WorkspaceViewData,
 } from "@/lib/workspace-data";
-import { formatDate, shiftDate, statusLabels } from "./view-utils";
+import { StatusPill } from "./status-pill";
+import {
+  formatCompactDate,
+  formatDate,
+  getDirectTaskRelations,
+  shiftDate,
+  statusLabels,
+} from "./view-utils";
 
 type TaskPatch = Partial<
   Pick<
@@ -45,9 +57,11 @@ type Props = {
   role: Role;
   currentUserId: string;
   members: WorkspaceViewData["members"];
+  allTasks: WorkspaceTaskView[];
   saving: boolean;
   onClose: () => void;
   onSave: (taskId: string, patch: TaskPatch) => Promise<void>;
+  onSelectRelated: (task: WorkspaceTaskView) => void;
 };
 
 export function TaskDrawer({
@@ -55,9 +69,11 @@ export function TaskDrawer({
   role,
   currentUserId,
   members,
+  allTasks,
   saving,
   onClose,
   onSave,
+  onSelectRelated,
 }: Props) {
   const [status, setStatus] = useState(task.status);
   const [priority, setPriority] = useState(task.priority);
@@ -77,6 +93,7 @@ export function TaskDrawer({
     can(role, "tasks:edit") ||
     (can(role, "tasks:edit-assigned") && task.ownerId === currentUserId);
   const canReassign = can(role, "tasks:edit");
+  const relations = getDirectTaskRelations(allTasks, task.id);
 
   function shift(days: number) {
     setStartDate((value) => shiftDate(value, days));
@@ -174,13 +191,19 @@ export function TaskDrawer({
             {task.description}
           </p>
 
+          <DependencyDetails
+            task={task}
+            relations={relations}
+            onSelectRelated={onSelectRelated}
+          />
+
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <label>
               <span className="label">Status</span>
               <select
                 className="field"
                 value={status}
-                disabled={!canReassign}
+                disabled={!editable}
                 onChange={(event) => {
                   const next = event.target.value as TaskStatus;
                   setStatus(next);
@@ -236,7 +259,7 @@ export function TaskDrawer({
               <select
                 className="field"
                 value={ownerId}
-                disabled={!editable}
+                disabled={!canReassign}
                 onChange={(event) => setOwnerId(event.target.value)}
               >
                 <option value="">Unassigned</option>
@@ -455,6 +478,151 @@ export function TaskDrawer({
           </div>
         </footer>
       </aside>
+    </div>
+  );
+}
+
+function DependencyDetails({
+  task,
+  relations,
+  onSelectRelated,
+}: {
+  task: WorkspaceTaskView;
+  relations: ReturnType<typeof getDirectTaskRelations>;
+  onSelectRelated: (task: WorkspaceTaskView) => void;
+}) {
+  const blocked = relations.openPrerequisites.length > 0;
+  return (
+    <section className="mt-6 overflow-hidden rounded-xl border border-[var(--border)]">
+      <div className="flex items-start gap-3 border-b border-[var(--border)] bg-slate-50 p-4">
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white text-[var(--purple)] shadow-sm">
+          <Network size={15} />
+        </span>
+        <div className="min-w-0 flex-1">
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="text-sm font-semibold">Dependencies and impact</h3>
+            <span className="rounded-full bg-white px-2 py-1 text-[9px] font-bold uppercase text-[var(--ink-muted)]">
+              Direct relationships
+            </span>
+          </div>
+          <p className="mt-1 text-[11px] leading-5 text-[var(--ink-muted)]">
+            Prerequisites point into this task. Downstream tasks point out from
+            it. Select any item below to follow the chain.
+          </p>
+        </div>
+      </div>
+
+      <div
+        className={`flex items-start gap-2 px-4 py-3 text-xs ${
+          blocked
+            ? "bg-red-50 text-red-800"
+            : "bg-emerald-50 text-emerald-800"
+        }`}
+      >
+        {blocked ? (
+          <CircleAlert size={14} className="mt-0.5 shrink-0" />
+        ) : (
+          <CheckCircle2 size={14} className="mt-0.5 shrink-0" />
+        )}
+        <span>
+          {blocked
+            ? `${relations.openPrerequisites.length} incomplete prerequisite${
+                relations.openPrerequisites.length === 1 ? "" : "s"
+              } block this task.`
+            : task.status === "blocked"
+              ? "No prerequisite is blocking this task. It is marked blocked manually; check the working notes."
+              : "This task has no open prerequisites."}
+        </span>
+      </div>
+
+      <div className="grid sm:grid-cols-2">
+        <RelatedTaskList
+          title="Needs to happen first"
+          tone="prerequisite"
+          tasks={relations.prerequisites}
+          emptyText="No direct prerequisites"
+          onSelect={onSelectRelated}
+        />
+        <RelatedTaskList
+          title="This task unblocks next"
+          tone="dependent"
+          tasks={relations.dependents}
+          emptyText="No direct downstream tasks"
+          onSelect={onSelectRelated}
+        />
+      </div>
+    </section>
+  );
+}
+
+function RelatedTaskList({
+  title,
+  tone,
+  tasks,
+  emptyText,
+  onSelect,
+}: {
+  title: string;
+  tone: "prerequisite" | "dependent";
+  tasks: WorkspaceTaskView[];
+  emptyText: string;
+  onSelect: (task: WorkspaceTaskView) => void;
+}) {
+  const prerequisite = tone === "prerequisite";
+  return (
+    <div
+      className={`p-4 ${
+        prerequisite
+          ? "border-b border-[var(--border)] sm:border-b-0 sm:border-r"
+          : ""
+      }`}
+    >
+      <p
+        className={`text-[10px] font-bold uppercase tracking-wide ${
+          prerequisite ? "text-blue-700" : "text-orange-700"
+        }`}
+      >
+        {title}
+      </p>
+      <div className="mt-2 space-y-2">
+        {tasks.map((relatedTask) => (
+          <button
+            key={relatedTask.id}
+            onClick={() => onSelect(relatedTask)}
+            className={`flex w-full items-center gap-2 rounded-lg border p-2.5 text-left transition hover:bg-slate-50 ${
+              prerequisite ? "border-blue-100" : "border-orange-100"
+            }`}
+          >
+            <span
+              className={`h-6 w-1 shrink-0 rounded-full ${
+                prerequisite ? "bg-blue-500" : "bg-orange-500"
+              }`}
+            />
+            <span className="min-w-0 flex-1">
+              <strong className="block truncate text-[11px]">
+                {relatedTask.title}
+              </strong>
+              <span className="mt-0.5 block text-[9px] text-[var(--ink-muted)]">
+                {formatCompactDate(relatedTask.endDate)}
+              </span>
+            </span>
+            <StatusPill status={relatedTask.status} />
+            <ChevronRight size={12} className="shrink-0 text-slate-300" />
+          </button>
+        ))}
+        {tasks.length === 0 ? (
+          <p className="rounded-lg border border-dashed border-slate-200 p-3 text-center text-[10px] text-[var(--ink-muted)]">
+            {emptyText}
+          </p>
+        ) : null}
+      </div>
+      {tasks.length > 0 ? (
+        <p className="mt-2 flex items-center gap-1 text-[9px] text-[var(--ink-muted)]">
+          {prerequisite ? "Prerequisite" : "Selected task"}
+          <ArrowRight size={10} />
+          {prerequisite ? "selected task" : "downstream"}
+        </p>
+      ) : null}
     </div>
   );
 }

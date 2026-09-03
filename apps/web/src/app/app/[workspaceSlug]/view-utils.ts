@@ -62,3 +62,61 @@ export function shiftDate(value: string, days: number): string {
   date.setUTCDate(date.getUTCDate() + days);
   return date.toISOString().slice(0, 10);
 }
+
+export type DirectTaskRelations = {
+  prerequisites: WorkspaceTaskView[];
+  openPrerequisites: WorkspaceTaskView[];
+  dependents: WorkspaceTaskView[];
+  relatedTaskIds: Set<string>;
+};
+
+function relationSort(
+  left: WorkspaceTaskView,
+  right: WorkspaceTaskView,
+): number {
+  const dateOrder = left.startDate.localeCompare(right.startDate);
+  return dateOrder !== 0
+    ? dateOrder
+    : priorityOrder[left.priority] - priorityOrder[right.priority];
+}
+
+export function getDirectTaskRelations(
+  tasks: WorkspaceTaskView[],
+  taskId: string | null,
+): DirectTaskRelations {
+  const focusTask = tasks.find((task) => task.id === taskId);
+  if (!focusTask) {
+    return {
+      prerequisites: [],
+      openPrerequisites: [],
+      dependents: [],
+      relatedTaskIds: new Set(),
+    };
+  }
+
+  const byMasterTaskId = new Map(
+    tasks.map((task) => [task.masterTaskId, task]),
+  );
+  const prerequisites = focusTask.dependencies
+    .map((dependencyId) => byMasterTaskId.get(dependencyId))
+    .filter((task): task is WorkspaceTaskView => Boolean(task))
+    .sort(relationSort);
+  const dependents = tasks
+    .filter((task) => task.dependencies.includes(focusTask.masterTaskId))
+    .sort(relationSort);
+  const openPrerequisites = prerequisites.filter(
+    (task) =>
+      task.status !== "complete" && task.status !== "not-applicable",
+  );
+
+  return {
+    prerequisites,
+    openPrerequisites,
+    dependents,
+    relatedTaskIds: new Set([
+      focusTask.id,
+      ...prerequisites.map((task) => task.id),
+      ...dependents.map((task) => task.id),
+    ]),
+  };
+}

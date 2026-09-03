@@ -22,6 +22,19 @@ Start with:
 Use dependency warnings rather than forcing downstream work to appear
 complete.
 
+In **Roadmap & Gantt**:
+
+- A single click isolates the selected task, its direct prerequisites, and the
+  tasks that directly depend on it.
+- A double-click, or the row chevron, opens full task details with separate
+  **Needs to happen first** and **This task unblocks next** lists.
+- Arrows point from prerequisite to downstream task. Blue identifies work that
+  must happen first; orange identifies work the selected task unblocks.
+- The bar fill identifies the workstream. Green means complete, red/dashed
+  means blocked, and the dark segment inside a bar shows percent complete.
+- Use **Show full roadmap** to leave dependency focus. All dependency arrows are
+  hidden in the full roadmap by default to avoid a spaghetti chart.
+
 ## 3. Run the cadence
 
 - Daily: cash and urgent exceptions.
