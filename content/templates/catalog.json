@@ -1,0 +1,3607 @@
+[
+  {
+    "id": "finance-function-assessment",
+    "workstream": "leadership",
+    "name": "Finance Function Assessment",
+    "description": "Score the maturity of each finance capability, record evidence, and rank the gaps that create the most risk over the next two quarters.",
+    "format": "interactive",
+    "fields": [
+      {
+        "id": "area",
+        "label": "Capability area",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Close and reporting",
+          "Controls",
+          "Planning and analysis",
+          "Systems and data",
+          "Treasury",
+          "Tax",
+          "Risk and compliance",
+          "Team and capacity"
+        ],
+        "help": "Assess one area per row."
+      },
+      {
+        "id": "currentState",
+        "label": "Current state",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "What actually happens today, not what the policy says."
+      },
+      {
+        "id": "maturityScore",
+        "label": "Maturity score (1-5)",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": "1 is ad hoc and undocumented, 5 is automated and tested."
+      },
+      {
+        "id": "evidence",
+        "label": "Evidence reviewed",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Documents, systems, or interviews that support the score."
+      },
+      {
+        "id": "gap",
+        "label": "Gap description",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "State the gap in terms of the risk it creates."
+      },
+      {
+        "id": "riskRating",
+        "label": "Risk rating",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Critical",
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "help": ""
+      },
+      {
+        "id": "owner",
+        "label": "Proposed owner",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "targetDate",
+        "label": "Target remediation date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "stakeholder-map",
+    "workstream": "leadership",
+    "name": "Stakeholder Map and Listening Tour Tracker",
+    "description": "Plan and record listening tour conversations so answers can be compared across stakeholders instead of remembered individually.",
+    "format": "interactive",
+    "fields": [
+      {
+        "id": "name",
+        "label": "Stakeholder name",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "role",
+        "label": "Role",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "group",
+        "label": "Group",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Board",
+          "Executive team",
+          "Finance team",
+          "Function lead",
+          "External advisor",
+          "Investor"
+        ],
+        "help": ""
+      },
+      {
+        "id": "influence",
+        "label": "Influence on finance outcomes",
+        "type": "select",
+        "required": true,
+        "options": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "help": ""
+      },
+      {
+        "id": "dependsOnFinance",
+        "label": "Depends on finance for",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "What they need that finance produces."
+      },
+      {
+        "id": "financeDependsOnThem",
+        "label": "Finance depends on them for",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Inputs finance needs from them and when."
+      },
+      {
+        "id": "statedProblems",
+        "label": "Problems they raised",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "meetingDate",
+        "label": "Meeting date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "followUp",
+        "label": "Follow-up commitment",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "finance-org-and-hiring-scorecard",
+    "workstream": "leadership",
+    "name": "Finance Hiring Scorecard",
+    "description": "Define the trigger, sequence, budget, and evaluation criteria for each finance role before opening a requisition.",
+    "format": "interactive",
+    "fields": [
+      {
+        "id": "roleTitle",
+        "label": "Role title",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "sequence",
+        "label": "Hiring sequence number",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": "Controller coverage comes first when it is not already full-time."
+      },
+      {
+        "id": "trigger",
+        "label": "Trigger justifying the hire",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "State the measurable condition, not a general desire for capacity."
+      },
+      {
+        "id": "employmentModel",
+        "label": "Employment model",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Full-time",
+          "Fractional",
+          "Outsourced",
+          "Contract"
+        ],
+        "help": ""
+      },
+      {
+        "id": "fullyLoadedCost",
+        "label": "Fully loaded annual cost",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": "Include taxes, benefits, equity expense, and equipment."
+      },
+      {
+        "id": "outcomes90Day",
+        "label": "First 90-day outcomes",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "What must be true 90 days after the start date."
+      },
+      {
+        "id": "mustHaves",
+        "label": "Must-have experience",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "interimCoverage",
+        "label": "Interim coverage plan",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Who does this work until the role is filled."
+      },
+      {
+        "id": "targetStart",
+        "label": "Target start date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "close-calendar",
+    "workstream": "controllership",
+    "name": "Monthly Close Calendar and Checklist",
+    "description": "Assign every close task a working day, a preparer, a reviewer, and a required output so the close does not depend on memory.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "workingDay",
+        "label": "Working day",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": "Business day relative to period end. Use negative values for pre-close tasks."
+      },
+      {
+        "id": "task",
+        "label": "Task",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "subprocess",
+        "label": "Subprocess",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Cut-off",
+          "Cash",
+          "Revenue",
+          "Payables",
+          "Payroll",
+          "Accruals",
+          "Reconciliations",
+          "Consolidation",
+          "Review",
+          "Reporting"
+        ],
+        "help": ""
+      },
+      {
+        "id": "preparer",
+        "label": "Preparer",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "reviewer",
+        "label": "Reviewer",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": "Must be a different person from the preparer."
+      },
+      {
+        "id": "system",
+        "label": "System",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "dependency",
+        "label": "Depends on",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": "Task or external input that must complete first."
+      },
+      {
+        "id": "output",
+        "label": "Required output",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": "The artifact that evidences completion."
+      },
+      {
+        "id": "estimatedHours",
+        "label": "Estimated hours",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "account-reconciliation",
+    "workstream": "controllership",
+    "name": "Account Reconciliation Template",
+    "description": "Standard reconciliation format with balance, supporting detail, reconciling items, aging, and reviewer sign-off.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "account",
+        "label": "Account number and name",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "period",
+        "label": "Period end date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "glBalance",
+        "label": "General ledger balance",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "supportBalance",
+        "label": "Supporting detail balance",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "difference",
+        "label": "Difference",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": "Must be zero or fully explained by reconciling items."
+      },
+      {
+        "id": "reconcilingItems",
+        "label": "Reconciling items",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Describe each item, its amount, and its age."
+      },
+      {
+        "id": "oldestItemDate",
+        "label": "Oldest open item date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": "Used to monitor aging of unresolved differences."
+      },
+      {
+        "id": "preparer",
+        "label": "Preparer",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "reviewer",
+        "label": "Reviewer",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "reviewDate",
+        "label": "Review date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "supportLink",
+        "label": "Link to supporting evidence",
+        "type": "url",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "chart-of-accounts-design",
+    "workstream": "controllership",
+    "name": "Chart of Accounts and Dimension Design",
+    "description": "Design the account and dimension structure so management reporting comes directly from the ledger rather than from spreadsheets.",
+    "format": "csv",
+    "fields": [
+      {
+        "id": "accountNumber",
+        "label": "Account number",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "accountName",
+        "label": "Account name",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "accountType",
+        "label": "Account type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Asset",
+          "Liability",
+          "Equity",
+          "Revenue",
+          "Cost of revenue",
+          "Operating expense",
+          "Other"
+        ],
+        "help": ""
+      },
+      {
+        "id": "reportingLine",
+        "label": "Financial statement line",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": "Where this account rolls up in external reporting."
+      },
+      {
+        "id": "dimensions",
+        "label": "Required dimensions",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": "For example department, cost center, product, entity."
+      },
+      {
+        "id": "legacyAccount",
+        "label": "Legacy account mapping",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": "Old account this replaces, for conversion."
+      },
+      {
+        "id": "usageRule",
+        "label": "Usage rule",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "When to use this account and when not to."
+      },
+      {
+        "id": "active",
+        "label": "Active",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "accounting-policy-register",
+    "workstream": "controllership",
+    "name": "Accounting Policy Register",
+    "description": "Track each written accounting policy, its owner, its approval, and the date it must next be reviewed.",
+    "format": "interactive",
+    "fields": [
+      {
+        "id": "policyName",
+        "label": "Policy name",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "topic",
+        "label": "Topic",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Revenue",
+          "Capitalization",
+          "Leases",
+          "Stock compensation",
+          "Reserves",
+          "Foreign currency",
+          "Materiality",
+          "Expense recognition",
+          "Other"
+        ],
+        "help": ""
+      },
+      {
+        "id": "summary",
+        "label": "Policy summary",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "State the position in plain language."
+      },
+      {
+        "id": "threshold",
+        "label": "Threshold or materiality applied",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "approvedBy",
+        "label": "Approved by",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "approvalDate",
+        "label": "Approval date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "nextReview",
+        "label": "Next review date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "documentLink",
+        "label": "Policy document link",
+        "type": "url",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "revenue-recognition-memo",
+    "workstream": "controllership",
+    "name": "Revenue Recognition Memo",
+    "description": "Document the five-step analysis for a revenue stream or contract type in a format an auditor can review directly.",
+    "format": "markdown",
+    "fields": [
+      {
+        "id": "revenueStream",
+        "label": "Revenue stream or contract type",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "contractSummary",
+        "label": "Contract summary",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Parties, term, pricing structure, and deliverables."
+      },
+      {
+        "id": "performanceObligations",
+        "label": "Performance obligations identified",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "List each obligation and why it is distinct."
+      },
+      {
+        "id": "transactionPrice",
+        "label": "Transaction price",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Include variable consideration and any constraint applied."
+      },
+      {
+        "id": "allocation",
+        "label": "Allocation to obligations",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Standalone selling price basis and method."
+      },
+      {
+        "id": "timing",
+        "label": "Recognition timing",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Point in time or over time, with the measure of progress."
+      },
+      {
+        "id": "principalAgent",
+        "label": "Principal versus agent conclusion",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Required where a third party is involved in delivery."
+      },
+      {
+        "id": "contractCosts",
+        "label": "Contract cost treatment",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Commission capitalization and amortization period."
+      },
+      {
+        "id": "conclusion",
+        "label": "Conclusion",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "preparedBy",
+        "label": "Prepared by",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "reviewDate",
+        "label": "Review date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "audit-pbc-tracker",
+    "workstream": "controllership",
+    "name": "Audit Requested Items Tracker",
+    "description": "Track every auditor request with an owner, a due date, and a link to the delivered support so nothing stalls silently.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "requestId",
+        "label": "Request reference",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "area",
+        "label": "Audit area",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Revenue",
+          "Cash",
+          "Payables",
+          "Payroll",
+          "Equity",
+          "Debt",
+          "Fixed assets",
+          "Leases",
+          "Tax",
+          "Controls",
+          "Other"
+        ],
+        "help": ""
+      },
+      {
+        "id": "description",
+        "label": "Request description",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "owner",
+        "label": "Owner",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "dueDate",
+        "label": "Due date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "status",
+        "label": "Status",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Not started",
+          "In progress",
+          "Delivered",
+          "Accepted",
+          "Follow-up required"
+        ],
+        "help": ""
+      },
+      {
+        "id": "deliveredDate",
+        "label": "Delivered date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "supportLink",
+        "label": "Support link",
+        "type": "url",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "notes",
+        "label": "Notes",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "annual-operating-plan",
+    "workstream": "strategic-finance",
+    "name": "Annual Operating Plan Builder",
+    "description": "Capture plan assumptions by department with the driver, the source, and the owner so every number in the plan is traceable.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "department",
+        "label": "Department",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "lineItem",
+        "label": "Line item",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "driver",
+        "label": "Driver",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": "For example headcount, revenue percentage, or per-unit cost."
+      },
+      {
+        "id": "assumption",
+        "label": "Assumption value",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "assumptionBasis",
+        "label": "Basis for the assumption",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Historical actuals, vendor quote, benchmark, or judgment."
+      },
+      {
+        "id": "owner",
+        "label": "Assumption owner",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "annualAmount",
+        "label": "Annual amount",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "phasing",
+        "label": "Phasing approach",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Even",
+          "Seasonal",
+          "Headcount-driven",
+          "Event-driven"
+        ],
+        "help": ""
+      },
+      {
+        "id": "scenarioSensitivity",
+        "label": "Downside sensitivity",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "What this line becomes in the downside case."
+      }
+    ]
+  },
+  {
+    "id": "kpi-dictionary",
+    "workstream": "strategic-finance",
+    "name": "KPI Dictionary",
+    "description": "Define every reported metric once with its formula, source, owner, and known limitations so reports stop disagreeing.",
+    "format": "interactive",
+    "fields": [
+      {
+        "id": "metricName",
+        "label": "Metric name",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "definition",
+        "label": "Plain-language definition",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Explain it in one sentence a new employee would understand."
+      },
+      {
+        "id": "formula",
+        "label": "Formula",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Be explicit about inclusions and exclusions."
+      },
+      {
+        "id": "sourceSystem",
+        "label": "Source system",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "owner",
+        "label": "Metric owner",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "frequency",
+        "label": "Reporting frequency",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Daily",
+          "Weekly",
+          "Monthly",
+          "Quarterly",
+          "Annual"
+        ],
+        "help": ""
+      },
+      {
+        "id": "audience",
+        "label": "Primary audience",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Board",
+          "Executive team",
+          "Department",
+          "Investors",
+          "All company"
+        ],
+        "help": ""
+      },
+      {
+        "id": "limitations",
+        "label": "Known limitations",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Where this metric is misleading or incomplete."
+      },
+      {
+        "id": "effectiveDate",
+        "label": "Definition effective date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "board-package-outline",
+    "workstream": "strategic-finance",
+    "name": "Board Package Outline",
+    "description": "Structure the board package so each section has an owner, a purpose, and a clear ask rather than a stream of charts.",
+    "format": "markdown",
+    "fields": [
+      {
+        "id": "section",
+        "label": "Section",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Executive summary",
+          "Financial results",
+          "Cash and runway",
+          "Key metrics",
+          "Plan performance",
+          "Function updates",
+          "Decisions requested",
+          "Appendix"
+        ],
+        "help": ""
+      },
+      {
+        "id": "purpose",
+        "label": "Purpose",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Inform",
+          "Discuss",
+          "Decide"
+        ],
+        "help": "Be honest about which one this is."
+      },
+      {
+        "id": "owner",
+        "label": "Owner",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "keyMessage",
+        "label": "Key message",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "The single sentence a director should remember."
+      },
+      {
+        "id": "supportingExhibits",
+        "label": "Supporting exhibits",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "decisionRequested",
+        "label": "Decision requested",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Required when the purpose is decide."
+      },
+      {
+        "id": "timeAllocated",
+        "label": "Minutes allocated",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "budget-variance-analysis",
+    "workstream": "strategic-finance",
+    "name": "Budget Variance Analysis",
+    "description": "Capture variance by department with the owner's explanation, root cause, and the corrective action agreed.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "department",
+        "label": "Department",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "lineItem",
+        "label": "Line item",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "actual",
+        "label": "Actual",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "budget",
+        "label": "Budget",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "variance",
+        "label": "Variance",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "variancePercent",
+        "label": "Variance percent",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "cause",
+        "label": "Root cause",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Timing",
+          "Volume",
+          "Price",
+          "Unplanned spend",
+          "Hiring pace",
+          "Forecast error",
+          "Coding error"
+        ],
+        "help": ""
+      },
+      {
+        "id": "explanation",
+        "label": "Owner explanation",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Written by the budget owner, not by finance."
+      },
+      {
+        "id": "action",
+        "label": "Corrective action",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "actionOwner",
+        "label": "Action owner",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "actionDate",
+        "label": "Action due date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "decision-memo",
+    "workstream": "strategic-finance",
+    "name": "Finance Decision Memo",
+    "description": "A one-page format for any material decision: options considered, recommendation, risks, and the approval obtained.",
+    "format": "markdown",
+    "fields": [
+      {
+        "id": "title",
+        "label": "Decision title",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "decisionDate",
+        "label": "Decision date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "background",
+        "label": "Background",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "What prompted this decision and what constraints apply."
+      },
+      {
+        "id": "options",
+        "label": "Options considered",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Include the option of doing nothing."
+      },
+      {
+        "id": "financialImpact",
+        "label": "Financial impact",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Cost, cash timing, and effect on the plan and runway."
+      },
+      {
+        "id": "recommendation",
+        "label": "Recommendation",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "risks",
+        "label": "Risks and mitigations",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "approver",
+        "label": "Approver",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": "Must match the delegation of authority matrix."
+      },
+      {
+        "id": "approvalEvidence",
+        "label": "Approval evidence link",
+        "type": "url",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "pricing-and-deal-desk-review",
+    "workstream": "commercial-finance",
+    "name": "Deal Desk Review Form",
+    "description": "Standard submission for non-standard deals covering pricing, margin, cash timing, and revenue recognition impact.",
+    "format": "interactive",
+    "fields": [
+      {
+        "id": "opportunity",
+        "label": "Opportunity name",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "customer",
+        "label": "Customer",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "annualValue",
+        "label": "Annual contract value",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "termMonths",
+        "label": "Term in months",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "listPrice",
+        "label": "List price",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "proposedPrice",
+        "label": "Proposed price",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "discountPercent",
+        "label": "Discount percent",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "paymentTerms",
+        "label": "Payment terms",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Annual upfront",
+          "Quarterly",
+          "Monthly",
+          "Net 30",
+          "Net 60",
+          "Net 90",
+          "Other"
+        ],
+        "help": ""
+      },
+      {
+        "id": "nonStandardTerms",
+        "label": "Non-standard terms requested",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Service commitments, custom deliverables, termination rights, or caps."
+      },
+      {
+        "id": "grossMargin",
+        "label": "Estimated gross margin",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "revenueImpact",
+        "label": "Revenue recognition considerations",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "approver",
+        "label": "Required approver",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "decision",
+        "label": "Decision",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Approved",
+          "Approved with conditions",
+          "Declined",
+          "Pending"
+        ],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "collections-and-dso-tracker",
+    "workstream": "commercial-finance",
+    "name": "Collections and Receivables Tracker",
+    "description": "Work aged receivables with a defined outreach sequence, promised payment dates, and escalation status.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "customer",
+        "label": "Customer",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "invoiceNumber",
+        "label": "Invoice number",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "invoiceDate",
+        "label": "Invoice date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "dueDate",
+        "label": "Due date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "amount",
+        "label": "Amount outstanding",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "ageDays",
+        "label": "Days past due",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "status",
+        "label": "Status",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Current",
+          "Contacted",
+          "Promised",
+          "Disputed",
+          "Escalated",
+          "Credit hold",
+          "Written off"
+        ],
+        "help": ""
+      },
+      {
+        "id": "promisedDate",
+        "label": "Promised payment date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "disputeReason",
+        "label": "Dispute reason",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "accountOwner",
+        "label": "Account owner",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": "Sales or success owner engaged for escalation."
+      },
+      {
+        "id": "nextAction",
+        "label": "Next action and date",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "unit-economics-worksheet",
+    "workstream": "commercial-finance",
+    "name": "Unit Economics Worksheet",
+    "description": "Compute acquisition cost, payback, lifetime value, and contribution margin by segment with every assumption stated.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "segment",
+        "label": "Segment",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": "For example enterprise, mid-market, self-serve, or channel."
+      },
+      {
+        "id": "newCustomers",
+        "label": "New customers in period",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "salesMarketingSpend",
+        "label": "Sales and marketing spend",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": "State whether fully loaded including salaries."
+      },
+      {
+        "id": "acquisitionCost",
+        "label": "Customer acquisition cost",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "averageContractValue",
+        "label": "Average annual contract value",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "grossMarginPercent",
+        "label": "Gross margin percent",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "paybackMonths",
+        "label": "Payback period in months",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "grossRetention",
+        "label": "Gross revenue retention percent",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "netRetention",
+        "label": "Net revenue retention percent",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "lifetimeValue",
+        "label": "Lifetime value",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "assumptions",
+        "label": "Assumptions and exclusions",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "State what is excluded from the cost base and why."
+      }
+    ]
+  },
+  {
+    "id": "systems-architecture-map",
+    "workstream": "finance-operations",
+    "name": "Finance Systems Architecture Map",
+    "description": "Record every finance system, its owner, its cost, its renewal date, and how data moves in and out of it.",
+    "format": "interactive",
+    "fields": [
+      {
+        "id": "systemName",
+        "label": "System name",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "category",
+        "label": "Category",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Accounting",
+          "Billing",
+          "Payments",
+          "Payroll and HR",
+          "Expense",
+          "Procurement",
+          "Equity",
+          "Banking",
+          "Tax",
+          "Planning",
+          "Reporting",
+          "Other"
+        ],
+        "help": ""
+      },
+      {
+        "id": "systemOfRecord",
+        "label": "System of record for",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": "Which data domain this system authoritatively owns."
+      },
+      {
+        "id": "owner",
+        "label": "Internal owner",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "annualCost",
+        "label": "Annual cost",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "renewalDate",
+        "label": "Renewal date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "noticeDays",
+        "label": "Notice period in days",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "upstreamSources",
+        "label": "Upstream data sources",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "downstreamTargets",
+        "label": "Downstream targets",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "integrationType",
+        "label": "Integration type",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Native",
+          "Middleware",
+          "File transfer",
+          "Manual"
+        ],
+        "help": ""
+      },
+      {
+        "id": "manualEffort",
+        "label": "Manual effort per month in hours",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "user-access-review",
+    "workstream": "finance-operations",
+    "name": "System Access Review",
+    "description": "Quarterly evidence that each user's access to each finance system is still appropriate.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "system",
+        "label": "System",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "user",
+        "label": "User",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "role",
+        "label": "Job role",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "permissionLevel",
+        "label": "Permission level",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "canInitiate",
+        "label": "Can initiate transactions",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "canApprove",
+        "label": "Can approve transactions",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": "Flag any user who can both initiate and approve."
+      },
+      {
+        "id": "stillRequired",
+        "label": "Access still required",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Yes",
+          "Reduce",
+          "Remove"
+        ],
+        "help": ""
+      },
+      {
+        "id": "reviewer",
+        "label": "Reviewer",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "reviewDate",
+        "label": "Review date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "actionTaken",
+        "label": "Action taken and date",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "expense-and-procurement-policy",
+    "workstream": "finance-operations",
+    "name": "Expense and Procurement Policy Builder",
+    "description": "Set spend categories, limits, approval routing, documentation requirements, and exception handling in one place.",
+    "format": "markdown",
+    "fields": [
+      {
+        "id": "category",
+        "label": "Spend category",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "limitPerTransaction",
+        "label": "Limit per transaction",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "limitPerMonth",
+        "label": "Limit per month",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "approver",
+        "label": "Approver",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "preApprovalRequired",
+        "label": "Pre-approval required",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "documentation",
+        "label": "Required documentation",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Receipts, quotes, business justification, or security review."
+      },
+      {
+        "id": "prohibited",
+        "label": "Prohibited items",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "exceptionProcess",
+        "label": "Exception process",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "vendor-rfp-scorecard",
+    "workstream": "finance-operations",
+    "name": "Vendor Selection and Request for Proposal Scorecard",
+    "description": "Compare vendors on weighted requirements, implementation effort, total cost, security, and exit rights.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "requirement",
+        "label": "Requirement",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "category",
+        "label": "Category",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Functional",
+          "Integration",
+          "Reporting",
+          "Security",
+          "Support",
+          "Implementation",
+          "Commercial",
+          "Exit and data portability"
+        ],
+        "help": ""
+      },
+      {
+        "id": "weight",
+        "label": "Weight",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": "Total weights should sum to a consistent scale across requirements."
+      },
+      {
+        "id": "vendorA",
+        "label": "Vendor A score",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "vendorB",
+        "label": "Vendor B score",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "vendorC",
+        "label": "Vendor C score",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "evidence",
+        "label": "Evidence of score",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Demonstration, reference call, or documentation reviewed."
+      },
+      {
+        "id": "dealBreaker",
+        "label": "Deal breaker if unmet",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "thirteen-week-cash-forecast",
+    "workstream": "treasury-capital",
+    "name": "13-Week Cash Forecast",
+    "description": "Direct-method weekly cash forecast with receipts, disbursements, minimum balance thresholds, and forecast accuracy tracking.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "weekEnding",
+        "label": "Week ending",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "openingBalance",
+        "label": "Opening balance",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "customerReceipts",
+        "label": "Customer receipts",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "otherReceipts",
+        "label": "Other receipts",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "payroll",
+        "label": "Payroll and benefits",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "accountsPayable",
+        "label": "Accounts payable run",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "taxes",
+        "label": "Tax payments",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "debtService",
+        "label": "Debt service",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "otherDisbursements",
+        "label": "Other disbursements",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "closingBalance",
+        "label": "Closing balance",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "minimumThreshold",
+        "label": "Minimum balance threshold",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": "Flag any week that falls below this level."
+      },
+      {
+        "id": "actualClosing",
+        "label": "Actual closing balance",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": "Populate after the week closes to measure accuracy."
+      },
+      {
+        "id": "varianceNotes",
+        "label": "Variance explanation",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "treasury-investment-policy",
+    "workstream": "treasury-capital",
+    "name": "Treasury and Investment Policy",
+    "description": "Define objectives, permitted instruments, maturity and concentration limits, authority, and reporting requirements for corporate cash.",
+    "format": "markdown",
+    "fields": [
+      {
+        "id": "objectivePriority",
+        "label": "Objective priority order",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "State capital preservation, liquidity, and yield in priority order."
+      },
+      {
+        "id": "permittedInstruments",
+        "label": "Permitted instruments",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "prohibitedInstruments",
+        "label": "Prohibited instruments",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "maximumMaturity",
+        "label": "Maximum maturity in months",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "issuerConcentrationLimit",
+        "label": "Issuer concentration limit percent",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "institutionConcentrationLimit",
+        "label": "Institution concentration limit percent",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "minimumOperatingBalance",
+        "label": "Minimum operating balance",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": "Should cover a defined number of payroll cycles."
+      },
+      {
+        "id": "authorizedPersons",
+        "label": "Authorized persons and limits",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "reportingRequirement",
+        "label": "Reporting requirement",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "boardApprovalDate",
+        "label": "Board approval date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "bank-rfp-and-relationship-review",
+    "workstream": "treasury-capital",
+    "name": "Bank Selection and Relationship Review",
+    "description": "Compare banking partners on service, fraud controls, integration, credit appetite, and resilience rather than on rate alone.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "bankName",
+        "label": "Bank name",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "relationshipType",
+        "label": "Relationship type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Primary operating",
+          "Secondary operating",
+          "Investment",
+          "Credit",
+          "International"
+        ],
+        "help": ""
+      },
+      {
+        "id": "fraudControls",
+        "label": "Fraud controls available",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Positive pay, account validation, dual approval, and callback verification."
+      },
+      {
+        "id": "integrationCapability",
+        "label": "Integration capability",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Direct feeds to the accounting system and payment file formats."
+      },
+      {
+        "id": "depositRate",
+        "label": "Deposit or sweep yield offered",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": "Record as offered and note that terms change frequently."
+      },
+      {
+        "id": "feeStructure",
+        "label": "Fee structure",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "creditAppetite",
+        "label": "Credit appetite",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "serviceModel",
+        "label": "Service model and named contacts",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "onboardingTime",
+        "label": "Onboarding time in weeks",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "covenant-tracker",
+    "workstream": "treasury-capital",
+    "name": "Debt Covenant Tracker",
+    "description": "Track every covenant, its test date, the calculation, the headroom, and the reporting deliverable that accompanies it.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "facility",
+        "label": "Facility",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "covenantName",
+        "label": "Covenant",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "covenantType",
+        "label": "Type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Financial",
+          "Reporting",
+          "Negative",
+          "Affirmative"
+        ],
+        "help": ""
+      },
+      {
+        "id": "requirement",
+        "label": "Requirement",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "State the exact threshold and the defined terms used."
+      },
+      {
+        "id": "testFrequency",
+        "label": "Test frequency",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Monthly",
+          "Quarterly",
+          "Annual",
+          "Event-driven"
+        ],
+        "help": ""
+      },
+      {
+        "id": "nextTestDate",
+        "label": "Next test date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "currentValue",
+        "label": "Current calculated value",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "headroom",
+        "label": "Headroom",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "forecastBreachDate",
+        "label": "Forecast breach date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": "Leave empty if the forecast shows no breach."
+      },
+      {
+        "id": "deliverable",
+        "label": "Reporting deliverable and due date",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "tax-compliance-calendar",
+    "workstream": "tax",
+    "name": "Tax Compliance Calendar",
+    "description": "Every filing and payment obligation with jurisdiction, frequency, owner, reviewer, and filing evidence.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "jurisdiction",
+        "label": "Jurisdiction",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "taxType",
+        "label": "Tax type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Federal income",
+          "State income",
+          "Franchise",
+          "Sales and use",
+          "Payroll",
+          "Property",
+          "Information return",
+          "International",
+          "Other"
+        ],
+        "help": ""
+      },
+      {
+        "id": "formOrReturn",
+        "label": "Form or return",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "frequency",
+        "label": "Frequency",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Monthly",
+          "Quarterly",
+          "Annual",
+          "One-time"
+        ],
+        "help": ""
+      },
+      {
+        "id": "dueDate",
+        "label": "Due date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "preparer",
+        "label": "Preparer",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "reviewer",
+        "label": "Reviewer",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "filingMethod",
+        "label": "Filing method",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "lastFiledDate",
+        "label": "Last filed date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "confirmationLink",
+        "label": "Filing confirmation link",
+        "type": "url",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "sales-tax-nexus-analysis",
+    "workstream": "tax",
+    "name": "Sales Tax Nexus Analysis",
+    "description": "Assess economic and physical nexus by state, quantify exposure, and prioritize registration and remediation.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "state",
+        "label": "State",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "revenueInState",
+        "label": "Revenue in state",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "transactionCount",
+        "label": "Transaction count",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "physicalPresence",
+        "label": "Physical presence",
+        "type": "select",
+        "required": true,
+        "options": [
+          "None",
+          "Employee",
+          "Contractor",
+          "Property",
+          "Inventory",
+          "Events"
+        ],
+        "help": ""
+      },
+      {
+        "id": "economicThresholdMet",
+        "label": "Economic threshold met",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "firstTriggerDate",
+        "label": "Date threshold first met",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "productTaxability",
+        "label": "Product taxability conclusion",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Whether the product is taxable in this state and on what basis."
+      },
+      {
+        "id": "registered",
+        "label": "Currently registered",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "estimatedExposure",
+        "label": "Estimated exposure including interest and penalty",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "remediationApproach",
+        "label": "Remediation approach",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Register prospectively",
+          "Voluntary disclosure",
+          "Amnesty program",
+          "Monitor",
+          "No action required"
+        ],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "rd-credit-documentation",
+    "workstream": "tax",
+    "name": "Research Credit Documentation",
+    "description": "Capture qualifying projects, activities, personnel, and costs contemporaneously so the credit is defensible.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "projectName",
+        "label": "Project name",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "businessComponent",
+        "label": "Business component",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": "The product, process, or software being developed or improved."
+      },
+      {
+        "id": "technicalUncertainty",
+        "label": "Technical uncertainty",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "What was uncertain at the outset about capability, method, or design."
+      },
+      {
+        "id": "processOfExperimentation",
+        "label": "Process of experimentation",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Alternatives evaluated and how they were tested."
+      },
+      {
+        "id": "employee",
+        "label": "Employee or contractor",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "qualifiedPercent",
+        "label": "Qualified time percent",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "wageOrCost",
+        "label": "Wage or contract cost",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "suppliesAndCloud",
+        "label": "Supplies and cloud computing cost",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "supportLink",
+        "label": "Supporting documentation link",
+        "type": "url",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "transfer-pricing-summary",
+    "workstream": "tax",
+    "name": "Transfer Pricing Arrangement Summary",
+    "description": "Record each intercompany arrangement, the pricing method, the support, and whether the agreement is executed.",
+    "format": "markdown",
+    "fields": [
+      {
+        "id": "arrangement",
+        "label": "Arrangement",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": "For example services, cost sharing, distribution, or licensing."
+      },
+      {
+        "id": "entities",
+        "label": "Entities involved",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "transactionType",
+        "label": "Transaction type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Services",
+          "Goods",
+          "Intangible property",
+          "Financing",
+          "Cost sharing"
+        ],
+        "help": ""
+      },
+      {
+        "id": "pricingMethod",
+        "label": "Pricing method",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "markupOrRate",
+        "label": "Markup or rate applied",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "benchmarkSupport",
+        "label": "Benchmark support",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Study, comparable set, or advisor opinion relied upon."
+      },
+      {
+        "id": "agreementExecuted",
+        "label": "Intercompany agreement executed",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "agreementDate",
+        "label": "Agreement date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "documentationLink",
+        "label": "Documentation link",
+        "type": "url",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "risk-register",
+    "workstream": "risk-controls",
+    "name": "Enterprise Risk Register",
+    "description": "Record each risk with its owner, scoring, current mitigation, and the action required to reduce it.",
+    "format": "interactive",
+    "fields": [
+      {
+        "id": "riskName",
+        "label": "Risk",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "category",
+        "label": "Category",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Financial",
+          "Operational",
+          "Compliance",
+          "Legal",
+          "Security",
+          "People",
+          "Strategic",
+          "Concentration",
+          "Third party"
+        ],
+        "help": ""
+      },
+      {
+        "id": "description",
+        "label": "Description",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Describe the event and the consequence, not just the topic."
+      },
+      {
+        "id": "likelihood",
+        "label": "Likelihood (1-5)",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "impact",
+        "label": "Impact (1-5)",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "owner",
+        "label": "Risk owner",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "currentMitigation",
+        "label": "Current mitigation",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "residualRating",
+        "label": "Residual rating",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Critical",
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "help": ""
+      },
+      {
+        "id": "actionRequired",
+        "label": "Action required",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "targetDate",
+        "label": "Target date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "lastReviewed",
+        "label": "Last reviewed",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "key-controls-matrix",
+    "workstream": "risk-controls",
+    "name": "Key Controls Matrix",
+    "description": "Map each risk to the control that addresses it, the owner, the frequency, and the evidence the control produces.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "process",
+        "label": "Process",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Revenue and billing",
+          "Cash and treasury",
+          "Payables",
+          "Payroll",
+          "Financial close",
+          "Equity",
+          "Procurement",
+          "Access management",
+          "Tax"
+        ],
+        "help": ""
+      },
+      {
+        "id": "riskAddressed",
+        "label": "Risk addressed",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "controlDescription",
+        "label": "Control description",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "State who does what, when, and against what criteria."
+      },
+      {
+        "id": "controlType",
+        "label": "Control type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Preventive",
+          "Detective",
+          "Automated",
+          "Manual"
+        ],
+        "help": ""
+      },
+      {
+        "id": "frequency",
+        "label": "Frequency",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Per transaction",
+          "Daily",
+          "Weekly",
+          "Monthly",
+          "Quarterly",
+          "Annual"
+        ],
+        "help": ""
+      },
+      {
+        "id": "owner",
+        "label": "Control owner",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "evidenceProduced",
+        "label": "Evidence produced",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "A control with no evidence cannot be tested."
+      },
+      {
+        "id": "lastTested",
+        "label": "Last tested",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "testResult",
+        "label": "Test result",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Effective",
+          "Exception noted",
+          "Ineffective",
+          "Not tested"
+        ],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "delegation-of-authority",
+    "workstream": "risk-controls",
+    "name": "Delegation of Authority Matrix",
+    "description": "Define who may commit the company to what, by transaction type and amount, up to the board threshold.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "transactionType",
+        "label": "Transaction type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Purchase order",
+          "Vendor contract",
+          "Customer contract",
+          "Discount approval",
+          "Payment release",
+          "Wire transfer",
+          "Hiring",
+          "Compensation change",
+          "Capital expenditure",
+          "Debt or financing",
+          "Equity grant",
+          "Legal settlement"
+        ],
+        "help": ""
+      },
+      {
+        "id": "thresholdFrom",
+        "label": "Threshold from",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "thresholdTo",
+        "label": "Threshold to",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": "Leave empty for no upper limit below the board threshold."
+      },
+      {
+        "id": "approver",
+        "label": "Approver role",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "secondApprover",
+        "label": "Second approver required",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "boardApprovalRequired",
+        "label": "Board approval required",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "systemEnforced",
+        "label": "Enforced in system",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": "Limits that are not configured in a system are advisory only."
+      },
+      {
+        "id": "notes",
+        "label": "Notes",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "cap-table-and-dilution-worksheet",
+    "workstream": "people-equity",
+    "name": "Cap Table Reconciliation and Dilution Worksheet",
+    "description": "Reconcile equity activity to board approvals and model pool consumption and dilution scenarios.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "holderOrPool",
+        "label": "Holder or pool",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "securityType",
+        "label": "Security type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Common",
+          "Preferred",
+          "Option",
+          "Restricted stock",
+          "Warrant",
+          "Convertible note",
+          "SAFE"
+        ],
+        "help": ""
+      },
+      {
+        "id": "sharesOutstanding",
+        "label": "Shares outstanding",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "boardApprovalDate",
+        "label": "Board approval date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "approvalReference",
+        "label": "Approval reference",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": "Consent or minutes reference supporting this position."
+      },
+      {
+        "id": "vestingStart",
+        "label": "Vesting start date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "strikePrice",
+        "label": "Strike price",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "valuationReference",
+        "label": "Valuation reference",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": "The valuation that supports this strike price."
+      },
+      {
+        "id": "fullyDilutedPercent",
+        "label": "Fully diluted percent",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "reconciled",
+        "label": "Reconciled to source documents",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "409a-valuation-preparation",
+    "workstream": "people-equity",
+    "name": "409A Valuation Preparation Pack",
+    "description": "Assemble the information a valuation provider needs and record the resulting approval so grants are supported.",
+    "format": "interactive",
+    "fields": [
+      {
+        "id": "valuationDate",
+        "label": "Valuation date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "triggerReason",
+        "label": "Trigger",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Annual refresh",
+          "Financing round",
+          "Material event",
+          "Secondary transaction",
+          "Pre-grant requirement"
+        ],
+        "help": ""
+      },
+      {
+        "id": "provider",
+        "label": "Valuation provider",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "financialsProvided",
+        "label": "Financial information provided",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Historical actuals, forecast, and cap table as of the valuation date."
+      },
+      {
+        "id": "materialEvents",
+        "label": "Material events since last valuation",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "concludedValue",
+        "label": "Concluded common share value",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "boardApprovalDate",
+        "label": "Board approval date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "expiryDate",
+        "label": "Safe harbor expiry date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": "Typically twelve months or the next material event, whichever is earlier."
+      },
+      {
+        "id": "reportLink",
+        "label": "Valuation report link",
+        "type": "url",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "workforce-plan",
+    "workstream": "people-equity",
+    "name": "Workforce Plan and Requisition Tracker",
+    "description": "Track every approved position against the budget with start date, fully loaded cost, and requisition status.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "positionId",
+        "label": "Position reference",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "department",
+        "label": "Department",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "title",
+        "label": "Title",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "level",
+        "label": "Level",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "location",
+        "label": "Location",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": "Drives payroll registration and fully loaded cost."
+      },
+      {
+        "id": "budgetedStartDate",
+        "label": "Budgeted start date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "forecastStartDate",
+        "label": "Forecast start date",
+        "type": "date",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "baseSalary",
+        "label": "Base salary",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "fullyLoadedCost",
+        "label": "Fully loaded annual cost",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "equityGrant",
+        "label": "Equity grant units",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "status",
+        "label": "Requisition status",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Planned",
+          "Approved",
+          "Open",
+          "Offer out",
+          "Filled",
+          "On hold",
+          "Cancelled"
+        ],
+        "help": ""
+      },
+      {
+        "id": "approvedBy",
+        "label": "Approved by",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "entity-and-governance-calendar",
+    "workstream": "governance-legal",
+    "name": "Entity and Governance Calendar",
+    "description": "Track every entity obligation and governance event with jurisdiction, due date, owner, and filing evidence.",
+    "format": "xlsx",
+    "fields": [
+      {
+        "id": "entityName",
+        "label": "Entity name",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "jurisdiction",
+        "label": "Jurisdiction",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "obligation",
+        "label": "Obligation",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Annual report",
+          "Franchise tax",
+          "Registered agent renewal",
+          "Foreign qualification",
+          "Statutory accounts",
+          "Board meeting",
+          "Stockholder consent",
+          "Beneficial ownership report",
+          "Other"
+        ],
+        "help": ""
+      },
+      {
+        "id": "frequency",
+        "label": "Frequency",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Annual",
+          "Quarterly",
+          "One-time",
+          "Event-driven"
+        ],
+        "help": ""
+      },
+      {
+        "id": "dueDate",
+        "label": "Due date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "owner",
+        "label": "Owner",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "status",
+        "label": "Status",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Not started",
+          "In progress",
+          "Filed",
+          "Confirmed"
+        ],
+        "help": ""
+      },
+      {
+        "id": "evidenceLink",
+        "label": "Filing evidence link",
+        "type": "url",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "annualCost",
+        "label": "Annual cost",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "insurance-coverage-review",
+    "workstream": "governance-legal",
+    "name": "Insurance Coverage Review",
+    "description": "Compare each policy against risk exposure and contractual requirements, and record renewal actions.",
+    "format": "interactive",
+    "fields": [
+      {
+        "id": "policyType",
+        "label": "Policy type",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Directors and officers",
+          "Errors and omissions",
+          "Cyber liability",
+          "General liability",
+          "Property",
+          "Employment practices",
+          "Crime and fidelity",
+          "Workers compensation",
+          "International",
+          "Key person"
+        ],
+        "help": ""
+      },
+      {
+        "id": "carrier",
+        "label": "Carrier",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "limit",
+        "label": "Limit",
+        "type": "number",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "deductible",
+        "label": "Deductible or retention",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "annualPremium",
+        "label": "Annual premium",
+        "type": "number",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "renewalDate",
+        "label": "Renewal date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "keyExclusions",
+        "label": "Key exclusions",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "contractualRequirement",
+        "label": "Contractual requirement",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": "Minimum limits customer contracts require."
+      },
+      {
+        "id": "adequacyAssessment",
+        "label": "Adequacy assessment",
+        "type": "select",
+        "required": false,
+        "options": [
+          "Adequate",
+          "Increase recommended",
+          "Reduce recommended",
+          "Gap identified"
+        ],
+        "help": ""
+      },
+      {
+        "id": "action",
+        "label": "Action and owner",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  },
+  {
+    "id": "board-approval-request",
+    "workstream": "governance-legal",
+    "name": "Board Approval Request",
+    "description": "Prepare a board or committee approval request with the action, the rationale, the financial impact, and the consent reference.",
+    "format": "markdown",
+    "fields": [
+      {
+        "id": "actionRequested",
+        "label": "Action requested",
+        "type": "text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "approvalBasis",
+        "label": "Approval requirement basis",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": "Charter provision, financing agreement, plan document, or authority matrix."
+      },
+      {
+        "id": "rationale",
+        "label": "Rationale",
+        "type": "long-text",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "financialImpact",
+        "label": "Financial impact",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "alternatives",
+        "label": "Alternatives considered",
+        "type": "long-text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "approvalMethod",
+        "label": "Approval method",
+        "type": "select",
+        "required": true,
+        "options": [
+          "Board meeting",
+          "Written consent",
+          "Committee approval",
+          "Stockholder consent"
+        ],
+        "help": ""
+      },
+      {
+        "id": "requestedDate",
+        "label": "Requested approval date",
+        "type": "date",
+        "required": true,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "consentReference",
+        "label": "Executed consent reference",
+        "type": "text",
+        "required": false,
+        "options": [],
+        "help": ""
+      },
+      {
+        "id": "minuteBookFiled",
+        "label": "Filed in minute book",
+        "type": "checkbox",
+        "required": false,
+        "options": [],
+        "help": ""
+      }
+    ]
+  }
+]

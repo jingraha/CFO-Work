@@ -1,0 +1,2828 @@
+[
+  {
+    "id": "netsuite",
+    "name": "Oracle NetSuite",
+    "category": "ERP and core accounting",
+    "description": "Cloud ERP with multi-entity, multi-currency, and multi-book accounting used by many venture-backed companies at and beyond Series B.",
+    "officialUrl": "https://www.netsuite.com/",
+    "sourceUrl": "https://www.netsuite.com/portal/products/erp.shtml",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Multi-entity consolidation and intercompany elimination in one ledger",
+      "Broad module coverage: revenue recognition, fixed assets, procurement, inventory",
+      "Large implementation partner and talent pool"
+    ],
+    "watchouts": [
+      "Implementation cost and timeline are frequently underestimated",
+      "Module-based licensing can escalate as you add entities and users",
+      "Heavy customization creates upgrade and audit friction"
+    ],
+    "integrations": [
+      "FloQast",
+      "BlackLine",
+      "Ramp",
+      "Bill",
+      "Avalara",
+      "Stripe",
+      "Rippling"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Annual subscription with module and user-based tiers plus one-time implementation.",
+    "pricingNote": "Pricing is quoted per module, user count, and entity count, and implementation is a separate statement of work. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Review the published subprocessor list and data residency options.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Preserve a saved-search library and general ledger detail extract before shutdown."
+    ]
+  },
+  {
+    "id": "sage-intacct",
+    "name": "Sage Intacct",
+    "category": "ERP and core accounting",
+    "description": "Cloud financial management system with strong dimensional reporting and multi-entity consolidation, common in software and services companies.",
+    "officialUrl": "https://www.sage.com/en-us/sage-business-cloud/intacct/",
+    "sourceUrl": "https://www.sage.com/en-us/products/sage-intacct/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Dimension-based chart of accounts avoids account code sprawl",
+      "Faster implementation than tier-one ERP for a single product line",
+      "Solid multi-entity consolidation and continuous close reporting"
+    ],
+    "watchouts": [
+      "Less depth for inventory and complex supply chain",
+      "Some capability requires partner-built add-ons",
+      "Report writer has a learning curve for new analysts"
+    ],
+    "integrations": [
+      "FloQast",
+      "Bill",
+      "Ramp",
+      "Avalara",
+      "Nectari",
+      "Salesforce"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Annual subscription by module and user with implementation via a partner.",
+    "pricingNote": "Expect module-based quoting and a partner implementation fee. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Export dimension structures and journal detail, not just financial statements."
+    ]
+  },
+  {
+    "id": "quickbooks-online",
+    "name": "QuickBooks Online Advanced",
+    "category": "ERP and core accounting",
+    "description": "Small and mid-market accounting platform frequently used pre-ERP; a common starting ledger that companies outgrow around Series B.",
+    "officialUrl": "https://quickbooks.intuit.com/online/advanced/",
+    "sourceUrl": "https://quickbooks.intuit.com/pricing/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b"
+    ],
+    "strengths": [
+      "Low cost and near-universal accountant familiarity",
+      "Large app ecosystem for AP, expense, and payroll",
+      "Fast to stand up with minimal implementation effort"
+    ],
+    "watchouts": [
+      "Limited multi-entity consolidation without third-party tools",
+      "Weak audit trail depth and user permission granularity at scale",
+      "Transaction volume and class or location limits become binding"
+    ],
+    "integrations": [
+      "Bill",
+      "Ramp",
+      "Gusto",
+      "Expensify",
+      "Avalara",
+      "Fathom"
+    ],
+    "implementation": "light",
+    "pricingModel": "Per-company monthly subscription with tiered feature sets.",
+    "pricingNote": "Published tiers change frequently and promotional pricing is common. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Confirm audit log retention meets your evidence needs."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export the full general ledger, trial balance, and attachments before migration.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "xero",
+    "name": "Xero",
+    "category": "ERP and core accounting",
+    "description": "Cloud accounting platform with strong bank feed automation, common for international subsidiaries and non-US entities.",
+    "officialUrl": "https://www.xero.com/us/",
+    "sourceUrl": "https://www.xero.com/us/pricing/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b"
+    ],
+    "strengths": [
+      "Clean bank reconciliation workflow and bank feeds",
+      "Strong fit for small foreign subsidiary bookkeeping",
+      "Broad global accountant and bookkeeper network"
+    ],
+    "watchouts": [
+      "Not designed for complex US GAAP revenue recognition",
+      "Consolidation requires add-ons or a parent ERP",
+      "Limited support for multi-book or statutory-plus-GAAP reporting"
+    ],
+    "integrations": [
+      "Stripe",
+      "Bill",
+      "Gusto",
+      "Avalara",
+      "Deel"
+    ],
+    "implementation": "light",
+    "pricingModel": "Per-organization monthly subscription by plan tier.",
+    "pricingNote": "Plan features and country availability differ by region. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Review the published subprocessor list and data residency options.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Extract statutory-format reports for each foreign entity before cutover."
+    ]
+  },
+  {
+    "id": "floqast",
+    "name": "FloQast",
+    "category": "Close management and reconciliation",
+    "description": "Close checklist, reconciliation, and flux workflow tool that sits on top of the ERP and standardizes month-end evidence.",
+    "officialUrl": "https://floqast.com/",
+    "sourceUrl": "https://floqast.com/close-management-software/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Fast to deploy relative to enterprise close platforms",
+      "Reconciliation sign-off and tie-out create clean audit evidence",
+      "Close status visibility reduces manager chase work"
+    ],
+    "watchouts": [
+      "Value depends on ERP data quality; it will not fix a bad chart of accounts",
+      "Requires ongoing checklist maintenance to stay accurate",
+      "Overlaps with some ERP-native close features you already pay for"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "QuickBooks Online",
+      "Workiva",
+      "Microsoft Excel"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription priced by module and user count.",
+    "pricingNote": "Modules such as compliance and analytics are typically quoted separately. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export reconciliation history and sign-off audit trail for the retention period.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "blackline",
+    "name": "BlackLine",
+    "category": "Close management and reconciliation",
+    "description": "Enterprise financial close platform covering account reconciliation, transaction matching, journal workflow, and close task management.",
+    "officialUrl": "https://www.blackline.com/",
+    "sourceUrl": "https://www.blackline.com/solutions/financial-close-management/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "High-volume transaction matching for payments and billing data",
+      "Deep control evidence suited to audit and SOX readiness",
+      "Mature reporting on close cycle time and exceptions"
+    ],
+    "watchouts": [
+      "Heavier implementation and administration than lightweight tools",
+      "Often more capability than a sub-100-person finance org needs",
+      "Requires a named administrator to sustain"
+    ],
+    "integrations": [
+      "NetSuite",
+      "SAP",
+      "Oracle",
+      "Sage Intacct",
+      "Workday"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Annual subscription by module and transaction or user volume.",
+    "pricingNote": "Enterprise quoting with implementation services; scope drives most of the cost. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Confirm read-only access or a data archive after contract end for audit support."
+    ]
+  },
+  {
+    "id": "numeric",
+    "name": "Numeric",
+    "category": "Close management and reconciliation",
+    "description": "Modern close and reconciliation workspace with automated flux analysis and AI-assisted transaction review for growth-stage teams.",
+    "officialUrl": "https://www.numeric.io/",
+    "sourceUrl": "https://www.numeric.io/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Quick setup with minimal configuration overhead",
+      "Automated variance commentary reduces manual flux work",
+      "Good fit for lean teams closing in under ten days"
+    ],
+    "watchouts": [
+      "Younger vendor; validate roadmap and support model",
+      "Fewer prebuilt integrations than incumbent platforms",
+      "AI-generated commentary still requires reviewer sign-off"
+    ],
+    "integrations": [
+      "NetSuite",
+      "QuickBooks Online",
+      "Sage Intacct",
+      "Xero",
+      "Slack"
+    ],
+    "implementation": "light",
+    "pricingModel": "Annual subscription priced by user seats.",
+    "pricingNote": "Seat counts and feature tiers are quoted directly. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Confirm export of reconciliation support and reviewer comments.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "trullion",
+    "name": "Trullion",
+    "category": "Close management and reconciliation",
+    "description": "AI-assisted accounting platform focused on lease accounting, revenue recognition support, and audit workpaper automation.",
+    "officialUrl": "https://trullion.com/",
+    "sourceUrl": "https://trullion.com/platform/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Contract data extraction speeds lease and revenue schedules",
+      "Auditor-facing workpaper links reduce PBC back and forth",
+      "Useful when contract volume outgrows spreadsheets"
+    ],
+    "watchouts": [
+      "Extraction accuracy still needs human review on nonstandard contracts",
+      "Narrower scope than a full close platform",
+      "Benefit depends on having contracts centrally stored"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "Salesforce",
+      "Google Drive"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription by module and contract volume.",
+    "pricingNote": "Quotes typically scale with lease or contract counts. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export amortization and lease schedules with underlying assumptions.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "bill",
+    "name": "BILL",
+    "category": "Accounts payable and spend",
+    "description": "Accounts payable automation with invoice capture, approval routing, and payment execution, widely used by growth-stage finance teams.",
+    "officialUrl": "https://www.bill.com/",
+    "sourceUrl": "https://www.bill.com/product/accounts-payable",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Mature approval workflow and audit trail for AP",
+      "Wide accountant familiarity shortens onboarding",
+      "Vendor payment rails including ACH, check, and international"
+    ],
+    "watchouts": [
+      "Payment timing and float mechanics need to be understood for cash forecasting",
+      "Duplicate vendor records create reconciliation noise if unmanaged",
+      "Card and expense features are less mature than dedicated spend platforms"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "QuickBooks Online",
+      "Xero"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Per-user subscription plus transaction fees for certain payment types.",
+    "pricingNote": "Payment method fees and international transfer pricing are separate from seat pricing. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Confirm dual-approval and bank change verification controls for payment fraud."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export vendor master, W-9 records, and payment history.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "ramp",
+    "name": "Ramp",
+    "category": "Accounts payable and spend",
+    "description": "Corporate card, expense management, bill pay, and procurement platform aimed at controlling and coding spend at the point of purchase.",
+    "officialUrl": "https://ramp.com/",
+    "sourceUrl": "https://ramp.com/expense-management",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Policy enforcement and receipt capture at the card level",
+      "Combined card, expense, and AP reduces tool sprawl",
+      "Strong ERP coding rules cut month-end recategorization"
+    ],
+    "watchouts": [
+      "Card underwriting limits may not fit large committed vendor spend",
+      "Consolidating card and AP concentrates vendor and counterparty risk",
+      "Some advanced procurement features sit in higher tiers"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "QuickBooks Online",
+      "Xero",
+      "Rippling",
+      "Gusto"
+    ],
+    "implementation": "light",
+    "pricingModel": "Core platform offered at no license cost with paid premium tiers; revenue from interchange and add-ons.",
+    "pricingNote": "Free-tier positioning changes; confirm which features require a paid plan. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export transaction-level detail with receipts and approval history.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "brex",
+    "name": "Brex",
+    "category": "Accounts payable and spend",
+    "description": "Corporate card, expense, bill pay, and business account platform designed for venture-backed companies with global spend.",
+    "officialUrl": "https://www.brex.com/",
+    "sourceUrl": "https://www.brex.com/product/expense-management",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Global card issuance and multi-currency spend coverage",
+      "Built-in travel and expense workflow",
+      "Cash management account options alongside spend"
+    ],
+    "watchouts": [
+      "Product mix has shifted over time; confirm current offerings for your size",
+      "Treasury and card relationships in one vendor raise concentration risk",
+      "Some accounting integrations need mapping maintenance"
+    ],
+    "integrations": [
+      "NetSuite",
+      "QuickBooks Online",
+      "Sage Intacct",
+      "Xero",
+      "Rippling"
+    ],
+    "implementation": "light",
+    "pricingModel": "Tiered platform subscription with interchange-funded base offering.",
+    "pricingNote": "Tier features and any minimum spend or deposit requirements change. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "tipalti",
+    "name": "Tipalti",
+    "category": "Accounts payable and spend",
+    "description": "Global payables automation with supplier onboarding, tax form collection, and mass payouts across many countries and currencies.",
+    "officialUrl": "https://tipalti.com/",
+    "sourceUrl": "https://tipalti.com/accounts-payable-automation/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Strong supplier onboarding with tax form and validation controls",
+      "Broad international payment coverage and currency options",
+      "Useful for marketplace, affiliate, and contractor payout volume"
+    ],
+    "watchouts": [
+      "More configuration effort than domestic-only AP tools",
+      "Platform fee model can be heavy for low invoice volume",
+      "Supplier portal adoption requires vendor communication effort"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "QuickBooks Online",
+      "Xero"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Platform fee plus per-transaction and foreign exchange charges.",
+    "pricingNote": "Foreign exchange spreads and payment fees materially affect total cost. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm sanctions screening and payee verification controls."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export supplier master with tax forms and banking details you are permitted to retain.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "navan",
+    "name": "Navan",
+    "category": "Accounts payable and spend",
+    "description": "Corporate travel booking and expense management platform combining policy controls with card and reimbursement workflows.",
+    "officialUrl": "https://navan.com/",
+    "sourceUrl": "https://navan.com/products/expense",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Travel policy enforcement at the point of booking",
+      "Combined travel and expense reduces manual report entry",
+      "Useful once travel spend becomes a top-five expense line"
+    ],
+    "watchouts": [
+      "Value is limited if travel volume is low",
+      "Negotiated travel content varies by region",
+      "Expense-only use overlaps with spend platforms you may already run"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "QuickBooks Online",
+      "Workday",
+      "Rippling"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Subscription or transaction-based pricing depending on travel and card mix.",
+    "pricingNote": "Pricing structure differs materially between travel-led and expense-led deployments. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export expense reports with receipts and approval history.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "zip",
+    "name": "Zip",
+    "category": "Procurement and vendor management",
+    "description": "Procurement orchestration platform that routes purchase requests through finance, security, legal, and IT review before spend is committed.",
+    "officialUrl": "https://ziphq.com/",
+    "sourceUrl": "https://ziphq.com/product/procurement-orchestration",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "One intake front door for all new vendor requests",
+      "Parallel approvals shorten cycle time versus email chains",
+      "Creates auditable evidence of pre-approval for spend controls"
+    ],
+    "watchouts": [
+      "Requires cross-functional process agreement before rollout",
+      "Overhead is hard to justify below meaningful vendor volume",
+      "Benefit fades if approvers do not respond inside the tool"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Coupa",
+      "Ramp",
+      "Vanta",
+      "Ironclad",
+      "Slack"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual platform subscription with tiered workflow and integration limits.",
+    "pricingNote": "Quotes scale with request volume, integrations, and approval complexity. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export approval records tied to each purchase order and contract.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "vendr",
+    "name": "Vendr",
+    "category": "Procurement and vendor management",
+    "description": "SaaS buying and negotiation service with benchmark pricing data used to reduce software renewal cost.",
+    "officialUrl": "https://www.vendr.com/",
+    "sourceUrl": "https://www.vendr.com/platform",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Benchmark data improves leverage in renewal negotiations",
+      "Offloads negotiation work from a thin finance team",
+      "Renewal calendar visibility prevents auto-renew surprises"
+    ],
+    "watchouts": [
+      "Savings claims should be measured against your own baseline",
+      "Fee model may not pay back on a small software stack",
+      "Vendor relationships still need an internal owner"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Zip",
+      "Okta",
+      "Slack"
+    ],
+    "implementation": "light",
+    "pricingModel": "Subscription or savings-linked fee depending on engagement model.",
+    "pricingNote": "Engagement models vary; confirm whether fees are fixed or tied to realized savings. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm handling of your contract and pricing data in benchmark datasets."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Retain copies of all negotiated contracts outside the platform.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "tropic",
+    "name": "Tropic",
+    "category": "Procurement and vendor management",
+    "description": "Procurement platform combining intake, supplier management, and pricing benchmarks for software and services spend.",
+    "officialUrl": "https://www.tropicapp.io/",
+    "sourceUrl": "https://www.tropicapp.io/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Intake plus negotiation support in a single workflow",
+      "Renewal tracking with owner accountability",
+      "Spend visibility across software categories"
+    ],
+    "watchouts": [
+      "Overlaps with spend management tools that also track vendors",
+      "Requires clean contract data to produce reliable benchmarks",
+      "Change management effort to route all requests through one intake"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Ramp",
+      "Okta",
+      "Slack",
+      "Salesforce"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription, sometimes blended with negotiation services.",
+    "pricingNote": "Confirm whether negotiation support is included or billed separately. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Export supplier records and renewal dates before shutdown."
+    ]
+  },
+  {
+    "id": "stripe-billing",
+    "name": "Stripe Billing",
+    "category": "Billing and usage metering",
+    "description": "Subscription and usage billing built on Stripe payments, covering invoicing, proration, dunning, and revenue reporting.",
+    "officialUrl": "https://stripe.com/billing",
+    "sourceUrl": "https://stripe.com/pricing",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Tight coupling between billing and payment collection",
+      "Strong developer documentation and API stability",
+      "Handles self-serve and hybrid sales-led motions"
+    ],
+    "watchouts": [
+      "Complex enterprise contract terms often still need manual handling",
+      "Revenue recognition output may not satisfy full ASC 606 needs alone",
+      "Percentage-of-volume pricing grows with revenue"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "QuickBooks Online",
+      "Salesforce",
+      "Avalara",
+      "Anrok"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Percentage of billing volume plus payment processing fees.",
+    "pricingNote": "Billing and processing fees are separate line items and negotiable at volume. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Confirm PCI DSS responsibility split and cardholder data scope."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Export customer, subscription, and invoice history including metadata.",
+      "Read the termination clause for data return window and deletion certification."
+    ],
+    "businessModels": [
+      "b2b-saas-usage",
+      "consumer-subscription",
+      "ai-infrastructure"
+    ]
+  },
+  {
+    "id": "chargebee",
+    "name": "Chargebee",
+    "category": "Billing and usage metering",
+    "description": "Subscription management and recurring billing platform with entitlement, pricing experimentation, and revenue reporting modules.",
+    "officialUrl": "https://www.chargebee.com/",
+    "sourceUrl": "https://www.chargebee.com/pricing/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Flexible plan and pricing model configuration without code",
+      "Dunning and retention tooling for subscription churn",
+      "Multiple payment gateway support avoids lock-in"
+    ],
+    "watchouts": [
+      "Usage-based metering at high event volume needs careful design",
+      "Add-on modules for revenue recognition are priced separately",
+      "Configuration sprawl if pricing changes are not governed"
+    ],
+    "integrations": [
+      "Stripe",
+      "NetSuite",
+      "Salesforce",
+      "HubSpot",
+      "Avalara",
+      "Xero"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Tiered subscription plus a percentage of billing volume above thresholds.",
+    "pricingNote": "Overage percentages above revenue thresholds are a common surprise. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Read the termination clause for data return window and deletion certification."
+    ],
+    "businessModels": [
+      "b2b-saas-usage",
+      "consumer-subscription"
+    ]
+  },
+  {
+    "id": "metronome",
+    "name": "Metronome",
+    "category": "Billing and usage metering",
+    "description": "Usage-based billing infrastructure that ingests high-volume events and computes invoices for consumption pricing models.",
+    "officialUrl": "https://metronome.com/",
+    "sourceUrl": "https://metronome.com/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Purpose-built for high-cardinality usage events",
+      "Supports credits, commitments, and hybrid contracts",
+      "Real-time usage visibility for customers and internal teams"
+    ],
+    "watchouts": [
+      "Requires engineering ownership of the event pipeline",
+      "Event schema mistakes create restatement risk",
+      "Less relevant for pure seat-based pricing"
+    ],
+    "integrations": [
+      "Stripe",
+      "NetSuite",
+      "Snowflake",
+      "Salesforce",
+      "Anrok"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Platform subscription tied to billed volume or event throughput.",
+    "pricingNote": "Cost scales with metered volume; model it against your growth plan. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Export raw usage events and computed invoice lines for restatement support.",
+      "Read the termination clause for data return window and deletion certification."
+    ],
+    "businessModels": [
+      "b2b-saas-usage",
+      "ai-infrastructure"
+    ]
+  },
+  {
+    "id": "orb",
+    "name": "Orb",
+    "category": "Billing and usage metering",
+    "description": "Usage-based billing platform focused on metering accuracy, flexible pricing logic, and revenue reporting for consumption products.",
+    "officialUrl": "https://www.withorb.com/",
+    "sourceUrl": "https://www.withorb.com/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Pricing changes configurable without engineering rewrites",
+      "Auditable metering lineage from raw event to invoice",
+      "Good fit for AI and infrastructure consumption models"
+    ],
+    "watchouts": [
+      "Newer vendor; validate scale references at your event volume",
+      "Still requires disciplined event instrumentation upstream",
+      "Overlaps with capabilities in your data warehouse if already built"
+    ],
+    "integrations": [
+      "Stripe",
+      "NetSuite",
+      "Snowflake",
+      "Salesforce",
+      "Segment"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Subscription tied to billed revenue or metered volume.",
+    "pricingNote": "Confirm how volume tiers are measured and what triggers a tier change. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Read the termination clause for data return window and deletion certification."
+    ],
+    "businessModels": [
+      "b2b-saas-usage",
+      "ai-infrastructure"
+    ]
+  },
+  {
+    "id": "zuora",
+    "name": "Zuora",
+    "category": "Billing and usage metering",
+    "description": "Enterprise subscription billing and revenue platform supporting complex contract structures, amendments, and ASC 606 reporting.",
+    "officialUrl": "https://www.zuora.com/",
+    "sourceUrl": "https://www.zuora.com/products/subscription-billing/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "Handles complex amendments, ramps, and co-term scenarios",
+      "Revenue module built for ASC 606 requirements",
+      "Established audit acceptance at enterprise scale"
+    ],
+    "watchouts": [
+      "Implementation is a multi-quarter program, not a project",
+      "Total cost of ownership is high for mid-size revenue",
+      "Requires dedicated administration to sustain"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Salesforce",
+      "Workday",
+      "Snowflake",
+      "Avalara"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Enterprise subscription based on billed volume and modules with implementation services.",
+    "pricingNote": "Volume-based tiers plus services make total first-year cost far higher than license alone. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Confirm read-only access or a data archive after contract end for audit support.",
+      "Read the termination clause for data return window and deletion certification."
+    ],
+    "businessModels": [
+      "b2b-saas-usage"
+    ]
+  },
+  {
+    "id": "tesorio",
+    "name": "Tesorio",
+    "category": "Accounts receivable and collections",
+    "description": "Accounts receivable automation with collections workflow, customer payment behavior analytics, and cash forecasting.",
+    "officialUrl": "https://www.tesorio.com/",
+    "sourceUrl": "https://www.tesorio.com/platform",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Automated dunning cadences tied to customer risk",
+      "Collector workload visibility and accountability",
+      "Cash forecasting informed by actual payment behavior"
+    ],
+    "watchouts": [
+      "Needs clean invoice and contact data to be effective",
+      "Automated outreach requires sales relationship guardrails",
+      "Value depends on AR balance size"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "Salesforce",
+      "QuickBooks Online"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription by user and receivable volume.",
+    "pricingNote": "Quotes vary with invoice volume and number of collectors. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export collection notes and promise-to-pay history for continuity.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "upflow",
+    "name": "Upflow",
+    "category": "Accounts receivable and collections",
+    "description": "Receivables collaboration tool that assigns owners, automates reminders, and reports days sales outstanding drivers.",
+    "officialUrl": "https://upflow.io/",
+    "sourceUrl": "https://upflow.io/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Lightweight rollout for lean finance teams",
+      "Clear ownership assignment across finance and sales",
+      "Payment portal reduces friction on customer side"
+    ],
+    "watchouts": [
+      "Fewer enterprise workflow controls than larger platforms",
+      "Reporting depth is narrower than full AR suites",
+      "Non-standard invoicing processes limit automation"
+    ],
+    "integrations": [
+      "NetSuite",
+      "QuickBooks Online",
+      "Xero",
+      "Stripe",
+      "Chargebee"
+    ],
+    "implementation": "light",
+    "pricingModel": "Subscription tiered by receivable volume and users.",
+    "pricingNote": "Tier thresholds are based on receivables processed. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Export outstanding invoice and contact records before switching."
+    ]
+  },
+  {
+    "id": "highradius",
+    "name": "HighRadius",
+    "category": "Accounts receivable and collections",
+    "description": "Order-to-cash suite covering credit, collections, cash application, and deductions with automation for high invoice volume.",
+    "officialUrl": "https://www.highradius.com/",
+    "sourceUrl": "https://www.highradius.com/products/accounts-receivable/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "Automated cash application on high remittance volume",
+      "Credit risk scoring integrated with collections",
+      "Deep deductions and dispute management"
+    ],
+    "watchouts": [
+      "Enterprise implementation scope and timeline",
+      "More capability than most Series B teams can absorb",
+      "Requires strong master data to realize automation rates"
+    ],
+    "integrations": [
+      "NetSuite",
+      "SAP",
+      "Oracle",
+      "Salesforce"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Enterprise subscription by module and transaction volume with implementation services.",
+    "pricingNote": "Multi-module quotes and services dominate first-year cost. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Confirm read-only access or a data archive after contract end for audit support.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "rippling",
+    "name": "Rippling",
+    "category": "Payroll, HRIS, and benefits",
+    "description": "Unified HR, payroll, benefits, IT device, and app provisioning platform used to manage the employee lifecycle end to end.",
+    "officialUrl": "https://www.rippling.com/",
+    "sourceUrl": "https://www.rippling.com/pricing",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Single system of record for people, payroll, and app access",
+      "Automated provisioning and deprovisioning supports access reviews",
+      "Strong general ledger mapping for payroll journal entries"
+    ],
+    "watchouts": [
+      "Bundling makes partial migration away harder later",
+      "Module pricing accumulates quickly across HR, IT, and payroll",
+      "Global payroll capabilities vary by country"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "QuickBooks Online",
+      "Ramp",
+      "Carta",
+      "Okta"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Per-employee-per-month pricing with a base platform fee and module add-ons.",
+    "pricingNote": "Per-employee rates differ by module bundle and headcount tier. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export payroll registers, tax filings, and employee records for retention requirements.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "gusto",
+    "name": "Gusto",
+    "category": "Payroll, HRIS, and benefits",
+    "description": "Payroll, benefits, and basic HR platform popular with small and early growth-stage companies in the United States.",
+    "officialUrl": "https://gusto.com/",
+    "sourceUrl": "https://gusto.com/product/pricing",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b"
+    ],
+    "strengths": [
+      "Simple payroll runs and clear employee self-service",
+      "Automated federal and state tax filings",
+      "Low administrative burden for a small team"
+    ],
+    "watchouts": [
+      "Limited depth for complex multi-entity or international payroll",
+      "Reporting and general ledger mapping are basic for ERP users",
+      "Companies typically outgrow it as headcount and entities grow"
+    ],
+    "integrations": [
+      "QuickBooks Online",
+      "Xero",
+      "Ramp",
+      "Carta",
+      "Bill"
+    ],
+    "implementation": "light",
+    "pricingModel": "Base monthly fee plus per-employee-per-month charges by plan tier.",
+    "pricingNote": "Plan tiers and state filing add-ons change. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Confirm payroll tax filing responsibility and penalty coverage terms."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export year-to-date payroll registers and tax forms before switching mid-year.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "trinet",
+    "name": "TriNet",
+    "category": "Payroll, HRIS, and benefits",
+    "description": "Professional employer organization providing co-employment, benefits pooling, payroll, and HR compliance support.",
+    "officialUrl": "https://www.trinet.com/",
+    "sourceUrl": "https://www.trinet.com/services/peo-services",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b"
+    ],
+    "strengths": [
+      "Access to large-group benefit plans earlier than you could buy alone",
+      "HR compliance and multi-state registration support",
+      "Reduces internal HR administrative burden"
+    ],
+    "watchouts": [
+      "Co-employment model complicates data access and reporting",
+      "Benefit renewal increases can be significant and hard to forecast",
+      "Exiting a PEO requires state registration work you must plan for"
+    ],
+    "integrations": [
+      "NetSuite",
+      "QuickBooks Online",
+      "Sage Intacct",
+      "Carta"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Percentage of payroll or per-employee-per-month administrative fee plus benefit costs.",
+    "pricingNote": "Administrative fee, benefit premium, and renewal escalators must be evaluated together. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm who is the employer of record for tax filings and audit response."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Plan a PEO exit runway including state tax account registration and benefit replacement.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "justworks",
+    "name": "Justworks",
+    "category": "Payroll, HRIS, and benefits",
+    "description": "Professional employer organization and payroll platform with benefits access and compliance support for smaller teams.",
+    "officialUrl": "https://www.justworks.com/",
+    "sourceUrl": "https://www.justworks.com/pricing",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b"
+    ],
+    "strengths": [
+      "Transparent per-employee pricing model",
+      "Simple onboarding and clean employee experience",
+      "Benefits access without an internal benefits broker relationship"
+    ],
+    "watchouts": [
+      "Limited customization for complex compensation structures",
+      "Reporting is thinner than a full HRIS",
+      "PEO exit planning still required as you scale"
+    ],
+    "integrations": [
+      "QuickBooks Online",
+      "Xero",
+      "NetSuite",
+      "Carta"
+    ],
+    "implementation": "light",
+    "pricingModel": "Per-employee-per-month pricing by plan tier plus benefit costs.",
+    "pricingNote": "Tier features and benefit plan availability vary by state. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export payroll and benefits enrollment history before transition.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "adp-workforce-now",
+    "name": "ADP Workforce Now",
+    "category": "Payroll, HRIS, and benefits",
+    "description": "Established payroll and HR platform with broad multi-state and multi-entity payroll tax filing coverage.",
+    "officialUrl": "https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx",
+    "sourceUrl": "https://www.adp.com/what-we-offer/products/adp-workforce-now.aspx",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "Deep payroll tax filing and multi-jurisdiction compliance",
+      "Handles complex earnings codes and union or hourly rules",
+      "Well understood by auditors and outsourced accounting firms"
+    ],
+    "watchouts": [
+      "User interface and configuration feel dated compared with newer tools",
+      "Service quality depends heavily on the assigned account team",
+      "Change requests can be slow relative to modern platforms"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "Workday",
+      "Carta"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Per-employee-per-month plus module and filing fees.",
+    "pricingNote": "Bundled quotes obscure per-module cost; request an itemized breakdown. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Confirm read-only access or a data archive after contract end for audit support.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "deel",
+    "name": "Deel",
+    "category": "Employer of record and global employment",
+    "description": "Global employer of record, contractor management, and international payroll platform covering many countries from one contract.",
+    "officialUrl": "https://www.deel.com/",
+    "sourceUrl": "https://www.deel.com/pricing/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Fast hiring in countries where you have no entity",
+      "Contractor classification and compliance documentation support",
+      "Single vendor view of global headcount cost"
+    ],
+    "watchouts": [
+      "EOR markup is expensive relative to owning an entity at scale",
+      "Local benefit and notice period rules still create liabilities",
+      "Intellectual property assignment terms need legal review per country"
+    ],
+    "integrations": [
+      "NetSuite",
+      "QuickBooks Online",
+      "Rippling",
+      "Xero",
+      "Sage Intacct"
+    ],
+    "implementation": "light",
+    "pricingModel": "Per-worker-per-month fees that differ between contractor and employer of record models.",
+    "pricingNote": "Country-specific employer costs, deposits, and severance accruals sit on top of platform fees. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm data residency and local privacy compliance per country."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Model the cost and timeline to transition workers to your own entity.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "remote",
+    "name": "Remote",
+    "category": "Employer of record and global employment",
+    "description": "Employer of record and global payroll provider that owns local entities in the countries it supports.",
+    "officialUrl": "https://remote.com/",
+    "sourceUrl": "https://remote.com/pricing",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Owned-entity model reduces third-party partner risk in key markets",
+      "Clear intellectual property assignment terms",
+      "Transparent per-employee pricing structure"
+    ],
+    "watchouts": [
+      "Country coverage is narrower than aggregator models",
+      "Still costly compared with a local entity at scale",
+      "Local statutory benefits vary and drive true cost"
+    ],
+    "integrations": [
+      "NetSuite",
+      "QuickBooks Online",
+      "Xero",
+      "Rippling",
+      "BambooHR"
+    ],
+    "implementation": "light",
+    "pricingModel": "Flat per-employee-per-month employer of record fee plus contractor plan fees.",
+    "pricingNote": "Employer of record fee excludes statutory employer contributions and required deposits. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Confirm employee transfer process if you incorporate locally.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "velocity-global",
+    "name": "Velocity Global",
+    "category": "Employer of record and global employment",
+    "description": "Global employment platform providing employer of record, contractor, and immigration support across many jurisdictions.",
+    "officialUrl": "https://velocityglobal.com/",
+    "sourceUrl": "https://velocityglobal.com/solutions/employer-of-record/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Broad country coverage including complex jurisdictions",
+      "Immigration and mobility support alongside employment",
+      "Experience with entity transition projects"
+    ],
+    "watchouts": [
+      "Pricing is quote-based and harder to benchmark",
+      "Partner-entity model in some countries adds a layer of risk",
+      "Service model is more enterprise than self-serve"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Workday",
+      "Sage Intacct"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Quote-based per-employee fees varying by country and service scope.",
+    "pricingNote": "Country-level quotes differ widely; request a full landed-cost estimate. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm whether the local employer is an owned entity or a partner."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Document notice periods and severance exposure before termination."
+    ]
+  },
+  {
+    "id": "carta",
+    "name": "Carta",
+    "category": "Cap table, equity, and 409A",
+    "description": "Equity management platform covering cap table, option grants, board consents, 409A valuations, and scenario modeling.",
+    "officialUrl": "https://carta.com/",
+    "sourceUrl": "https://carta.com/pricing/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Widely used, so investors and counsel are familiar with the outputs",
+      "Integrated 409A valuation and grant issuance workflow",
+      "Waterfall and scenario modeling for financing and exit analysis"
+    ],
+    "watchouts": [
+      "Pricing scales with stakeholder count and can rise sharply",
+      "Data accuracy depends on disciplined upload of signed documents",
+      "Valuation independence questions should be discussed with your auditor"
+    ],
+    "integrations": [
+      "Rippling",
+      "Gusto",
+      "NetSuite",
+      "TriNet",
+      "Justworks"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription by stakeholder count with valuation services priced separately.",
+    "pricingNote": "Stakeholder tiers and valuation fees are separate; confirm renewal escalators. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Export the full cap table, grant ledger, and signed documents.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Confirm you retain executed equity documents independent of the platform."
+    ]
+  },
+  {
+    "id": "pulley",
+    "name": "Pulley",
+    "category": "Cap table, equity, and 409A",
+    "description": "Cap table and equity management platform focused on modeling, grant administration, and compliance for venture-backed companies.",
+    "officialUrl": "https://pulley.com/",
+    "sourceUrl": "https://pulley.com/pricing",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Straightforward modeling for convertible instruments and rounds",
+      "Competitive pricing versus incumbent platforms",
+      "Responsive support for migration from spreadsheets"
+    ],
+    "watchouts": [
+      "Smaller ecosystem and integration set",
+      "Fewer bundled services than larger providers",
+      "Investor familiarity is lower, which can add explanation overhead"
+    ],
+    "integrations": [
+      "Rippling",
+      "Gusto",
+      "QuickBooks Online",
+      "Deel"
+    ],
+    "implementation": "light",
+    "pricingModel": "Annual subscription by stakeholder count with optional valuation services.",
+    "pricingNote": "Tier boundaries by stakeholder count drive most cost changes. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Export cap table, grant ledger, and documents in bulk.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Confirm you can export all transactional data to CSV without vendor assistance."
+    ]
+  },
+  {
+    "id": "fidelity-private-shares",
+    "name": "Fidelity Private Shares",
+    "category": "Cap table, equity, and 409A",
+    "description": "Cap table management and equity administration platform backed by a large financial institution, with valuation and liquidity services.",
+    "officialUrl": "https://www.fidelityprivateshares.com/",
+    "sourceUrl": "https://www.fidelityprivateshares.com/private-companies",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Institutional backing and long-term platform stability",
+      "Integrated transfer agent and liquidity event support",
+      "Employee equity education resources"
+    ],
+    "watchouts": [
+      "Platform experience differs from startup-native tools",
+      "Feature release cadence is slower",
+      "Migration effort from an incumbent is nontrivial"
+    ],
+    "integrations": [
+      "Workday",
+      "ADP Workforce Now",
+      "NetSuite"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Subscription by stakeholder count with services quoted separately.",
+    "pricingNote": "Confirm which valuation and transfer agent services are included. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Export the stakeholder ledger and transaction history.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Confirm read-only access or a data archive after contract end for audit support."
+    ]
+  },
+  {
+    "id": "avalara",
+    "name": "Avalara",
+    "category": "Tax compliance",
+    "description": "Sales and use tax calculation, exemption certificate management, nexus tracking, and return filing across US jurisdictions.",
+    "officialUrl": "https://www.avalara.com/",
+    "sourceUrl": "https://www.avalara.com/us/en/products/sales-tax-automation.html",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Broad jurisdiction coverage and rate maintenance",
+      "Exemption certificate management reduces audit exposure",
+      "Managed return filing offloads a recurring compliance burden"
+    ],
+    "watchouts": [
+      "Taxability mapping for software and AI products still requires judgment",
+      "Return volume pricing grows quickly with nexus footprint",
+      "Historical exposure remains your responsibility to remediate"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Stripe",
+      "Chargebee",
+      "Sage Intacct",
+      "QuickBooks Online",
+      "Zuora"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Subscription by transaction volume plus per-return filing fees.",
+    "pricingNote": "Transaction tiers and per-return charges both drive cost as nexus expands. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export filed returns, certificates, and transaction detail for audit defense.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "anrok",
+    "name": "Anrok",
+    "category": "Tax compliance",
+    "description": "Sales tax platform built for software companies, covering nexus monitoring, taxability of digital products, and filings.",
+    "officialUrl": "https://www.anrok.com/",
+    "sourceUrl": "https://www.anrok.com/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Software and digital goods taxability focus",
+      "Nexus threshold monitoring with alerting",
+      "Fast implementation for modern billing stacks"
+    ],
+    "watchouts": [
+      "Narrower scope than full indirect tax suites",
+      "International value added tax coverage varies by country",
+      "Still requires internal review of product taxability decisions"
+    ],
+    "integrations": [
+      "Stripe",
+      "Chargebee",
+      "NetSuite",
+      "Metronome",
+      "Orb",
+      "QuickBooks Online"
+    ],
+    "implementation": "light",
+    "pricingModel": "Subscription based on revenue volume and number of jurisdictions filed.",
+    "pricingNote": "Filing counts and revenue tiers determine cost as your footprint grows. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export nexus analysis and filing history.",
+      "Read the termination clause for data return window and deletion certification."
+    ],
+    "businessModels": [
+      "b2b-saas-usage",
+      "ai-infrastructure",
+      "consumer-subscription"
+    ]
+  },
+  {
+    "id": "vertex",
+    "name": "Vertex",
+    "category": "Tax compliance",
+    "description": "Enterprise indirect tax engine covering US sales and use tax plus international value added tax determination and reporting.",
+    "officialUrl": "https://www.vertexinc.com/",
+    "sourceUrl": "https://www.vertexinc.com/solutions/products/vertex-o-series",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "Deep tax content and configurability for complex products",
+      "Strong international value added tax coverage",
+      "Established with large audit and consulting firms"
+    ],
+    "watchouts": [
+      "Implementation requires tax technology expertise",
+      "Overkill for a domestic-only, single-product company",
+      "Ongoing content and configuration maintenance is real work"
+    ],
+    "integrations": [
+      "NetSuite",
+      "SAP",
+      "Oracle",
+      "Zuora",
+      "Salesforce"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Enterprise subscription by module and transaction volume with implementation services.",
+    "pricingNote": "Enterprise agreements bundle content, software, and services; request itemization. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Confirm read-only access or a data archive after contract end for audit support.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "stripe-tax",
+    "name": "Stripe Tax",
+    "category": "Tax compliance",
+    "description": "Tax calculation and registration support embedded in the Stripe payment and billing stack for digital businesses.",
+    "officialUrl": "https://stripe.com/tax",
+    "sourceUrl": "https://stripe.com/tax",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b"
+    ],
+    "strengths": [
+      "Minimal integration effort if you already bill on Stripe",
+      "Threshold monitoring surfaces new registration obligations",
+      "Reduces tooling count for early-stage teams"
+    ],
+    "watchouts": [
+      "Coverage is tied to Stripe-processed transactions only",
+      "Filing support scope differs from full-service providers",
+      "Offline and invoiced revenue is not captured automatically"
+    ],
+    "integrations": [
+      "Stripe Billing",
+      "NetSuite",
+      "QuickBooks Online"
+    ],
+    "implementation": "light",
+    "pricingModel": "Per-transaction fee applied to calculated transactions.",
+    "pricingNote": "Per-transaction rates and any filing add-on fees are published and change. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Read the termination clause for data return window and deletion certification."
+    ],
+    "businessModels": [
+      "b2b-saas-usage",
+      "consumer-subscription"
+    ]
+  },
+  {
+    "id": "armanino",
+    "name": "Armanino",
+    "category": "Audit and outsourced accounting",
+    "description": "Accounting and consulting firm providing financial statement audits, tax, and outsourced accounting for venture-backed companies.",
+    "officialUrl": "https://www.armanino.com/",
+    "sourceUrl": "https://www.armanino.com/services/audit/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Experience with venture-backed and technology company audits",
+      "Combined audit, tax, and advisory bench",
+      "Familiar with ASC 606 issues in software and usage models"
+    ],
+    "watchouts": [
+      "Independence rules limit which services one firm can provide",
+      "Fee estimates rise if your close and reconciliations are weak",
+      "Partner and manager continuity varies year to year"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "FloQast",
+      "Carta"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Fixed-fee or time-and-materials engagements scoped annually.",
+    "pricingNote": "Audit fee quotes assume a defined level of client-prepared support; scope creep drives overruns. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Confirm independence analysis for any nonaudit services.",
+      "Request the engagement letter scope and PBC list up front.",
+      "Confirm secure portal use for exchanging financial data."
+    ],
+    "exportOffboarding": [
+      "Retain your own copies of all workpapers you prepared.",
+      "Confirm the process to obtain reissued opinions for financing.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "grant-thornton",
+    "name": "Grant Thornton",
+    "category": "Audit and outsourced accounting",
+    "description": "National audit, tax, and advisory firm frequently engaged by later-stage private companies preparing for scale or exit.",
+    "officialUrl": "https://www.grantthornton.com/",
+    "sourceUrl": "https://www.grantthornton.com/services/audit-and-assurance",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "Recognized brand for later-stage and pre-IPO diligence",
+      "Technical accounting and SEC readiness resources",
+      "International network for multi-country audits"
+    ],
+    "watchouts": [
+      "Fees are materially higher than boutique firms",
+      "Less flexible on timelines for smaller clients",
+      "Requires more mature internal close discipline"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Workiva",
+      "BlackLine",
+      "Sage Intacct"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual engagement fees quoted by scope, entity count, and complexity.",
+    "pricingNote": "Multi-entity and international scope significantly change the quote. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Confirm independence for advisory and tax services.",
+      "Agree on the PBC list and timeline in writing.",
+      "Confirm secure data exchange controls."
+    ],
+    "exportOffboarding": [
+      "Retain client-prepared workpapers independently.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Confirm read-only access or a data archive after contract end for audit support."
+    ]
+  },
+  {
+    "id": "kruze-consulting",
+    "name": "Kruze Consulting",
+    "category": "Audit and outsourced accounting",
+    "description": "Outsourced accounting, tax, and CFO services firm specializing in venture-backed startups from seed through growth stage.",
+    "officialUrl": "https://kruzeconsulting.com/",
+    "sourceUrl": "https://kruzeconsulting.com/startup-accounting/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b"
+    ],
+    "strengths": [
+      "Startup-specific processes including R&D credit and audit prep",
+      "Scales support up or down as the internal team is hired",
+      "Familiar with investor and board reporting expectations"
+    ],
+    "watchouts": [
+      "Outsourced model creates knowledge dependency you must document",
+      "Less suited once transaction complexity requires in-house depth",
+      "Coverage during close crunch depends on their staffing"
+    ],
+    "integrations": [
+      "QuickBooks Online",
+      "NetSuite",
+      "Bill",
+      "Ramp",
+      "Rippling",
+      "Carta"
+    ],
+    "implementation": "light",
+    "pricingModel": "Monthly retainer based on transaction volume and service scope.",
+    "pricingNote": "Retainers step up with headcount, entity count, and transaction volume. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Confirm access controls and who can approve payments on your behalf.",
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Require named staff and a documented backup for key roles."
+    ],
+    "exportOffboarding": [
+      "Require a documented transition plan and full workpaper handover.",
+      "Confirm you own the accounting file and all supporting schedules.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "pilot",
+    "name": "Pilot",
+    "category": "Audit and outsourced accounting",
+    "description": "Outsourced bookkeeping, tax, and CFO support provider serving startups with a technology-enabled service model.",
+    "officialUrl": "https://pilot.com/",
+    "sourceUrl": "https://pilot.com/pricing",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b"
+    ],
+    "strengths": [
+      "Predictable monthly pricing and fast onboarding",
+      "Handles routine bookkeeping so the internal team focuses on analysis",
+      "Add-on tax and CFO services available"
+    ],
+    "watchouts": [
+      "Standardized process may not fit complex revenue models",
+      "Technical accounting depth is limited for unusual transactions",
+      "Companies typically insource controllership by Series C"
+    ],
+    "integrations": [
+      "QuickBooks Online",
+      "NetSuite",
+      "Bill",
+      "Ramp",
+      "Gusto",
+      "Stripe"
+    ],
+    "implementation": "light",
+    "pricingModel": "Monthly subscription tiered by expense volume and service scope.",
+    "pricingNote": "Tier thresholds are based on monthly expenses and add-on services. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm segregation of duties between their staff and your approvers.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm handover of the accounting file, reconciliations, and schedules.",
+      "Read the termination clause for data return window and deletion certification.",
+      "Confirm you can export all transactional data to CSV without vendor assistance."
+    ]
+  },
+  {
+    "id": "mercury",
+    "name": "Mercury",
+    "category": "Treasury and banking",
+    "description": "Banking platform for startups offering operating accounts, treasury products, and spend tools through partner banks.",
+    "officialUrl": "https://mercury.com/",
+    "sourceUrl": "https://mercury.com/treasury",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Modern interface with fast account opening and API access",
+      "Treasury sweep options for idle operating cash",
+      "Good user permissions and approval workflow for payments"
+    ],
+    "watchouts": [
+      "Deposits are held at partner banks; confirm the current bank list and insurance mechanics",
+      "Credit facilities and complex cash management are more limited than a large bank",
+      "Concentration risk if it is your only banking relationship"
+    ],
+    "integrations": [
+      "NetSuite",
+      "QuickBooks Online",
+      "Xero",
+      "Ramp",
+      "Bill"
+    ],
+    "implementation": "light",
+    "pricingModel": "No standard account fee for core banking with fees on certain services and treasury products.",
+    "pricingNote": "Confirm deposit insurance mechanics, sweep program terms, and yields. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm which chartered banks hold deposits and applicable insurance coverage.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Maintain a second banking relationship so you can move operations quickly.",
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export statements and transaction history monthly to your own storage."
+    ]
+  },
+  {
+    "id": "jpmorgan-commercial-banking",
+    "name": "J.P. Morgan Commercial Banking",
+    "category": "Treasury and banking",
+    "description": "Large commercial bank offering operating accounts, treasury management, foreign exchange, and credit facilities for growth companies.",
+    "officialUrl": "https://www.jpmorgan.com/commercial-banking",
+    "sourceUrl": "https://www.jpmorgan.com/commercial-banking/innovation-economy",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Balance sheet strength and broad treasury product set",
+      "Foreign exchange and international account capabilities",
+      "Credit, venture debt, and capital markets access under one relationship"
+    ],
+    "watchouts": [
+      "Onboarding and documentation are slower than fintech platforms",
+      "Digital experience and API access lag modern tools",
+      "Relationship quality depends on the assigned banker"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Kyriba",
+      "Modern Treasury",
+      "Trovata"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Account analysis pricing with fees offset by earnings credit on balances.",
+    "pricingNote": "Request a full account analysis statement to understand true net fees. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Review the bank's control reports and fraud prevention services such as positive pay.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Confirm callback verification procedures for wire changes."
+    ],
+    "exportOffboarding": [
+      "Document account closure steps and signer changes in advance.",
+      "Retain statements and confirmations independently.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "first-citizens-svb",
+    "name": "First Citizens Bank, Silicon Valley Bank division",
+    "category": "Treasury and banking",
+    "description": "Bank focused on the innovation economy providing operating accounts, venture debt, and treasury services to venture-backed companies.",
+    "officialUrl": "https://www.svb.com/",
+    "sourceUrl": "https://www.svb.com/business-banking/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Deep familiarity with venture-backed company needs",
+      "Venture debt and warrant-linked lending experience",
+      "Investor and ecosystem relationships"
+    ],
+    "watchouts": [
+      "Recent ownership change means terms and teams have shifted; re-verify",
+      "Concentration risk if operating cash and debt sit at one institution",
+      "Covenant terms on debt facilities require ongoing monitoring"
+    ],
+    "integrations": [
+      "NetSuite",
+      "QuickBooks Online",
+      "Trovata",
+      "Modern Treasury"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Relationship pricing with account fees, treasury service fees, and credit facility terms.",
+    "pricingNote": "Deposit requirements tied to credit facilities can constrain your cash strategy. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Confirm current deposit insurance and sweep arrangements.",
+      "Review fraud controls including positive pay and dual authorization.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Keep a redundant bank relationship funded and tested.",
+      "Understand covenant and deposit requirements before consolidating balances.",
+      "Confirm you can export all transactional data to CSV without vendor assistance."
+    ]
+  },
+  {
+    "id": "modern-treasury",
+    "name": "Modern Treasury",
+    "category": "Treasury and banking",
+    "description": "Payment operations platform that automates money movement, reconciliation, and ledgering across bank accounts and payment rails.",
+    "officialUrl": "https://www.moderntreasury.com/",
+    "sourceUrl": "https://www.moderntreasury.com/products/payments",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "Automated bank reconciliation across multiple institutions",
+      "Programmatic payment initiation with approval controls",
+      "Ledger primitives for companies moving customer funds"
+    ],
+    "watchouts": [
+      "Requires engineering ownership to implement well",
+      "Value is limited for low payment volume",
+      "Bank connectivity depends on the institutions you use"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Stripe",
+      "J.P. Morgan",
+      "Snowflake"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Platform subscription plus volume-based transaction pricing.",
+    "pricingNote": "Volume tiers and bank connection counts drive pricing. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Confirm payment approval controls and key management practices."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Confirm read-only access or a data archive after contract end for audit support.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "trovata",
+    "name": "Trovata",
+    "category": "Treasury and banking",
+    "description": "Cash management platform that aggregates bank data for balance visibility, cash forecasting, and liquidity reporting.",
+    "officialUrl": "https://trovata.io/",
+    "sourceUrl": "https://trovata.io/platform/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Multi-bank balance and transaction aggregation in one view",
+      "Supports rolling cash forecasting with actual bank data",
+      "Reduces manual daily cash spreadsheet work"
+    ],
+    "watchouts": [
+      "Bank connectivity coverage varies; confirm your institutions",
+      "Forecast quality still depends on your AR and AP inputs",
+      "Overlaps with treasury modules in some ERPs"
+    ],
+    "integrations": [
+      "NetSuite",
+      "J.P. Morgan",
+      "Silicon Valley Bank",
+      "Sage Intacct"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription based on number of bank connections and users.",
+    "pricingNote": "Bank connection counts and forecasting modules drive the quote. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm read-only bank connectivity with no payment initiation rights.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export historical bank transaction data and forecast versions.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "anaplan",
+    "name": "Anaplan",
+    "category": "Financial planning and analysis",
+    "description": "Enterprise connected planning platform supporting finance, workforce, sales, and supply chain models on a shared calculation engine.",
+    "officialUrl": "https://www.anaplan.com/",
+    "sourceUrl": "https://www.anaplan.com/solutions/finance/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "Handles large, complex, multi-dimensional models",
+      "Supports planning beyond finance such as sales capacity and workforce",
+      "Strong workflow and version control for planning cycles"
+    ],
+    "watchouts": [
+      "Requires dedicated model builder skills to maintain",
+      "Implementation is a program with real consulting cost",
+      "Model sprawl becomes a governance problem without standards"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Workday",
+      "Salesforce",
+      "Snowflake"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Enterprise subscription by workspace capacity and user role with implementation services.",
+    "pricingNote": "Workspace sizing and user tiers plus implementation drive multi-year cost. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "pigment",
+    "name": "Pigment",
+    "category": "Financial planning and analysis",
+    "description": "Business planning platform with real-time modeling, scenario analysis, and collaborative forecasting for finance and revenue teams.",
+    "officialUrl": "https://www.pigment.com/",
+    "sourceUrl": "https://www.pigment.com/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "Fast scenario modeling with clear formula transparency",
+      "Strong visualization for board and executive review",
+      "Connects planning inputs to source systems"
+    ],
+    "watchouts": [
+      "Still requires a planning owner to maintain the model",
+      "Implementation partners may be needed for complex builds",
+      "Cost is above lightweight FP&A tools"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Salesforce",
+      "Snowflake",
+      "Workday",
+      "HubSpot"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Annual subscription by user tier and model capacity.",
+    "pricingNote": "Seat classes and data volume influence quotes. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "cube-software",
+    "name": "Cube",
+    "category": "Financial planning and analysis",
+    "description": "Spreadsheet-native FP&A platform that syncs source system data into Excel and Google Sheets with version control.",
+    "officialUrl": "https://www.cubesoftware.com/",
+    "sourceUrl": "https://www.cubesoftware.com/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Preserves spreadsheet workflows finance teams already know",
+      "Fast implementation compared with full planning platforms",
+      "Good bridge between ERP actuals and planning models"
+    ],
+    "watchouts": [
+      "Inherits spreadsheet fragility for very complex models",
+      "Collaboration controls are lighter than enterprise platforms",
+      "Scaling to cross-functional planning is limited"
+    ],
+    "integrations": [
+      "NetSuite",
+      "Sage Intacct",
+      "QuickBooks Online",
+      "Salesforce",
+      "Rippling"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription by user count and connected systems.",
+    "pricingNote": "Connected system counts and seat tiers determine cost. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Your models remain in spreadsheets; confirm data sync history export.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "mosaic-tech",
+    "name": "Mosaic",
+    "category": "Financial planning and analysis",
+    "description": "Strategic finance platform combining planning, reporting, and metric dashboards sourced from ERP, CRM, and HRIS data.",
+    "officialUrl": "https://www.mosaic.tech/",
+    "sourceUrl": "https://www.mosaic.tech/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Prebuilt SaaS metrics reduce time to first dashboard",
+      "Connects ERP, CRM, and HRIS without heavy data engineering",
+      "Useful for board reporting standardization"
+    ],
+    "watchouts": [
+      "Prebuilt metric definitions must be reconciled to your KPI dictionary",
+      "Less flexible than a warehouse-plus-BI approach for custom analysis",
+      "Data refresh dependencies can delay reporting"
+    ],
+    "integrations": [
+      "NetSuite",
+      "QuickBooks Online",
+      "Salesforce",
+      "HubSpot",
+      "Rippling",
+      "Gusto"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription by user count and connected data sources.",
+    "pricingNote": "Seat and connector counts drive the quote. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export metric definitions and historical values before switching.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "snowflake",
+    "name": "Snowflake",
+    "category": "Business intelligence and data",
+    "description": "Cloud data platform used as the central warehouse for finance, product, and go-to-market data with separated storage and compute.",
+    "officialUrl": "https://www.snowflake.com/",
+    "sourceUrl": "https://www.snowflake.com/en/pricing-options/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Single source of truth across finance, product, and sales data",
+      "Elastic compute isolates heavy finance queries from production",
+      "Broad ecosystem of ingestion and BI connectors"
+    ],
+    "watchouts": [
+      "Consumption pricing can grow unpredictably without governance",
+      "Requires data engineering ownership and cost monitoring",
+      "Finance must define ownership of metric logic to avoid drift"
+    ],
+    "integrations": [
+      "dbt",
+      "Looker",
+      "Sigma Computing",
+      "Power BI",
+      "Fivetran",
+      "NetSuite"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Consumption-based pricing for compute credits and storage.",
+    "pricingNote": "Credit consumption is the main cost driver; set resource monitors and budgets. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Request the latest penetration test summary and remediation status.",
+      "Confirm data classification, masking, and role-based access design."
+    ],
+    "exportOffboarding": [
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Unload tables to object storage in an open format before exit.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "looker",
+    "name": "Looker",
+    "category": "Business intelligence and data",
+    "description": "Governed business intelligence platform where metric definitions live in a versioned modeling layer used across the company.",
+    "officialUrl": "https://cloud.google.com/looker",
+    "sourceUrl": "https://cloud.google.com/looker/docs",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Centralized metric definitions reduce conflicting numbers",
+      "Version control and code review for analytics logic",
+      "Embedded analytics for customer-facing reporting"
+    ],
+    "watchouts": [
+      "Modeling layer requires analytics engineering skill",
+      "Slower for ad hoc exploration than spreadsheet-style tools",
+      "License cost per developer and viewer adds up"
+    ],
+    "integrations": [
+      "Snowflake",
+      "BigQuery",
+      "dbt",
+      "Google Sheets",
+      "Slack"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Annual platform subscription with user-based licensing tiers.",
+    "pricingNote": "Platform and per-user pricing are quoted together; confirm viewer versus developer counts. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Export the modeling layer source files from version control.",
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "power-bi",
+    "name": "Microsoft Power BI",
+    "category": "Business intelligence and data",
+    "description": "Business intelligence and visualization platform integrated with the Microsoft data and productivity stack.",
+    "officialUrl": "https://www.microsoft.com/en-us/power-platform/products/power-bi",
+    "sourceUrl": "https://www.microsoft.com/en-us/power-platform/products/power-bi/pricing",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Low per-user cost relative to other enterprise BI tools",
+      "Strong Excel and Microsoft 365 integration for finance users",
+      "Large talent pool familiar with the tool"
+    ],
+    "watchouts": [
+      "Governance is weaker unless dataset ownership is enforced",
+      "Report sprawl is common without a content lifecycle policy",
+      "Capacity licensing needed for larger or embedded workloads"
+    ],
+    "integrations": [
+      "Snowflake",
+      "Azure",
+      "Excel",
+      "Dynamics 365",
+      "SharePoint"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Per-user subscription with optional dedicated capacity licensing.",
+    "pricingNote": "Per-user and capacity licensing options differ substantially in cost. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export report definitions and underlying datasets.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "sigma-computing",
+    "name": "Sigma Computing",
+    "category": "Business intelligence and data",
+    "description": "Spreadsheet-interface analytics tool that queries the cloud warehouse directly, aimed at business users including finance.",
+    "officialUrl": "https://www.sigmacomputing.com/",
+    "sourceUrl": "https://www.sigmacomputing.com/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Spreadsheet interface lowers the barrier for finance analysts",
+      "Live warehouse queries avoid extract sprawl",
+      "Write-back capability supports planning inputs"
+    ],
+    "watchouts": [
+      "Warehouse compute cost rises with interactive usage",
+      "Governance requires warehouse-level controls",
+      "Newer than incumbent BI tools in enterprise environments"
+    ],
+    "integrations": [
+      "Snowflake",
+      "Databricks",
+      "BigQuery",
+      "dbt"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription by user type and workspace.",
+    "pricingNote": "User class definitions materially change the quote. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Request the latest penetration test summary and remediation status."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Workbooks depend on the warehouse; export definitions and queries.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "vouch",
+    "name": "Vouch",
+    "category": "Insurance and risk transfer",
+    "description": "Insurance provider focused on venture-backed technology companies, covering directors and officers, errors and omissions, and cyber lines.",
+    "officialUrl": "https://www.vouch.us/",
+    "sourceUrl": "https://www.vouch.us/coverages",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Coverage structures designed for startup risk profiles",
+      "Fast quoting and digital policy management",
+      "Guidance on coverage sequencing as you scale"
+    ],
+    "watchouts": [
+      "Capacity limits may be insufficient at later stages or larger raises",
+      "Carrier panel and appetite change over time",
+      "Coverage exclusions still need careful legal review"
+    ],
+    "integrations": [
+      "Carta",
+      "Vanta",
+      "Rippling"
+    ],
+    "implementation": "light",
+    "pricingModel": "Annual premiums by line of coverage with limits and retentions driving cost.",
+    "pricingNote": "Premiums depend on your revenue, headcount, funding, and claims history. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Review carrier financial strength ratings.",
+      "Confirm coverage territory for international operations.",
+      "Confirm claims notification requirements and contacts."
+    ],
+    "exportOffboarding": [
+      "Retain copies of all policies, endorsements, and binders.",
+      "Confirm tail or run-off coverage terms before switching carriers.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "embroker",
+    "name": "Embroker",
+    "category": "Insurance and risk transfer",
+    "description": "Digital insurance brokerage and program provider offering startup packages including directors and officers and technology errors and omissions.",
+    "officialUrl": "https://www.embroker.com/",
+    "sourceUrl": "https://www.embroker.com/coverage/startup-package/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Bundled startup package simplifies initial coverage",
+      "Online application and renewal workflow",
+      "Broker access to multiple carriers"
+    ],
+    "watchouts": [
+      "Bundles may include coverage you do not need or omit what you do",
+      "Program terms vary by carrier appetite",
+      "Complex risks require deeper broker consultation"
+    ],
+    "integrations": [
+      "Carta",
+      "Rippling",
+      "Vanta"
+    ],
+    "implementation": "light",
+    "pricingModel": "Annual premiums by line with brokerage compensation embedded.",
+    "pricingNote": "Premium and limit structures change at each renewal. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Confirm carrier ratings and program structure.",
+      "Review exclusions relevant to artificial intelligence products.",
+      "Confirm claims handling responsibilities."
+    ],
+    "exportOffboarding": [
+      "Retain all policy documents independently.",
+      "Confirm run-off coverage options.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "founder-shield",
+    "name": "Founder Shield",
+    "category": "Insurance and risk transfer",
+    "description": "Insurance brokerage serving high-growth companies with directors and officers, cyber, employment practices, and specialty lines.",
+    "officialUrl": "https://foundershield.com/",
+    "sourceUrl": "https://foundershield.com/coverages/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Broker experience with rapid-growth and fundraising scenarios",
+      "Specialty lines for emerging technology risks",
+      "Support during renewal and limit adequacy reviews"
+    ],
+    "watchouts": [
+      "Brokerage model means outcomes depend on carrier markets",
+      "Service levels vary with account size",
+      "Coverage adequacy still requires internal risk review"
+    ],
+    "integrations": [
+      "Carta",
+      "Rippling",
+      "Vanta"
+    ],
+    "implementation": "light",
+    "pricingModel": "Annual premiums with brokerage compensation from carriers.",
+    "pricingNote": "Ask how the broker is compensated and request a limits benchmarking analysis. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Confirm carrier financial ratings and claims reputation.",
+      "Confirm cyber coverage aligns with your data processing footprint.",
+      "Document claims notification workflow internally."
+    ],
+    "exportOffboarding": [
+      "Retain policies and endorsements outside the broker portal.",
+      "Confirm tail coverage terms.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "csc-global",
+    "name": "CSC",
+    "category": "Legal, entity, and governance",
+    "description": "Registered agent and entity management provider handling annual reports, franchise tax filings, and good standing across jurisdictions.",
+    "officialUrl": "https://www.cscglobal.com/",
+    "sourceUrl": "https://www.cscglobal.com/service/gbs/entity-management/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Centralized entity calendar and filing management",
+      "International subsidiary support in many jurisdictions",
+      "Reduces the risk of missed annual reports and dissolution"
+    ],
+    "watchouts": [
+      "Per-entity and per-jurisdiction fees add up",
+      "Internal ownership still required for approvals and signatures",
+      "Service levels vary by country partner"
+    ],
+    "integrations": [
+      "Diligent",
+      "Ironclad",
+      "NetSuite"
+    ],
+    "implementation": "light",
+    "pricingModel": "Per-entity annual fees plus filing charges by jurisdiction.",
+    "pricingNote": "Fees vary by jurisdiction and service level. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Confirm document handling and secure delivery of service of process.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Export the entity register, formation documents, and filing history.",
+      "Plan registered agent transition timing to avoid lapses.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "ct-corporation",
+    "name": "CT Corporation",
+    "category": "Legal, entity, and governance",
+    "description": "Wolters Kluwer registered agent and compliance service covering entity formation, qualifications, and statutory filings.",
+    "officialUrl": "https://www.wolterskluwer.com/en/solutions/ct-corporation",
+    "sourceUrl": "https://www.wolterskluwer.com/en/solutions/ct-corporation/registered-agent-services",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Long-established registered agent network across all states",
+      "Foreign qualification support as you expand nexus",
+      "Reliable statutory notice handling"
+    ],
+    "watchouts": [
+      "Pricing per entity and per state accumulates",
+      "Portal experience is functional rather than modern",
+      "Upsell of adjacent compliance services is common"
+    ],
+    "integrations": [
+      "Diligent",
+      "Ironclad"
+    ],
+    "implementation": "light",
+    "pricingModel": "Per-entity annual registered agent fees plus filing service charges.",
+    "pricingNote": "State fees are separate from service fees. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Confirm service of process routing and escalation contacts.",
+      "Execute a data processing agreement and confirm breach notification timelines.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier."
+    ],
+    "exportOffboarding": [
+      "Export entity records and filing calendars.",
+      "Coordinate agent change filings before termination.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "ironclad",
+    "name": "Ironclad",
+    "category": "Legal, entity, and governance",
+    "description": "Contract lifecycle management platform automating contract intake, approval workflow, execution, and repository search.",
+    "officialUrl": "https://ironcladapp.com/",
+    "sourceUrl": "https://ironcladapp.com/product/",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "Searchable contract repository supports revenue recognition and audit",
+      "Approval workflows enforce delegation of authority limits",
+      "Reduces legal bottlenecks on standard agreements"
+    ],
+    "watchouts": [
+      "Requires legal ownership and template standardization first",
+      "Migration of legacy contracts is a real project",
+      "Cost is high relative to lightweight repositories"
+    ],
+    "integrations": [
+      "Salesforce",
+      "Zip",
+      "DocuSign",
+      "NetSuite",
+      "Slack"
+    ],
+    "implementation": "heavy",
+    "pricingModel": "Annual subscription by user and workflow volume.",
+    "pricingNote": "Workflow counts, integrations, and seat mix drive the quote. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Export all executed contracts with metadata and audit history.",
+      "Confirm API-based bulk export and rate limits for a full historical extract.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "diligent",
+    "name": "Diligent",
+    "category": "Legal, entity, and governance",
+    "description": "Board management and governance platform for board books, minutes, resolutions, and entity compliance records.",
+    "officialUrl": "https://www.diligent.com/",
+    "sourceUrl": "https://www.diligent.com/solutions/board-management",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-c"
+    ],
+    "strengths": [
+      "Secure board material distribution with access controls",
+      "Minutes and resolution tracking supports audit evidence",
+      "Director annual questionnaire and conflict tracking"
+    ],
+    "watchouts": [
+      "More formality than many Series B boards require",
+      "Adoption depends on director willingness to change tools",
+      "Cost is significant for a small board"
+    ],
+    "integrations": [
+      "CSC",
+      "Ironclad",
+      "Microsoft 365"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription by number of users and modules.",
+    "pricingNote": "Director counts and module selection drive pricing. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Confirm encryption and remote wipe for board materials."
+    ],
+    "exportOffboarding": [
+      "Export board minutes, resolutions, and consents into your own records.",
+      "Confirm read-only access or a data archive after contract end for audit support.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "vanta",
+    "name": "Vanta",
+    "category": "Security and compliance automation",
+    "description": "Compliance automation platform that monitors controls and streamlines SOC 2, ISO 27001, and other security certifications.",
+    "officialUrl": "https://www.vanta.com/",
+    "sourceUrl": "https://www.vanta.com/products/soc-2",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Continuous control monitoring produces auditor-ready evidence",
+      "Access review workflows support finance and IT controls",
+      "Vendor security review tracking supports third-party risk"
+    ],
+    "watchouts": [
+      "Automation does not replace control design judgment",
+      "Auditor selection and fees are separate",
+      "Alert noise if integrations are not tuned"
+    ],
+    "integrations": [
+      "Okta",
+      "AWS",
+      "Rippling",
+      "GitHub",
+      "Jira",
+      "Zip"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription by framework and employee count.",
+    "pricingNote": "Framework count and headcount tiers drive pricing; audit fees are separate. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Review the published subprocessor list and data residency options."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export control evidence and policy versions for retention.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "drata",
+    "name": "Drata",
+    "category": "Security and compliance automation",
+    "description": "Security compliance automation platform with continuous control monitoring, policy management, and audit coordination.",
+    "officialUrl": "https://drata.com/",
+    "sourceUrl": "https://drata.com/product",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Broad framework coverage including SOC 2, ISO 27001, and privacy",
+      "Automated evidence collection across cloud and identity systems",
+      "Trust center reduces sales security questionnaire load"
+    ],
+    "watchouts": [
+      "Requires an internal owner for remediation, not just monitoring",
+      "Integration coverage varies for less common tools",
+      "Framework add-ons increase cost"
+    ],
+    "integrations": [
+      "Okta",
+      "AWS",
+      "Google Workspace",
+      "Rippling",
+      "GitHub"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription by framework and employee count.",
+    "pricingNote": "Additional frameworks and higher headcount tiers increase cost. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Request the latest penetration test summary and remediation status."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export policies, evidence, and control history.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  },
+  {
+    "id": "secureframe",
+    "name": "Secureframe",
+    "category": "Security and compliance automation",
+    "description": "Compliance automation and advisory platform supporting security certifications with guided remediation.",
+    "officialUrl": "https://secureframe.com/",
+    "sourceUrl": "https://secureframe.com/platform",
+    "asOfDate": "2026-09-02",
+    "stages": [
+      "series-b",
+      "series-c"
+    ],
+    "strengths": [
+      "Guided remediation support alongside automated monitoring",
+      "Policy templates accelerate first certification",
+      "Vendor risk and personnel compliance tracking"
+    ],
+    "watchouts": [
+      "Advisory depth varies by assigned team",
+      "Overlap with tools you may already run for identity governance",
+      "Certification timeline still depends on your engineering capacity"
+    ],
+    "integrations": [
+      "Okta",
+      "AWS",
+      "Google Workspace",
+      "Rippling",
+      "Jira"
+    ],
+    "implementation": "moderate",
+    "pricingModel": "Annual subscription by framework and company size.",
+    "pricingNote": "Framework selection and headcount determine tiering. Verify current list price, tiering, and contract terms directly with the vendor before budgeting.",
+    "securityDiligence": [
+      "Request the current SOC 2 Type II report and the bridge letter covering the gap period.",
+      "Confirm SSO, SCIM provisioning, and role-based access controls are available on your tier.",
+      "Execute a data processing agreement and confirm breach notification timelines."
+    ],
+    "exportOffboarding": [
+      "Confirm you can export all transactional data to CSV without vendor assistance.",
+      "Export evidence, policies, and training records.",
+      "Read the termination clause for data return window and deletion certification."
+    ]
+  }
+]

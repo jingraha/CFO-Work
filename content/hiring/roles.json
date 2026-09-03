@@ -1,0 +1,532 @@
+[
+  {
+    "id": "controller-full-time",
+    "title": "Controller (full-time)",
+    "sequence": 1,
+    "defaultEmploymentModel": "full-time",
+    "triggerSummary": "Hire a full-time Controller when controller coverage is not already full-time. This is the first finance hire because close, audit readiness, and financial controls all stall without it.",
+    "conditions": [
+      {
+        "field": "financeTeam.controller",
+        "operator": "in",
+        "value": [
+          "none",
+          "fractional",
+          "outsourced"
+        ]
+      }
+    ],
+    "outcomes": [
+      "Monthly close completed on a published calendar with reviewed reconciliations",
+      "Written accounting policies and technical positions the auditor can rely on",
+      "Payables, receivables, and payroll accounting operating under documented control",
+      "Audit readiness owned end to end so the CFO is not doing accounting work"
+    ],
+    "scorecard": [
+      "Has closed the books at a company of similar or greater complexity",
+      "Has taken a company through a first external audit",
+      "Can write a revenue recognition memo without external help",
+      "Has built a close calendar and reduced close cycle time with evidence",
+      "Has hired and developed at least one accountant",
+      "Comfortable operating without a large team or mature systems"
+    ],
+    "interviewQuestions": [
+      "Walk me through the close you ran most recently, day by day, and tell me where it broke.",
+      "Describe a revenue recognition judgment you made that the auditor initially challenged. How did it end?",
+      "You inherit a balance sheet with several unsupported accounts. What do you do in the first two weeks?",
+      "How would you cut close from twelve days to six without adding headcount?",
+      "Tell me about a control failure you found. How did you find it and what did you change?"
+    ],
+    "dependencies": []
+  },
+  {
+    "id": "fractional-controller",
+    "title": "Fractional or outsourced Controller",
+    "sequence": 2,
+    "defaultEmploymentModel": "fractional",
+    "triggerSummary": "Use fractional or outsourced controller coverage as an interim step when there is no controller at all and revenue does not yet justify a full-time senior hire.",
+    "conditions": [
+      {
+        "field": "financeTeam.controller",
+        "operator": "equals",
+        "value": "none"
+      },
+      {
+        "field": "arrMillions",
+        "operator": "lt",
+        "value": 15
+      }
+    ],
+    "outcomes": [
+      "Close runs on a defined calendar within weeks rather than months",
+      "Immediate remediation of the highest-risk accounting gaps",
+      "A documented handover package for the eventual full-time controller"
+    ],
+    "scorecard": [
+      "Available for a defined weekly commitment, not on an ad hoc basis",
+      "Has run close at multiple venture-backed companies",
+      "Willing to document work for handover rather than retain knowledge",
+      "Fixed scope and fee rather than open-ended hourly billing"
+    ],
+    "interviewQuestions": [
+      "How many days per week can you commit and which days are they?",
+      "What does your handover package look like when a full-time controller starts?",
+      "Which parts of close will you do yourself and which will you supervise?",
+      "How do you handle a close that is at risk of missing the deadline?"
+    ],
+    "dependencies": []
+  },
+  {
+    "id": "strategic-finance-lead",
+    "title": "Strategic Finance and Planning Lead",
+    "sequence": 3,
+    "defaultEmploymentModel": "full-time",
+    "triggerSummary": "Hire strategic finance once controller coverage exists. This role owns the model, the plan, the forecast, and board analytics so the CFO stops being the only analyst.",
+    "conditions": [
+      {
+        "field": "financeTeam.strategicFinance",
+        "operator": "in",
+        "value": [
+          "none",
+          "fractional"
+        ]
+      }
+    ],
+    "outcomes": [
+      "One integrated three-statement model that the board and executive team trust",
+      "A monthly rolling forecast with a documented change log",
+      "Budget versus actual reporting that budget owners use and explain",
+      "Board analytics produced without the CFO rebuilding them"
+    ],
+    "scorecard": [
+      "Builds three-statement models from scratch without templates",
+      "Has run a full annual planning cycle to board approval",
+      "Can explain unit economics and cohort analysis clearly to non-finance leaders",
+      "Comfortable partnering directly with sales, marketing, and engineering leaders",
+      "Strong data skills beyond spreadsheets"
+    ],
+    "interviewQuestions": [
+      "Build me the revenue driver structure for our business model out loud.",
+      "How do you decide whether a forecast miss is a timing issue or a structural problem?",
+      "Describe how you ran a planning cycle. Where did it go wrong and what did you change?",
+      "How would you present a downside scenario to a board that does not want to hear it?"
+    ],
+    "dependencies": [
+      "controller-full-time"
+    ]
+  },
+  {
+    "id": "senior-accountant",
+    "title": "Senior Accountant",
+    "sequence": 4,
+    "defaultEmploymentModel": "full-time",
+    "triggerSummary": "Add accounting capacity when the controller is performing transaction-level work personally, which is signalled by fewer than two staff accountants at this revenue scale.",
+    "conditions": [
+      {
+        "field": "financeTeam.staffAccountants",
+        "operator": "lte",
+        "value": 1
+      },
+      {
+        "field": "annualRevenueMillions",
+        "operator": "gte",
+        "value": 10
+      }
+    ],
+    "outcomes": [
+      "Close tasks, reconciliations, and subledger work executed to the calendar",
+      "Payables, receivables, and payroll accounting handled without controller intervention",
+      "Audit support schedules prepared and indexed"
+    ],
+    "scorecard": [
+      "Has prepared complete balance sheet reconciliations independently",
+      "Comfortable with high transaction volume and system-driven accounting",
+      "Accurate and fast on repeatable work without needing reminders",
+      "Has supported an external audit as a preparer"
+    ],
+    "interviewQuestions": [
+      "Walk me through how you reconcile a deferred revenue account.",
+      "Describe a reconciliation difference you could not resolve. What did you do?",
+      "How do you organize your work during close week?",
+      "What have you automated in your previous role and how?"
+    ],
+    "dependencies": [
+      "controller-full-time"
+    ]
+  },
+  {
+    "id": "finance-operations-systems-lead",
+    "title": "Finance Operations and Systems Lead",
+    "sequence": 5,
+    "defaultEmploymentModel": "full-time",
+    "triggerSummary": "Hire finance systems ownership when the company is still on entry-level accounting software at scale, because the migration and integration work needs a dedicated owner.",
+    "conditions": [
+      {
+        "field": "financeTeam.financeOperations",
+        "operator": "in",
+        "value": [
+          "none",
+          "fractional"
+        ]
+      },
+      {
+        "field": "accountingSystem",
+        "operator": "in",
+        "value": [
+          "spreadsheets",
+          "quickbooks",
+          "xero"
+        ]
+      }
+    ],
+    "outcomes": [
+      "A documented systems architecture with automated data flow between systems",
+      "Accounting system migration delivered with reconciled data and a parallel run",
+      "Payables, expense, procurement, and payroll workflows automated with audit trails",
+      "Quarterly access reviews and master data governance operating"
+    ],
+    "scorecard": [
+      "Has implemented or migrated a mid-market accounting system end to end",
+      "Understands accounting well enough to design the chart of accounts and integrations",
+      "Has built integrations between billing, payroll, and accounting systems",
+      "Manages vendors and implementation partners firmly on scope and timeline"
+    ],
+    "interviewQuestions": [
+      "Describe a system migration you led. What went wrong and how did you recover?",
+      "How do you decide whether to configure the system or change the process?",
+      "How would you validate that migrated data is correct before cut-over?",
+      "Which finance processes would you automate first here and why?"
+    ],
+    "dependencies": [
+      "controller-full-time"
+    ]
+  },
+  {
+    "id": "revenue-operations-commercial-finance",
+    "title": "Revenue Operations and Commercial Finance Manager",
+    "sequence": 6,
+    "defaultEmploymentModel": "full-time",
+    "triggerSummary": "Add commercial finance when revenue scale makes pricing, deal desk, commissions, and quote-to-cash a full-time job rather than a CFO side activity.",
+    "conditions": [
+      {
+        "field": "arrMillions",
+        "operator": "gte",
+        "value": 20
+      }
+    ],
+    "outcomes": [
+      "Deal desk operating with published approval limits and fast turnaround",
+      "Commission calculations produced accurately on schedule with few disputes",
+      "Quote-to-cash running without manual re-keying between systems",
+      "Pricing and unit economics analysis available for every commercial decision"
+    ],
+    "scorecard": [
+      "Has run a deal desk or commercial approval process at a growing company",
+      "Can model pricing and packaging changes including churn risk",
+      "Understands revenue recognition consequences of commercial terms",
+      "Has administered commission plans and resolved disputes"
+    ],
+    "interviewQuestions": [
+      "Walk me through how you would review a non-standard deal in under a day.",
+      "How do you set discount approval limits that speed up rather than slow down selling?",
+      "Describe a pricing change you analyzed. What happened after it launched?",
+      "How do you keep a sales team trusting your commission numbers?"
+    ],
+    "dependencies": [
+      "strategic-finance-lead"
+    ]
+  },
+  {
+    "id": "billing-and-collections-specialist",
+    "title": "Billing and Collections Specialist",
+    "sequence": 7,
+    "defaultEmploymentModel": "either",
+    "triggerSummary": "Add dedicated billing and collections capacity when usage-based or hybrid billing volume makes invoicing and cash application a daily operational job.",
+    "conditions": [
+      {
+        "field": "billingModel",
+        "operator": "in",
+        "value": [
+          "usage",
+          "hybrid"
+        ]
+      }
+    ],
+    "outcomes": [
+      "Invoices issued accurately and on schedule with disputes resolved quickly",
+      "Cash applied within days of receipt with unapplied balances cleared monthly",
+      "Aged receivables worked weekly against a defined collections sequence"
+    ],
+    "scorecard": [
+      "Has managed a high-volume invoicing cycle including usage-based charges",
+      "Comfortable working directly with customers on payment conversations",
+      "Detail-oriented with proven accuracy on invoice preparation",
+      "Has used a billing platform rather than only spreadsheets"
+    ],
+    "interviewQuestions": [
+      "How do you verify that a usage-based invoice is correct before it is sent?",
+      "Describe how you handle a customer who has not paid for sixty days.",
+      "What is your process when a customer disputes part of an invoice?",
+      "How do you reduce the number of invoices that get disputed in the first place?"
+    ],
+    "dependencies": [
+      "controller-full-time"
+    ]
+  },
+  {
+    "id": "technical-accounting-manager",
+    "title": "Technical Accounting Manager",
+    "sequence": 8,
+    "defaultEmploymentModel": "either",
+    "triggerSummary": "Add technical accounting capability when an audit is under way or imminent and complex judgment areas need documented positions.",
+    "conditions": [
+      {
+        "field": "auditStatus",
+        "operator": "in",
+        "value": [
+          "planning",
+          "in-progress"
+        ]
+      }
+    ],
+    "outcomes": [
+      "Auditor-ready memos covering every significant judgment area",
+      "Audit requests answered without diverting the controller from close",
+      "Complex transactions assessed for accounting impact before they are signed"
+    ],
+    "scorecard": [
+      "Public accounting background with technical accounting depth",
+      "Has written memos that survived audit review with limited revision",
+      "Current on the standards relevant to this business model",
+      "Writes clearly enough that non-accountants can follow the conclusion"
+    ],
+    "interviewQuestions": [
+      "Take our most complex contract type and talk me through the revenue analysis.",
+      "How do you document a judgment where the answer is genuinely arguable?",
+      "Describe a time the auditor disagreed with your position. What happened?",
+      "How do you decide when an issue needs external technical accounting advice?"
+    ],
+    "dependencies": [
+      "controller-full-time"
+    ]
+  },
+  {
+    "id": "payroll-and-equity-administrator",
+    "title": "Payroll and Equity Administrator",
+    "sequence": 9,
+    "defaultEmploymentModel": "either",
+    "triggerSummary": "Add dedicated payroll and equity administration once headcount makes multi-state or multi-country payroll and equity events a recurring specialist workload.",
+    "conditions": [
+      {
+        "field": "employeeCount",
+        "operator": "gte",
+        "value": 150
+      }
+    ],
+    "outcomes": [
+      "Payroll processed accurately and on time across every jurisdiction",
+      "Equity grants, exercises, and terminations recorded and reconciled promptly",
+      "Payroll tax registrations and filings kept current in every state"
+    ],
+    "scorecard": [
+      "Has run multi-state payroll and understands registration requirements",
+      "Has administered an equity plan including exercises and terminations",
+      "Handles confidential compensation data with discretion",
+      "Meticulous about deadlines and reconciliation detail"
+    ],
+    "interviewQuestions": [
+      "An employee moves to a new state mid-quarter. What do you do?",
+      "Walk me through processing an option exercise for a departing employee.",
+      "How do you check a payroll register before you transmit it?",
+      "Describe a payroll error you found before it was paid. How did you find it?"
+    ],
+    "dependencies": [
+      "controller-full-time"
+    ]
+  },
+  {
+    "id": "treasury-manager",
+    "title": "Treasury Manager",
+    "sequence": 10,
+    "defaultEmploymentModel": "either",
+    "triggerSummary": "Add treasury capability when the cash balance and banking structure make daily cash management, investment policy execution, and covenant reporting a standing workload.",
+    "conditions": [
+      {
+        "field": "financeTeam.treasury",
+        "operator": "equals",
+        "value": "none"
+      },
+      {
+        "field": "cashRunwayMonths",
+        "operator": "gte",
+        "value": 18
+      }
+    ],
+    "outcomes": [
+      "Daily cash position produced and reviewed without CFO involvement",
+      "The 13-week forecast maintained weekly with measured accuracy",
+      "Investment policy executed with documented compliance reporting",
+      "Banking relationships and fraud controls actively managed"
+    ],
+    "scorecard": [
+      "Has built and maintained a direct-method cash forecast",
+      "Understands short-term investment instruments and their liquidity profile",
+      "Has managed banking relationships and implemented fraud controls",
+      "Detail-oriented about daily reconciliation and exception follow-up"
+    ],
+    "interviewQuestions": [
+      "How do you build a 13-week forecast and how do you improve its accuracy?",
+      "How would you structure our accounts and sweeps given our balance and burn?",
+      "What fraud controls would you insist on with our banks?",
+      "Describe how you would report policy compliance to the board."
+    ],
+    "dependencies": [
+      "controller-full-time"
+    ]
+  },
+  {
+    "id": "tax-lead-outsourced",
+    "title": "Tax Lead (outsourced or fractional)",
+    "sequence": 11,
+    "defaultEmploymentModel": "outsourced",
+    "triggerSummary": "Engage outsourced tax capability when there is no internal tax coverage and the multi-state footprint creates real filing and nexus obligations.",
+    "conditions": [
+      {
+        "field": "financeTeam.tax",
+        "operator": "equals",
+        "value": "none"
+      },
+      {
+        "field": "salesTaxNexusStates",
+        "operator": "gte",
+        "value": 5
+      }
+    ],
+    "outcomes": [
+      "Every filing obligation identified, calendared, and met",
+      "Nexus exposure quantified and remediated on agreed terms",
+      "Research credit and other available benefits claimed with documentation",
+      "Provision support delivered on the audit timeline"
+    ],
+    "scorecard": [
+      "Experience with venture-backed companies at similar scale",
+      "Multi-state sales tax and voluntary disclosure experience",
+      "Research credit study capability with defensible documentation",
+      "Responsive on notices within days rather than weeks"
+    ],
+    "interviewQuestions": [
+      "How would you approach our multi-state nexus exposure and what would you do first?",
+      "Walk me through how you document a research credit claim so it survives examination.",
+      "How do you coordinate with our auditor on provision timing?",
+      "What is your response time commitment when a state notice arrives?"
+    ],
+    "dependencies": []
+  },
+  {
+    "id": "internal-audit-and-controls-lead",
+    "title": "Internal Audit and Controls Lead",
+    "sequence": 12,
+    "defaultEmploymentModel": "either",
+    "triggerSummary": "Add controls and internal audit capability at larger scale, where control failures become material and future reporting requirements need a multi-year readiness plan.",
+    "conditions": [
+      {
+        "field": "stage",
+        "operator": "equals",
+        "value": "series-c"
+      },
+      {
+        "field": "employeeCount",
+        "operator": "gte",
+        "value": 250
+      }
+    ],
+    "outcomes": [
+      "A documented key controls matrix mapped to the risk register",
+      "A control testing program with evidence and tracked remediation",
+      "A phased readiness plan for future public company requirements"
+    ],
+    "scorecard": [
+      "Internal audit or control testing experience in a growth environment",
+      "Can distinguish controls that matter from controls that only create work",
+      "Has driven remediation to closure through other functions",
+      "Communicates findings without creating defensiveness"
+    ],
+    "interviewQuestions": [
+      "Which five controls would you test first here and why those five?",
+      "How do you handle a control owner who disagrees with your finding?",
+      "Describe a control you recommended removing rather than adding.",
+      "How would you phase readiness work over three years rather than one?"
+    ],
+    "dependencies": [
+      "controller-full-time"
+    ]
+  },
+  {
+    "id": "finance-data-and-bi-analyst",
+    "title": "Finance Data and Business Intelligence Analyst",
+    "sequence": 13,
+    "defaultEmploymentModel": "either",
+    "triggerSummary": "Add finance data capability once reporting and metric production consume analyst time that should be spent on analysis, typically alongside a warehouse or reporting layer build.",
+    "conditions": [
+      {
+        "field": "arrMillions",
+        "operator": "gte",
+        "value": 30
+      }
+    ],
+    "outcomes": [
+      "Governed finance data models with documented lineage and tests",
+      "Self-service dashboards for budget owners and executives",
+      "Metric definitions implemented consistently across every report"
+    ],
+    "scorecard": [
+      "Strong data modeling and query skills alongside finance literacy",
+      "Has built dashboards that people actually used rather than requested",
+      "Understands data quality testing and can explain a broken number",
+      "Works well with data engineering and analytics teams"
+    ],
+    "interviewQuestions": [
+      "How would you model our revenue data so billing and the ledger reconcile?",
+      "Describe a dashboard you built that changed a decision.",
+      "How do you handle two systems that report different numbers for one metric?",
+      "What tests would you put on a finance data pipeline?"
+    ],
+    "dependencies": [
+      "strategic-finance-lead"
+    ]
+  },
+  {
+    "id": "international-finance-capability",
+    "title": "International Finance Capability",
+    "sequence": 14,
+    "defaultEmploymentModel": "outsourced",
+    "triggerSummary": "Add international finance capability, usually through local advisors first, once the company employs people outside its home country and needs local statutory and payroll compliance.",
+    "conditions": [
+      {
+        "field": "internationalEmployees",
+        "operator": "truthy"
+      }
+    ],
+    "outcomes": [
+      "Local statutory accounts and filings completed in every country of operation",
+      "Local payroll and employment compliance maintained",
+      "Transfer pricing and intercompany arrangements documented and executed",
+      "A clear view of the cost and obligations of each country footprint"
+    ],
+    "scorecard": [
+      "Coverage in every country where the company has people or entities",
+      "Experience with venture-backed subsidiaries rather than only large corporates",
+      "Can coordinate with the parent company auditor and tax preparer",
+      "Transparent fixed-fee scope per country rather than open-ended billing"
+    ],
+    "interviewQuestions": [
+      "Which countries do you cover directly and which through partners?",
+      "What are the statutory audit thresholds in the countries where we operate?",
+      "How do you coordinate local statutory accounts with our consolidated reporting?",
+      "What does your annual cost look like per country at our size?"
+    ],
+    "dependencies": [
+      "controller-full-time"
+    ]
+  }
+]
