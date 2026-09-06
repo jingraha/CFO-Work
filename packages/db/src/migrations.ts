@@ -174,4 +174,62 @@ ALTER TABLE account ALTER COLUMN issuer SET NOT NULL;
 CREATE UNIQUE INDEX IF NOT EXISTS account_issuer_account_idx ON account(issuer, account_id);
 `,
   },
+  {
+    id: "0003_company_environment",
+    sql: `
+CREATE TABLE company_environment (
+  workspace_id text PRIMARY KEY REFERENCES workspace(id) ON DELETE CASCADE,
+  enabled boolean NOT NULL DEFAULT false,
+  assessment jsonb NOT NULL,
+  authorized_by text NOT NULL REFERENCES "user"(id),
+  heartbeat timestamptz,
+  worker_error text,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE TABLE system_connection (
+  id text PRIMARY KEY,
+  workspace_id text NOT NULL REFERENCES workspace(id) ON DELETE CASCADE,
+  system_id text NOT NULL,
+  connected boolean NOT NULL DEFAULT false,
+  connected_at timestamptz,
+  revision integer NOT NULL DEFAULT 1,
+  last_sync_at timestamptz,
+  records jsonb NOT NULL,
+  UNIQUE(workspace_id, system_id)
+);
+CREATE TABLE agent_run (
+  id text PRIMARY KEY,
+  workspace_id text NOT NULL REFERENCES workspace(id) ON DELETE CASCADE,
+  task_id text NOT NULL REFERENCES workspace_task(id) ON DELETE CASCADE,
+  playbook_id text NOT NULL,
+  status text NOT NULL DEFAULT 'queued',
+  requested_by text NOT NULL REFERENCES "user"(id),
+  attempts integer NOT NULL DEFAULT 0,
+  blockers jsonb NOT NULL DEFAULT '[]'::jsonb,
+  error text,
+  log jsonb NOT NULL DEFAULT '[]'::jsonb,
+  artifact jsonb,
+  lease_until timestamptz,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now(),
+  UNIQUE(workspace_id, task_id)
+);
+CREATE INDEX agent_run_ready_idx ON agent_run(workspace_id, status);
+CREATE TABLE review_meeting (
+  id text PRIMARY KEY,
+  workspace_id text NOT NULL REFERENCES workspace(id) ON DELETE CASCADE,
+  run_id text NOT NULL REFERENCES agent_run(id) ON DELETE CASCADE,
+  title text NOT NULL,
+  status text NOT NULL DEFAULT 'scheduled',
+  slide_index integer NOT NULL DEFAULT 0,
+  messages jsonb NOT NULL DEFAULT '[]'::jsonb,
+  artifact jsonb NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+`,
+  },
+  {
+    id: "0004_selected_agent_work",
+    sql: "ALTER TABLE agent_run ADD COLUMN requested boolean NOT NULL DEFAULT true;",
+  },
 ] as const;

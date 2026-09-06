@@ -10,6 +10,7 @@ import {
   type Permission,
   type RoadmapTask,
   type Role,
+  type EnvironmentTransfer,
 } from "@cfo/domain";
 import { and, asc, desc, eq } from "drizzle-orm";
 import { z } from "zod";
@@ -73,6 +74,7 @@ export type WorkspaceSnapshot = {
 };
 
 export type WorkspaceImportData = {
+  automation?: EnvironmentTransfer | null;
   name: string;
   slug: string;
   profile: CompanyProfile;
@@ -208,7 +210,7 @@ async function getMembership(
   return { id: membership.id, role: RoleSchema.parse(membership.role) };
 }
 
-async function requirePermission(
+export async function requirePermission(
   userId: string,
   workspaceId: string,
   permission: Permission,
@@ -477,6 +479,7 @@ export async function importWorkspace(
   input: WorkspaceImportData,
 ): Promise<WorkspaceSummary> {
   const profile = CompanyProfileSchema.parse(input.profile);
+  const { restoreEnvironment } = await import("./automation-repository");
   const db = await getDatabase();
   const workspaceId = id("ws");
   await db.transaction(async (transaction) => {
@@ -532,6 +535,9 @@ export async function importWorkspace(
           updatedBy: actorId,
         })),
       );
+    }
+    if (input.automation) {
+      await restoreEnvironment(transaction, actorId, workspaceId, input.automation);
     }
   });
   await writeAuditEvent({
@@ -889,6 +895,7 @@ export async function exportWorkspace(
   if (!can(snapshot.workspace.role, "export:create")) {
     throw new Error("You do not have permission to export this workspace.");
   }
+  const { exportEnvironment } = await import("./automation-repository");
   return {
     format: "startup-cfo-os",
     version: 1,
@@ -899,5 +906,6 @@ export async function exportWorkspace(
     vendorEvaluations: snapshot.vendorEvaluations,
     hiringPlans: snapshot.hiringPlans,
     templateInstances: snapshot.templateInstances,
+    automation: await exportEnvironment(userId, snapshot.workspace.id),
   };
 }

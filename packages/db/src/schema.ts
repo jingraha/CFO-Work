@@ -18,6 +18,7 @@ import type {
   TaskStatus,
   WorkstreamKey,
 } from "@cfo/domain";
+import { agentRuns, environments, reviewMeetings, systemConnections } from "./automation-schema";
 
 export const user = pgTable(
   "user",
@@ -348,6 +349,10 @@ export const auditEvents = pgTable(
 );
 
 export const schema = {
+  agentRuns,
+  environments,
+  reviewMeetings,
+  systemConnections,
   user,
   session,
   account,

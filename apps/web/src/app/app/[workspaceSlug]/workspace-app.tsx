@@ -9,26 +9,21 @@ import type {
 } from "@cfo/domain";
 import { Button } from "@cfo/ui";
 import {
-  BadgeDollarSign,
   BriefcaseBusiness,
   Building2,
-  CalendarRange,
-  ChevronDown,
-  ClipboardCheck,
-  FileSpreadsheet,
   LayoutDashboard,
   Library,
   LogOut,
   Menu,
+  PlugZap,
   Settings,
   Sparkles,
   Store,
-  Users,
   X,
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import type {
   WorkspaceTaskView,
@@ -38,10 +33,12 @@ import { updateTaskAction } from "../actions";
 import { DashboardView } from "./views/dashboard";
 import { HiringView } from "./views/hiring";
 import { ModelsView } from "./views/models";
-import { RoadmapView } from "./views/roadmap";
 import { SettingsView } from "./views/settings";
 import { TemplatesView } from "./views/templates";
 import { VendorsView } from "./views/vendors";
+import { ConnectorsSkills } from "./automation/connectors-skills";
+import { useAutomation } from "./automation/use-automation";
+import { WorkstreamsHub } from "./views/workstreams-hub";
 import { WorkstreamsView } from "./views/workstreams";
 
 export type CatalogData = {
@@ -60,12 +57,10 @@ export type WorkspaceAppProps = {
 
 export type ViewKey =
   | "dashboard"
-  | "roadmap"
+  | "connectors"
   | "workstreams"
-  | "hiring"
   | "vendors"
-  | "templates"
-  | "models"
+  | "resources"
   | "settings";
 
 const navigation: Array<{
@@ -74,23 +69,17 @@ const navigation: Array<{
   icon: typeof LayoutDashboard;
 }> = [
   { id: "dashboard", label: "Command center", icon: LayoutDashboard },
-  { id: "roadmap", label: "Roadmap & Gantt", icon: CalendarRange },
+  { id: "connectors", label: "Connectors & skills", icon: PlugZap },
   { id: "workstreams", label: "Workstreams", icon: Library },
-  { id: "hiring", label: "Finance team", icon: Users },
   { id: "vendors", label: "Vendor decisions", icon: Store },
-  { id: "templates", label: "Templates", icon: ClipboardCheck },
-  { id: "models", label: "Financial models", icon: FileSpreadsheet },
-  { id: "settings", label: "Workspace", icon: Settings },
 ];
 
 const viewTitles: Record<ViewKey, { eyebrow: string; title: string }> = {
-  dashboard: { eyebrow: "Executive view", title: "Finance command center" },
-  roadmap: { eyebrow: "Execution", title: "Incoming-CFO roadmap" },
-  workstreams: { eyebrow: "Operating system", title: "CFO workstreams" },
-  hiring: { eyebrow: "Organization", title: "Finance team plan" },
-  vendors: { eyebrow: "Systems", title: "Vendor decision center" },
-  templates: { eyebrow: "Toolbox", title: "Working templates" },
-  models: { eyebrow: "Planning", title: "Financial model library" },
+  connectors: { eyebrow: "Set up", title: "Connectors & skills" },
+  dashboard: { eyebrow: "Today", title: "Command center" },
+  workstreams: { eyebrow: "Get work done", title: "Workstreams" },
+  vendors: { eyebrow: "Choose your stack", title: "Vendor decisions" },
+  resources: { eyebrow: "Reference", title: "Resources" },
   settings: { eyebrow: "Governance", title: "Workspace & access" },
 };
 
@@ -102,14 +91,23 @@ export function WorkspaceApp({
   const router = useRouter();
   const [activeView, setActiveView] = useState<ViewKey>("dashboard");
   const [mobileNav, setMobileNav] = useState(false);
+  const [resourceTab, setResourceTab] = useState<"models" | "templates" | "hiring" | "playbook">("models");
+  const [workEntry, setWorkEntry] = useState<{ taskId?: string; tab: "tasks" | "outputs" }>({ tab: "tasks" });
   const [tasks, setTasks] = useState(initialData.tasks);
+  const [serverTasks, setServerTasks] = useState(initialData.tasks);
   const [saveError, setSaveError] = useState("");
   const [savingTaskIds, setSavingTaskIds] = useState<Set<string>>(new Set());
+  if (serverTasks !== initialData.tasks) {
+    setServerTasks(initialData.tasks);
+    setTasks(initialData.tasks);
+  }
+  const refreshTasks = useCallback(() => router.refresh(), [router]);
 
   const data = useMemo(
     () => ({ ...initialData, tasks }),
     [initialData, tasks],
   );
+  const automation = useAutomation(data, refreshTasks);
 
   async function saveTask(
     taskId: string,
@@ -160,6 +158,7 @@ export function WorkspaceApp({
             : task,
         ),
       );
+      await automation.refresh();
     } catch (cause) {
       setTasks(previous);
       setSaveError(
@@ -176,48 +175,47 @@ export function WorkspaceApp({
 
   const view = (() => {
     switch (activeView) {
+      case "connectors":
+        return <ConnectorsSkills data={data} automation={automation} onOpenWork={() => { setWorkEntry({ tab: "tasks" }); setActiveView("workstreams"); }} />;
       case "dashboard":
         return (
           <DashboardView
             data={data}
             workstreams={catalog.workstreams}
-            onNavigate={setActiveView}
+            onNavigate={(view) => { if (view === "workstreams") setWorkEntry({ tab: "tasks" }); setActiveView(view); }}
             onSaveTask={saveTask}
+            automation={automation.snapshot}
+            onTask={(id) => { setWorkEntry({ taskId: id, tab: "tasks" }); setActiveView("workstreams"); }}
+            onReview={() => { setWorkEntry({ tab: "outputs" }); setActiveView("workstreams"); }}
           />
         );
-      case "roadmap":
+      case "workstreams":
         return (
-          <RoadmapView
+          <WorkstreamsHub
+            key={`${workEntry.taskId ?? ""}-${workEntry.tab}`}
             data={data}
             workstreams={catalog.workstreams}
             currentUserId={currentUser.id}
             savingTaskIds={savingTaskIds}
             onSaveTask={saveTask}
+            automation={automation}
+            onConnectors={() => setActiveView("connectors")}
+            initialTaskId={workEntry.taskId}
+            initialTab={workEntry.tab}
           />
         );
-      case "workstreams":
-        return (
-          <WorkstreamsView
-            tasks={tasks}
-            workstreams={catalog.workstreams}
-            masterTasks={catalog.masterTasks}
-            onSaveTask={saveTask}
-          />
-        );
-      case "hiring":
-        return (
-          <HiringView
-            data={data}
-            roles={catalog.hiringRoles}
-            currentUserId={currentUser.id}
-          />
-        );
+      case "resources":
+        return <div className="space-y-4">
+          <nav className="flex flex-wrap gap-2" aria-label="Resource sections">
+            {([{ id: "models", label: "Financial models" }, { id: "templates", label: "Templates" }, { id: "hiring", label: "Finance team" }, { id: "playbook", label: "Master playbook" }] as const).map((item) =>
+              <Button key={item.id} variant={resourceTab === item.id ? "primary" : "secondary"} onClick={() => setResourceTab(item.id)}>{item.label}</Button>)}
+          </nav>
+          {resourceTab === "models" ? <ModelsView /> : resourceTab === "templates" ? <TemplatesView data={data} templates={catalog.templates} />
+            : resourceTab === "hiring" ? <HiringView data={data} roles={catalog.hiringRoles} currentUserId={currentUser.id} />
+              : <WorkstreamsView tasks={tasks} workstreams={catalog.workstreams} masterTasks={catalog.masterTasks} onSaveTask={saveTask} />}
+        </div>;
       case "vendors":
         return <VendorsView data={data} vendors={catalog.vendors} />;
-      case "templates":
-        return <TemplatesView data={data} templates={catalog.templates} />;
-      case "models":
-        return <ModelsView />;
       case "settings":
         return (
           <SettingsView
@@ -280,7 +278,9 @@ export function WorkspaceApp({
             return (
               <button
                 key={item.id}
+                aria-current={active ? "page" : undefined}
                 onClick={() => {
+                  if (item.id === "workstreams") setWorkEntry({ tab: "tasks" });
                   setActiveView(item.id);
                   setMobileNav(false);
                 }}
@@ -301,6 +301,10 @@ export function WorkspaceApp({
         </nav>
 
         <div className="border-t border-white/10 p-4">
+          <div className="mb-4 space-y-1">
+            <button className={`flex w-full items-center gap-2 rounded-lg p-2 text-xs ${activeView === "resources" ? "bg-white/10 text-white" : "text-slate-300"}`} onClick={() => { setActiveView("resources"); setMobileNav(false); }}><Library size={15} />Resources</button>
+            <button className={`flex w-full items-center gap-2 rounded-lg p-2 text-xs ${activeView === "settings" ? "bg-white/10 text-white" : "text-slate-300"}`} onClick={() => { setActiveView("settings"); setMobileNav(false); }}><Settings size={15} />Workspace settings</button>
+          </div>
           <div className="mb-3 flex items-center gap-3">
             <span className="grid h-8 w-8 place-items-center rounded-full bg-[var(--purple-soft)] text-xs font-bold text-[var(--purple)]">
               {currentUser.name
@@ -363,15 +367,6 @@ export function WorkspaceApp({
             <div className="rounded-lg bg-[var(--teal-soft)] px-3 py-2 text-xs font-semibold text-emerald-800">
               $0 local mode
             </div>
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={() => setActiveView("models")}
-            >
-              <BadgeDollarSign size={14} />
-              Model library
-              <ChevronDown size={13} />
-            </Button>
           </div>
         </header>
 

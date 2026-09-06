@@ -21,6 +21,7 @@ import {
   PrioritySchema,
   TaskStatusSchema,
   WorkstreamKeySchema,
+  EnvironmentTransferSchema,
   generateRoadmap,
   recommendHiring,
 } from "@cfo/domain";
@@ -29,6 +30,7 @@ import { revalidatePath } from "next/cache";
 import { hashPassword } from "better-auth/crypto";
 import { z } from "zod";
 import { requireSession } from "@/lib/session";
+import { runAutomationTick } from "@/lib/automation-worker";
 
 function slugify(value: string): string {
   return value
@@ -70,6 +72,7 @@ export async function updateTaskAction(
     taskId,
     patch,
   );
+  await runAutomationTick();
   revalidatePath(`/app/${workspaceSlug}`);
   return task;
 }
@@ -198,6 +201,7 @@ const importTaskSchema = z.object({
 });
 
 const workspaceImportSchema = z.object({
+  automation: EnvironmentTransferSchema.nullable().optional(),
   format: z.literal("startup-cfo-os"),
   version: z.literal(1),
   profile: CompanyProfileSchema,
@@ -251,6 +255,7 @@ export async function importWorkspaceAction(json: string) {
     vendorEvaluations: payload.vendorEvaluations,
     hiringPlans: payload.hiringPlans,
     templateInstances: payload.templateInstances,
+    automation: payload.automation ?? null,
   });
   return { slug };
 }

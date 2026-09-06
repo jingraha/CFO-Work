@@ -15,6 +15,17 @@ Open `http://localhost:3000`.
 The seed command is idempotent. It creates the demo CFO account and an Aperture
 AI workspace only when they do not already exist.
 
+## Company environment
+
+Open **Connectors & skills** to connect the mock systems.
+The local agent worker starts with the app server.
+It runs only for workspaces where a finance editor requested agent work.
+It does not require an additional process or subscription.
+
+The worker continues without an open browser tab.
+Closing the app server stops execution until its next start.
+See `COMPANY_ENVIRONMENT.md` for the complete workflow.
+
 ## Local data
 
 PGlite stores the PostgreSQL-compatible database in `.data\cfo-os`. The folder

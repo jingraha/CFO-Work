@@ -18,6 +18,12 @@ Excel operating models.
 - B2B SaaS + usage, AI infrastructure, consumer subscription, and AI-enabled
   services Excel models.
 - Four workspace roles, tenant isolation, audit history, and JSON/CSV exports.
+- A connected demo company with mock email, Slack, ERP, AR/AP, planning,
+  payroll, and banking systems.
+- A local agent queue with evaluated reports, automatic dependency handoffs,
+  PowerPoint downloads, and camera-enabled review rehearsals.
+- Four primary views: Command center, Connectors & skills, Workstreams, and
+  Vendor decisions. Templates, models, and finance hiring are in Resources.
 
 ## Zero-cost local start
 
@@ -54,6 +60,7 @@ npm run models:test
 
 See `docs\LOCAL_SETUP.md`, `docs\OPERATING_GUIDE.md`, and
 `docs\SECURITY_AND_DEPLOYMENT.md` for details.
+See `docs\COMPANY_ENVIRONMENT.md` for the mock systems and local agent workflow.
 
 ## Important boundary
 
