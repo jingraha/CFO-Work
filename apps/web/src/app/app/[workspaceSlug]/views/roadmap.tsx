@@ -2,11 +2,13 @@
 
 import type {
   Role,
+  TaskReadiness,
   WorkstreamDefinition,
 } from "@cfo/domain";
 import { Card } from "@cfo/ui";
 import {
   CalendarRange,
+  Bot,
   Check,
   ChevronRight,
   Filter,
@@ -16,9 +18,10 @@ import {
   Search,
   ZoomIn,
   ZoomOut,
+  Users,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { DragEvent, useMemo, useRef, useState } from "react";
+import { DragEvent, Fragment, useMemo, useRef, useState, type ReactNode } from "react";
 import type {
   WorkspaceTaskView,
   WorkspaceViewData,
@@ -34,6 +37,8 @@ import {
   phaseLabels,
   priorityOrder,
   shiftDate,
+  taskLeaderKey,
+  filterTaskLeaders,
 } from "../view-utils";
 
 type TaskPatch = Partial<
@@ -56,17 +61,23 @@ type Props = {
   currentUserId: string;
   savingTaskIds: Set<string>;
   onSaveTask: (taskId: string, patch: TaskPatch) => Promise<void>;
+  readiness?: TaskReadiness[];
+  onAgentTask?: (task: WorkspaceTaskView) => void;
+  onRunAgent?: ((task: WorkspaceTaskView) => void) | undefined;
+  agentBusy?: boolean;
+  renderAgentPanel?: (task: WorkspaceTaskView) => ReactNode;
 };
 
 const rowHeight = 48;
 const labelWidth = 330;
 const roadmapModes: Array<{
-  value: "timeline" | "list" | "cadence";
+  value: "timeline" | "list" | "leaders" | "cadence";
   label: string;
   icon: LucideIcon;
 }> = [
-  { value: "timeline", label: "Timeline", icon: CalendarRange },
-  { value: "list", label: "Checklist", icon: ListChecks },
+  { value: "list", label: "List", icon: ListChecks },
+  { value: "timeline", label: "Gantt", icon: CalendarRange },
+  { value: "leaders", label: "By leader", icon: Users },
   { value: "cadence", label: "Recurring", icon: RefreshCw },
 ];
 
@@ -76,14 +87,22 @@ export function RoadmapView({
   currentUserId,
   savingTaskIds,
   onSaveTask,
+  readiness = [],
+  onAgentTask,
+  onRunAgent,
+  agentBusy = false,
+  renderAgentPanel,
 }: Props) {
-  const [mode, setMode] = useState<"timeline" | "list" | "cadence">(
-    "timeline",
+  const [mode, setMode] = useState<"timeline" | "list" | "leaders" | "cadence">(
+    "list",
   );
   const [query, setQuery] = useState("");
   const [workstreamFilter, setWorkstreamFilter] = useState("all");
   const [phaseFilter, setPhaseFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
+  const [selectedLeaders, setSelectedLeaders] = useState<string[]>([]);
+  const [agentFilter, setAgentFilter] = useState("all");
+  const [visibleLimit, setVisibleLimit] = useState(50);
   const [zoom, setZoom] = useState(1);
   const [showAllConnections, setShowAllConnections] = useState(false);
   const [selectedTask, setSelectedTask] =
@@ -101,6 +120,12 @@ export function RoadmapView({
     new Date().toISOString().slice(0, 10);
   const horizonDays = 365;
   const timelineWidth = Math.round(1_420 * zoom);
+  const readinessByTask = useMemo(() => new Map(readiness.map((item) => [item.taskId, item])), [readiness]);
+  const leaderName = (task: WorkspaceTaskView) => task.ownerId
+    ? data.members.find((member) => member.userId === task.ownerId)?.name ?? "Assigned member"
+    : `${task.ownerRole} (unassigned)`;
+  const leaderOptions = [...new Map(data.tasks.map((task) => [taskLeaderKey(task), leaderName(task)])).entries()]
+    .sort((a, b) => a[1].localeCompare(b[1]));
   const satisfiedIds = useMemo(
     () =>
       new Set(
@@ -127,7 +152,7 @@ export function RoadmapView({
 
   const filtered = useMemo(
     () =>
-      data.tasks
+      filterTaskLeaders(data.tasks, selectedLeaders)
         .filter((task) =>
           mode === "cadence" ? task.phase === "recurring" : task.phase !== "recurring",
         )
@@ -142,6 +167,8 @@ export function RoadmapView({
         .filter(
           (task) => statusFilter === "all" || task.status === statusFilter,
         )
+        .filter((task) => agentFilter === "all" ||
+          (agentFilter === "supported" ? readinessByTask.get(task.id)?.skillId : readinessByTask.get(task.id)?.state === agentFilter))
         .filter((task) =>
           `${task.title} ${task.description} ${task.tags.join(" ")}`
             .toLowerCase()
@@ -154,6 +181,10 @@ export function RoadmapView({
             focusRelations.relatedTaskIds.has(task.id),
         )
         .sort((left, right) => {
+          if (mode === "leaders") {
+            const group = taskLeaderKey(left).localeCompare(taskLeaderKey(right));
+            if (group) return group;
+          }
           const date = left.startDate.localeCompare(right.startDate);
           return date !== 0
             ? date
@@ -168,8 +199,12 @@ export function RoadmapView({
       query,
       statusFilter,
       workstreamFilter,
+      selectedLeaders,
+      readinessByTask,
+      agentFilter,
     ],
   );
+  const visibleTasks = mode === "list" || mode === "leaders" ? filtered.slice(0, visibleLimit) : filtered;
 
   function isDependencyBlocked(task: WorkspaceTaskView): boolean {
     return task.dependencies.some(
@@ -187,6 +222,8 @@ export function RoadmapView({
     setWorkstreamFilter("all");
     setPhaseFilter("all");
     setStatusFilter("all");
+    setSelectedLeaders([]);
+    setAgentFilter("all");
     if (mode === "cadence") setMode("timeline");
     setFocusTaskId(task.id);
   }
@@ -251,7 +288,7 @@ export function RoadmapView({
   return (
     <div className="space-y-5">
       <Card className="p-4">
-        <div className="flex flex-col gap-3 xl:flex-row xl:items-center">
+        <div className="flex flex-wrap items-center gap-3">
           <div className="inline-flex w-fit rounded-lg bg-slate-100 p-1 text-xs">
             {roadmapModes.map(({ value, label, icon: Icon }) => (
               <button
@@ -260,6 +297,7 @@ export function RoadmapView({
                   setMode(value);
                   if (value === "cadence") clearFocus();
                 }}
+                aria-pressed={mode === value}
                 className={`flex items-center gap-2 rounded-md px-3 py-2 font-semibold ${
                   mode === value
                     ? "bg-white text-[var(--ink)] shadow-sm"
@@ -278,18 +316,44 @@ export function RoadmapView({
             />
             <input
               className="field h-10 min-h-10 pl-9"
-              placeholder="Search roadmap"
+              style={{ paddingLeft: 36 }}
+              placeholder="Search work"
+              aria-label="Search work"
               value={query}
               onChange={(event) => {
                 clearFocus();
+                setVisibleLimit(50);
                 setQuery(event.target.value);
               }}
             />
           </label>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex w-full flex-wrap gap-2">
+            <details className="relative">
+              <summary className="flex h-10 cursor-pointer list-none items-center gap-2 rounded-lg border border-[var(--border)] bg-white px-3 text-xs">
+                <Users size={14} />Leaders {selectedLeaders.length ? `(${selectedLeaders.length})` : "(all)"}
+              </summary>
+              <div className="absolute left-0 top-12 z-30 max-h-80 w-72 overflow-y-auto rounded-xl border bg-white p-3 shadow-lg">
+                <button className="mb-2 text-xs text-purple-700" onClick={() => { clearFocus(); setSelectedLeaders([]); }}>All leaders</button>
+                {leaderOptions.map(([key, name]) => <label key={key} className="flex items-center gap-2 rounded-lg px-2 py-2 text-xs hover:bg-slate-50">
+                  <input type="checkbox" className="accent-[var(--purple)]" checked={selectedLeaders.includes(key)} onChange={() => {
+                    clearFocus();
+                    setSelectedLeaders((current) => current.includes(key) ? current.filter((item) => item !== key) : [...current, key]);
+                  }} />{name}
+                </label>)}
+              </div>
+            </details>
+            <select className="field h-10 min-h-10 text-xs" style={{ width: "auto", maxWidth: "100%" }} value={agentFilter} aria-label="Filter agent readiness" onChange={(event) => { clearFocus(); setAgentFilter(event.target.value); }}>
+              <option value="all">All work</option>
+              <option value="supported">Has an agent skill</option>
+              <option value="ready">Ready for agent</option>
+              <option value="blocked">Needs input first</option>
+              <option value="review">Needs my review</option>
+              <option value="working">Agent working</option>
+            </select>
             <select
               className="field h-10 min-h-10 w-auto text-xs"
               value={workstreamFilter}
+              style={{ width: "auto", maxWidth: "100%" }}
               onChange={(event) => {
                 clearFocus();
                 setWorkstreamFilter(event.target.value);
@@ -303,9 +367,13 @@ export function RoadmapView({
                 </option>
               ))}
             </select>
+            <details className="relative">
+              <summary className="flex h-10 cursor-pointer list-none items-center rounded-lg border border-[var(--border)] px-3 text-xs">More filters</summary>
+              <div className="absolute right-0 top-12 z-30 grid w-60 gap-2 rounded-xl border bg-white p-3 shadow-lg">
             <select
               className="field h-10 min-h-10 w-auto text-xs"
               value={phaseFilter}
+              style={{ width: "100%" }}
               onChange={(event) => {
                 clearFocus();
                 setPhaseFilter(event.target.value);
@@ -322,6 +390,7 @@ export function RoadmapView({
             <select
               className="field h-10 min-h-10 w-auto text-xs"
               value={statusFilter}
+              style={{ width: "100%" }}
               onChange={(event) => {
                 clearFocus();
                 setStatusFilter(event.target.value);
@@ -335,11 +404,16 @@ export function RoadmapView({
               <option value="complete">Complete</option>
               <option value="not-applicable">N/A</option>
             </select>
+              </div>
+            </details>
+            {(selectedLeaders.length > 0 || query || workstreamFilter !== "all" || phaseFilter !== "all" || statusFilter !== "all" || agentFilter !== "all") && <button className="px-2 text-xs text-purple-700" onClick={() => {
+              clearFocus(); setSelectedLeaders([]); setQuery(""); setWorkstreamFilter("all"); setPhaseFilter("all"); setStatusFilter("all"); setAgentFilter("all");
+            }}>Clear filters</button>}
           </div>
         </div>
       </Card>
 
-      <GanttLegend workstreams={workstreams} />
+      {mode === "timeline" && <GanttLegend workstreams={workstreams} />}
 
       {focusTask && mode !== "cadence" ? (
         <DependencyFocus
@@ -653,27 +727,30 @@ export function RoadmapView({
         </Card>
       ) : null}
 
-      {mode === "list" ? (
+      {mode === "list" || mode === "leaders" ? (
         <Card className="overflow-hidden">
           <div className="scrollbar-thin overflow-x-auto">
             <table className="w-full min-w-[900px] border-collapse text-left">
               <thead className="bg-slate-50 text-[10px] uppercase tracking-wide text-[var(--ink-muted)]">
                 <tr>
                   <th className="px-4 py-3">Task</th>
-                  <th className="px-4 py-3">Relationship</th>
-                  <th className="px-4 py-3">Phase</th>
-                  <th className="px-4 py-3">Owner</th>
+                  {focusTask && <th className="px-4 py-3">Relationship</th>}
+                  <th className="px-4 py-3">Leader</th>
                   <th className="px-4 py-3">Dates</th>
                   <th className="px-4 py-3">Status</th>
-                  <th className="px-4 py-3">Progress</th>
+                  <th className="px-4 py-3">Agent</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[var(--border)]">
-                {filtered.map((task) => {
+                {visibleTasks.map((task, index) => {
                   const tone = relationTone(task);
+                  const taskReadiness = readinessByTask.get(task.id);
+                  const groupStart = mode === "leaders" && (index === 0 || taskLeaderKey(filtered[index - 1]!) !== taskLeaderKey(task));
                   return (
+                    <Fragment key={task.id}>
+                    {groupStart && <tr className="bg-purple-50"><th scope="rowgroup" colSpan={focusTask ? 6 : 5} className="px-4 py-3 text-sm font-semibold text-purple-900">{leaderName(task)} <span className="ml-2 text-xs font-normal">{filtered.filter((item) => taskLeaderKey(item) === taskLeaderKey(task)).length} tasks</span></th></tr>}
                     <tr
-                      key={task.id}
+                      data-testid={`work-item-${task.masterTaskId}`}
                       className={`cursor-pointer hover:bg-slate-50 ${
                         tone === "focus"
                           ? "bg-slate-100"
@@ -683,8 +760,6 @@ export function RoadmapView({
                               ? "bg-orange-50/40"
                               : ""
                       }`}
-                      onClick={() => focusOnTask(task)}
-                      onDoubleClick={() => openTaskDetails(task)}
                     >
                     <td className="max-w-md px-4 py-3">
                       <div className="flex items-start gap-3">
@@ -709,12 +784,12 @@ export function RoadmapView({
                             <Check size={13} />
                           ) : null}
                         </button>
-                        <div>
-                          <p className="text-xs font-semibold">{task.title}</p>
+                        <button className="text-left" onClick={() => openTaskDetails(task)}>
+                          <p className="text-sm font-semibold">{task.title}</p>
                           <p className="mt-1 line-clamp-1 text-[10px] text-[var(--ink-muted)]">
-                            {task.recommendationReason}
+                            {workstreams.find((stream) => stream.id === task.workstream)?.shortName} · {phaseLabels[task.phase]}
                           </p>
-                        </div>
+                        </button>
                         <button
                           onClick={(event) => {
                             event.stopPropagation();
@@ -727,7 +802,7 @@ export function RoadmapView({
                         </button>
                       </div>
                     </td>
-                    <td className="px-4 py-3">
+                    {focusTask && <td className="px-4 py-3">
                       {tone === "focus" ? (
                         <span className="rounded-full bg-slate-900 px-2.5 py-1 text-[9px] font-bold uppercase text-white">
                           Selected
@@ -743,11 +818,8 @@ export function RoadmapView({
                       ) : (
                         <span className="text-[10px] text-slate-400">-</span>
                       )}
-                    </td>
-                    <td className="px-4 py-3 text-xs">
-                      {phaseLabels[task.phase]}
-                    </td>
-                    <td className="px-4 py-3 text-xs">{task.ownerRole}</td>
+                    </td>}
+                    <td className="px-4 py-3 text-xs">{leaderName(task)}</td>
                     <td className="px-4 py-3 text-xs text-[var(--ink-muted)]">
                       {formatCompactDate(task.startDate)} -{" "}
                       {formatCompactDate(task.endDate)}
@@ -756,24 +828,29 @@ export function RoadmapView({
                       <StatusPill status={task.status} />
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2">
-                        <div className="h-1.5 w-20 overflow-hidden rounded-full bg-slate-100">
-                          <div
-                            className="h-full rounded-full bg-[var(--purple)]"
-                            style={{ width: `${task.percentComplete}%` }}
-                          />
-                        </div>
-                        <span className="text-[10px] text-[var(--ink-muted)]">
-                          {task.percentComplete}%
-                        </span>
-                      </div>
+                      {onAgentTask && <div className="max-w-56 space-y-1">
+                        <button disabled={agentBusy} onClick={() => taskReadiness?.state === "ready" && onRunAgent ? onRunAgent(task) : onAgentTask(task)} className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-2 text-xs font-medium disabled:opacity-50 ${
+                          taskReadiness?.state === "ready" ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                            : taskReadiness?.state === "blocked" ? "border-amber-200 bg-amber-50 text-amber-900"
+                              : "border-slate-200 bg-white text-slate-700"
+                        }`}><Bot size={13} />{taskReadiness?.state === "ready" ? onRunAgent ? "Run with agent" : "Agent details"
+                          : taskReadiness?.state === "blocked" ? "View blockers"
+                            : taskReadiness?.state === "review" ? "Review output"
+                              : taskReadiness?.state === "working" ? "Agent working"
+                                : taskReadiness?.state === "completed" ? "Agent / output" : "See requirements"}</button>
+                        {taskReadiness?.blockers[0] && <p className="truncate text-[10px] text-slate-500" title={taskReadiness.blockers[0].label}>{taskReadiness.blockers[0].label}</p>}
+                      </div>}
                     </td>
                   </tr>
+                  </Fragment>
                   );
                 })}
               </tbody>
             </table>
           </div>
+          {visibleTasks.length < filtered.length && <div className="flex justify-center border-t border-[var(--border)] p-4">
+            <button className="rounded-lg border px-4 py-2 text-sm font-medium text-purple-700" onClick={() => setVisibleLimit((limit) => limit + 50)}>Show more work ({visibleTasks.length} of {filtered.length})</button>
+          </div>}
         </Card>
       ) : null}
 
@@ -861,6 +938,7 @@ export function RoadmapView({
           onClose={() => setSelectedTask(null)}
           onSave={onSaveTask}
           onSelectRelated={openTaskDetails}
+          agentPanel={renderAgentPanel?.(data.tasks.find((task) => task.id === selectedTask.id) ?? selectedTask)}
         />
       ) : null}
     </div>

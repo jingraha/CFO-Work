@@ -9,7 +9,7 @@ export function GanttLegend({
 }) {
   return (
     <Card className="overflow-hidden">
-      <details open>
+      <details>
         <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-3 text-sm font-semibold hover:bg-slate-50">
           <CircleHelp size={16} className="text-[var(--purple)]" />
           How to read dependencies and colors

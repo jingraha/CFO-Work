@@ -24,7 +24,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type {
   WorkspaceTaskView,
   WorkspaceViewData,
@@ -62,6 +62,7 @@ type Props = {
   onClose: () => void;
   onSave: (taskId: string, patch: TaskPatch) => Promise<void>;
   onSelectRelated: (task: WorkspaceTaskView) => void;
+  agentPanel?: ReactNode;
 };
 
 export function TaskDrawer({
@@ -74,6 +75,7 @@ export function TaskDrawer({
   onClose,
   onSave,
   onSelectRelated,
+  agentPanel,
 }: Props) {
   const [status, setStatus] = useState(task.status);
   const [priority, setPriority] = useState(task.priority);
@@ -191,6 +193,7 @@ export function TaskDrawer({
             {task.description}
           </p>
 
+          {agentPanel}
           <DependencyDetails
             task={task}
             relations={relations}

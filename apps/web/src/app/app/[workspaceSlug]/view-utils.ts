@@ -120,3 +120,11 @@ export function getDirectTaskRelations(
     ]),
   };
 }
+
+export function taskLeaderKey(task: WorkspaceTaskView): string {
+  return task.ownerId ? `person:${task.ownerId}` : `role:${task.ownerRole}`;
+}
+
+export function filterTaskLeaders(tasks: WorkspaceTaskView[], selected: string[]): WorkspaceTaskView[] {
+  return selected.length ? tasks.filter((task) => selected.includes(taskLeaderKey(task))) : tasks;
+}

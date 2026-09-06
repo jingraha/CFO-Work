@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { WorkspaceTaskView } from "@/lib/workspace-data";
-import { getDirectTaskRelations } from "./view-utils";
+import { getDirectTaskRelations, filterTaskLeaders, taskLeaderKey } from "./view-utils";
 
 function task(
   id: string,
@@ -70,5 +70,16 @@ describe("direct task relationships", () => {
     expect(relations.prerequisites).toEqual([]);
     expect(relations.dependents).toEqual([]);
     expect(relations.relatedTaskIds.size).toBe(0);
+  });
+
+  it("filters any combination of named leaders and unassigned role owners", () => {
+    const cfo = task("cfo", "a");
+    const controller = { ...task("controller", "b"), ownerRole: "Controller" };
+    const person = { ...task("person", "c"), ownerId: "alice" };
+    const rows = [cfo, controller, person];
+    expect(taskLeaderKey(person)).toBe("person:alice");
+    expect(filterTaskLeaders(rows, ["role:CFO", "person:alice"])).toEqual([cfo, person]);
+    expect(filterTaskLeaders(rows, [])).toEqual(rows);
+    expect(filterTaskLeaders(rows, ["role:Controller"])).toEqual([controller]);
   });
 });

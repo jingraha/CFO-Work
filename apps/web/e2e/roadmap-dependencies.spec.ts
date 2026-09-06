@@ -2,15 +2,19 @@ import { expect, test } from "@playwright/test";
 
 test("focuses and explains direct Gantt dependencies", async ({ page }) => {
   await page.goto("/sign-in");
-  await page.getByLabel("Email").fill("cfo@example.com");
-  await page.getByLabel("Password").fill("local-demo-only");
-  await page.getByRole("button", { name: "Sign in" }).click();
-  await page.waitForURL(/\/app\/aperture-ai$/);
+  const response = await page.request.post("/api/auth/sign-in/email", {
+    headers: { origin: new URL(page.url()).origin },
+    data: { email: "cfo@example.com", password: "local-demo-only" },
+  });
+  expect(response.ok()).toBeTruthy();
+  await page.goto("/app/aperture-ai");
 
-  await page.getByRole("button", { name: "Roadmap & Gantt" }).click();
-  await expect(
-    page.getByText("How to read dependencies and colors"),
-  ).toBeVisible();
+  await expect(async () => {
+    await page.getByRole("navigation", { name: "Workspace", exact: true }).getByRole("button", { name: "Workstreams", exact: true }).click();
+    await expect(page.getByRole("button", { name: "Gantt", exact: true })).toBeVisible({ timeout: 1000 });
+  }).toPass({ timeout: 15_000 });
+  await page.getByRole("button", { name: "Gantt", exact: true }).click();
+  await page.getByText("How to read dependencies and colors").click();
   await expect(page.getByText("Blue outline = prerequisite")).toBeVisible();
   await expect(page.getByText("Orange outline = downstream")).toBeVisible();
 
